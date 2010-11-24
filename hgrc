@@ -1,0 +1,4 @@
+[ui]
+ignore = ~/.hgignore
+username = Vladimir 'Vii' Varankin <nek.narqo@gmail.com>
+verbose = True

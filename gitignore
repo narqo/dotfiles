@@ -1,0 +1,7 @@
+*.pyc
+.DS_Store
+*.svn
+._*
+*~
+gitapikey
+

@@ -1,0 +1,10 @@
+[user]
+	name = Vladimir Varankin
+	email = nek.narqo@gmail.com
+[core]
+	whitespace=fix,-indent-with-non-tab,trailing-space,-cr-at-eol
+	excludesfile = ~/.gitignore
+	editor = vim
+[github]
+	user = narqo
+
