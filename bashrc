@@ -32,3 +32,8 @@ export EDITOR=vim
 
 # Pip download cache directory path
 export PIP_DOWNLOAD_CACHE=$HOME/.cache/pip
+
+# Virtualenvwrapper Shell Startup File
+export VIRTUALENVWRAPPER_PYTHON=`brew --prefix`/Cellar/python/2.7/bin/python
+export WORKON_HOME=$HOME/.virtualenvs
+source `brew --prefix`/Cellar/python/2.7/bin/virtualenvwrapper.sh
