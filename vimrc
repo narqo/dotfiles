@@ -143,9 +143,9 @@ nmap <silent> <C-i> 10zh
 set background=light
 
 " Konsole-256color fix
-"set t_Co=256
-"colorscheme xoria256
-colorscheme delek
+set t_Co=256
+colorscheme xoria256
+"colorscheme delek
 
 " Set up the gui cursor to look nice
 set guicursor=n-v-c:block-Cursor-blinkon0
