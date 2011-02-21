@@ -10,6 +10,7 @@ set softtabstop=4
 set shiftwidth=4
 set autoindent
 set smartindent
+set shiftround
 
 set wildmenu
 
@@ -135,6 +136,17 @@ imap <C-V> <esc>"+gPi
 " Make horizontal scrolling easier
 nmap <silent> <C-o> 10zl
 nmap <silent> <C-i> 10zh
+
+" Tab navigation
+map <A-1> 1gt
+map <A-2> 2gt
+map <A-3> 3gt
+map <A-4> 4gt
+map <A-5> 5gt
+map <A-6> 6gt
+map <A-7> 7gt
+map <A-8> 8gt
+map <A-9> 9gt
 
 
 "-------------------------
