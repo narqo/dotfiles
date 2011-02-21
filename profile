@@ -2,11 +2,12 @@
 # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
 # exists.
 
-export TERM=xterm-color
+#export TERM=xterm-color
+export TERM=xterm-256color
 export CLICOLOR=1
 export LSCOLORS=fxfxcxdxbxegedabagacad
 
-export PATH=/usr/local/bin:/usr/local/sbin:/opt/subversion/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
