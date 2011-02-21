@@ -28,6 +28,10 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
+if [ -f `brew --prefix`/Library/Contributions/brew_bash_completion.sh ]; then
+	. `brew --prefix`/Library/Contributions/brew_bash_completion.sh
+fi
+
 export EDITOR=vim
 
 # Pip download cache directory path
@@ -37,3 +41,7 @@ export PIP_DOWNLOAD_CACHE=$HOME/.cache/pip
 export VIRTUALENVWRAPPER_PYTHON=`brew --prefix`/Cellar/python/2.7/bin/python
 export WORKON_HOME=$HOME/.virtualenvs
 source `brew --prefix`/Cellar/python/2.7/bin/virtualenvwrapper.sh
+
+# Node.js libraries path 
+export NODE_PATH=`brew --prefix`/lib/node
+
