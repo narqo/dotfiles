@@ -38,9 +38,11 @@ export EDITOR=vim
 export PIP_DOWNLOAD_CACHE=$HOME/.cache/pip
 
 # Virtualenvwrapper Shell Startup File
-export VIRTUALENVWRAPPER_PYTHON=`brew --prefix`/Cellar/python/2.7/bin/python
+#export VIRTUALENVWRAPPER_PYTHON=`brew --prefix`/Cellar/python/2.7.1/bin/python
 export WORKON_HOME=$HOME/.virtualenvs
-source `brew --prefix`/Cellar/python/2.7/bin/virtualenvwrapper.sh
+if [ -f `brew --prefix`/share/python/virtualenvwrapper.sh ]; then
+	source `brew --prefix`/share/python/virtualenvwrapper.sh
+fi
 
 # Node.js libraries path 
 export NODE_PATH=`brew --prefix`/lib/node

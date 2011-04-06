@@ -7,7 +7,7 @@ export TERM=xterm-256color
 export CLICOLOR=1
 export LSCOLORS=fxfxcxdxbxegedabagacad
 
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/python:$PATH
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
