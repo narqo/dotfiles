@@ -72,6 +72,8 @@ set undolevels=50
 set termencoding=utf-8
 " Список кодировок файлов для автоопределения
 set fileencodings=utf-8,cp1251,koi8-r,cp866
+" Список форматов файлов
+set fileformats=unix,dos,mac
 
 " Метод фолдинга - вручную (для обычных файлов)
 "set foldmethod=manual
@@ -171,6 +173,7 @@ set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 "-------------------------
 " NERD Tree
 "-------------------------
+
 " Toggle the NERD Tree on an off with F6
 nmap <F6> :NERDTreeToggle<CR>
 
@@ -214,3 +217,8 @@ let g:tex_flavor='latex'
 
 " XML/HTML tags aut complition map
 let xml_tag_completion_map = "></"
+
+
+" New file templates
+:autocmd BufNewFile *.py 0r ~/.vim/templates/py.tmpl
+

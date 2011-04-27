@@ -7,7 +7,7 @@ set ch=2
 set lines=60
 set columns=150
 
-set gfn=Anonymous\ Pro:h14
+set gfn=Monaco:h13
 
 "" GUI Settings
 " Don't show toolbar                                                                                                                             
