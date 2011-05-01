@@ -17,6 +17,9 @@ set wildmenu
 set cursorline
 set number
 
+" Automaticaly set cwd to opened buffer 
+"set autochdir
+
 " Show the cursor position all the time
 set ruler
 
