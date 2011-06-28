@@ -160,6 +160,7 @@ map <A-9> 9gt
 set background=light
 
 " Konsole-256color fix
+let g:solarized_termcolors=256
 set t_Co=256
 colorscheme xoria256
 "colorscheme delek

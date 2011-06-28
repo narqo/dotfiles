@@ -1,5 +1,7 @@
 "set t_Co=256
-colorscheme xoria256
+"colorscheme xoria256
+set background=dark
+colorscheme solarized
 
 " Make command line two lines high
 set ch=2
