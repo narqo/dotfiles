@@ -222,3 +222,17 @@ nnoremap <F2> :GundoToggle<CR>
 " Use the |:sign| interface to mark syntax errors
 let g:syntastic_enable_signs=1
 
+
+"-----------------------
+" Zencoding vim
+"-----------------------
+
+let g:user_zen_settings = {
+\   'xml' : {
+\        'extends' : 'html',
+\    },
+\   'haml' : {
+\        'extends' : 'html',
+\    },
+\}
+
