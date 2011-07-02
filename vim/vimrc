@@ -14,7 +14,11 @@ set shiftround
 " Ставим табы пробелами
 set expandtab
 
+" Make cmdline tab completion similar to bash
 set wildmenu
+"set wildmode=list:longest
+set wildmode=longest
+set wildignore=*.o,*.obj,*~,*.pyc,*.pyo
 
 set cursorline
 set number
@@ -28,10 +32,11 @@ set hidden
 " Show the cursor position all the time
 set ruler
 
-" Jump 7 lines when running out of the screen
+" Jump N lines when running out of the screen
 set scrolljump=7
-" Indicate jump out of the screen when 10 lines before end of the screen
 set scrolloff=7
+set sidescrolloff=7
+set sidescroll=1
 
 " Turn off any bells
 set novisualbell
@@ -60,9 +65,9 @@ set statusline+=%=Line:%l/%L[%p%%]\ Col:%c\ [%b][0x%B]
 set statusline+=\ Buf:%n\ 
 
 " Включить подсветку невидимых символов
-setlocal list
+set list
 " Настройка подсветки невидимых символов
-setlocal listchars=tab:·\ ,trail:·
+set listchars=tab:·\ ,trail:·,extends:»,precedes:«
 
 if v:version >= 703
     " mark the ideal max text width
@@ -71,6 +76,7 @@ endif
 
 
 """ ПОИСК
+
 " Включаем подсветку выражения, которое ищется в тексте
 set hlsearch
 " При поиске перескакивать на найденный текст в процессе набора строки
@@ -148,6 +154,9 @@ imap <C-V> <esc>"+gPi
 " Make horizontal scrolling easier
 nmap <silent> <C-o> 10zl
 nmap <silent> <C-i> 10zh
+
+" Key mapping for saving file
+nmap <C-s> :w<CR>
 
 
 "-------------------------
