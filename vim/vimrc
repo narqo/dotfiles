@@ -11,11 +11,16 @@ set shiftwidth=4
 set autoindent
 set smartindent
 set shiftround
+" Ставим табы пробелами
+set expandtab
 
 set wildmenu
 
 set cursorline
 set number
+
+" Hide buffers when not displayed
+set hidden
 
 " Automaticaly set cwd to opened buffer 
 "set autochdir
@@ -25,7 +30,6 @@ set ruler
 
 " Jump 7 lines when running out of the screen
 set scrolljump=7
-
 " Indicate jump out of the screen when 10 lines before end of the screen
 set scrolloff=7
 
@@ -45,8 +49,19 @@ set showcmd
 
 " Включаем отображение дополнительной информации в статусной строке
 set laststatus=2
-"set statusline=%<%f%h%m%r\ %b\ %{&encoding}\ 0x\ \ %l,%c%V\ %P
-set statusline=%f\ %m\ %r\ %{&encoding}\ Line:%l/%L[%p%%]\ Col:%c\ Buf:%n\ [%b][0x%B]
+set statusline=%f%h\ %y\ %m\ %r\ %{&encoding}
+set statusline+=%=Line:%l/%L[%p%%]\ Col:%c\ [%b][0x%B]
+set statusline+=\ Buf:%n\ 
+
+" Включить подсветку невидимых символов
+setlocal list
+" Настройка подсветки невидимых символов
+setlocal listchars=tab:·\ ,trail:·
+
+if v:version >= 703
+    " mark the ideal max text width
+    set colorcolumn=+1 
+endif
 
 
 """ ПОИСК
@@ -60,23 +75,20 @@ set nowrapscan
 set ignorecase
 
 
-""" BACKUP
-" Отключаем создание бэкапов
-set nobackup
-" Отключаем создание swap файлов
-set noswapfile
-"" Все swap файлы будут помещаться в эту папку
-"set dir=~/.vim/swp
+" Размер истории для отмены
+set undolevels=100
 
-"" Размер истории для отмены
-set undolevels=50
-
+set encoding=utf-8
 " Кодировка по-умолчанию
 set termencoding=utf-8
 " Список кодировок файлов для автоопределения
 set fileencodings=utf-8,cp1251,koi8-r,cp866
 " Список форматов файлов
 set fileformats=unix,dos,mac
+
+"load ftplugins and indent files
+filetype plugin on
+filetype indent on
 
 " Метод фолдинга - вручную (для обычных файлов)
 "set foldmethod=manual
@@ -86,39 +98,28 @@ setlocal foldlevelstart=0
 setlocal foldmethod=syntax
 
 
-""" DIFF
+"" BACKUP
+
+" Отключаем создание бэкапов
+set nobackup
+" Отключаем создание swap файлов
+set noswapfile
+" Все swap файлы будут помещаться в эту папку
+"set dir=~/.vim/swp
+
+
+"" DIFF
+
 " Add ignorance of whitespace to diff
 set diffopt+=iwhite
 
 
-""" KEY MAPS
+"" KEY MAPS
+
 " Очистить подсветку последнего найденного выражения
 nmap <F3> :nohlsearch<CR>
 imap <F3> <Esc>:nohlsearch<CR>
 vmap <F3> <Esc>:nohlsearch<CR>gv
-
-" More suitable mapping
-function SMap(key, action, ...)
-  let modes = " vi"
-  if (a:0 > 0)
-	  let modes = a:{1}
-  endif
-  if (match(modes, '\Ii') != -1)
-	  execute 'imap ' . a:key . ' <Esc>' . a:action
-  endif
-  if (match(modes, '\Nn') != -1)
-	  execute 'nmap ' . a:key . ' <Esc>' . a:action
-  endif
-  if (match(modes, ' ') != -1)
-	  execute 'map ' . a:key . ' <Esc>' . a:action
-  endif
-  if (match(modes, '\Vv') != -1)
-	  execute 'vmap ' . a:key . ' <Esc>' . a:action
-  endif
-endfunction
-
-" C-T - new tab
-"call SMap("<C-t>", ":tabnew<cr>")
 
 " Дублировать строку после текущей
 map <C-A-up> <esc>yyPi
@@ -142,28 +143,16 @@ imap <C-V> <esc>"+gPi
 nmap <silent> <C-o> 10zl
 nmap <silent> <C-i> 10zh
 
-" Tab navigation
-map <A-1> 1gt
-map <A-2> 2gt
-map <A-3> 3gt
-map <A-4> 4gt
-map <A-5> 5gt
-map <A-6> 6gt
-map <A-7> 7gt
-map <A-8> 8gt
-map <A-9> 9gt
-
 
 "-------------------------
 " GUI
 "-------------------------
-set background=light
+set background=dark
 
-" Konsole-256color fix
 let g:solarized_termcolors=256
+" tell the term has 256 colors
 set t_Co=256
 colorscheme xoria256
-"colorscheme delek
 
 " Set up the gui cursor to look nice
 set guicursor=n-v-c:block-Cursor-blinkon0
@@ -174,55 +163,40 @@ set guicursor+=r-cr:hor20-Cursor
 set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
 
+" XML/HTML tags aut complition map
+let xml_tag_completion_map = "></"
+
+" New file templates
+:autocmd BufNewFile *.py 0r ~/.vim/templates/py.tmpl
+:autocmd BufNewFile *.xsl 0r ~/.vim/templates/xsl.tmpl
+
+
+"-------------------------
+" BufExplorer
+"-------------------------
+
+" Show BufExplorer
+nnoremap <F2> :BufExplorer<cr>
+
+
 "-------------------------
 " NERD Tree
 "-------------------------
 
-" Toggle the NERD Tree on an off with F6
-nmap <F6> :NERDTreeToggle<CR>
-
-" Close the NERD Tree with Shift-F6
-nmap <S-F6> :NERDTreeClose<CR>
-
+" Toggle the NERD Tree on an off
+nnoremap <F6> :NERDTreeToggle<cr>
 " Store the bookmarks file in perforce
 let NERDTreeBookmarksFile="~/.vim/NERDTreeBookmarks"
-
 " Show the bookmarks table on startup
 let NERDTreeShowBookmarks=1
-
 " Don't display these kinds of files
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
 
 "-------------------------
-" LaTeX
+" Fugitive
 "-------------------------
 
-" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
-filetype plugin on
-
-" IMPORTANT: win32 users will need to have 'shellslash' set so that latex
-" can be called correctly.
-set shellslash
-
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
-
-" OPTIONAL: This enables automatic indentation as you type.
-filetype indent on
-
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-
-
-" XML/HTML tags aut complition map
-let xml_tag_completion_map = "></"
-
-
-" New file templates
-:autocmd BufNewFile *.py 0r ~/.vim/templates/py.tmpl
+" Add a mapping on .. to view parent tree
+autocmd BufReadPost fugitive://* set bufhidden=delete
 

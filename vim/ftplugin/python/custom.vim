@@ -2,8 +2,12 @@
 set tabstop=4
 set shiftwidth=4
 set smarttab
-set expandtab "Ставим табы пробелами
+set expandtab "ставим табы пробелами
 set softtabstop=4 "4 пробела в табе
+
+" Подсвечиваем рекомендуемую длинну строки 
+setlocal textwidth=80
+setlocal colorcolumn=+1 
 
 " Автоотступ
 set autoindent
