@@ -176,7 +176,7 @@ let xml_tag_completion_map = "></"
 "-------------------------
 
 " Show BufExplorer
-nnoremap <F2> :BufExplorer<cr>
+nnoremap <F5> :BufExplorer<cr>
 
 
 "-------------------------
@@ -199,4 +199,12 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 
 " Add a mapping on .. to view parent tree
 autocmd BufReadPost fugitive://* set bufhidden=delete
+
+
+"------------------------
+" Gundo
+" sjl.bitbucket.org/gundo.vim/
+"------------------------
+
+nnoremap <F2> :GundoToggle<CR>
 
