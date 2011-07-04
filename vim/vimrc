@@ -16,8 +16,7 @@ set expandtab
 
 " Make cmdline tab completion similar to bash
 set wildmenu
-"set wildmode=list:longest
-set wildmode=longest
+set wildmode=list:longest
 set wildignore=*.o,*.obj,*~,*.pyc,*.pyo
 
 set cursorline
