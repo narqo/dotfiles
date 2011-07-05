@@ -17,7 +17,7 @@ set expandtab
 " Make cmdline tab completion similar to bash
 set wildmenu
 set wildmode=list:longest
-set wildignore=*.o,*.obj,*~,*.pyc,*.pyo
+set wildignore=*.o,*.obj,*~,*.pyc,*.pyo,*.bak
 
 set cursorline
 set number
@@ -53,7 +53,7 @@ set showcmd
 
 " Включаем отображение дополнительной информации в статусной строке
 set laststatus=2
-set statusline=%f%h\ %y\ %m\ %r\ %{&encoding}
+set statusline=%f%h\ %y\ %m\ %r\ %{&encoding}\ 
 
 " The statusline flag for syntastic plugin
 set statusline+=%#warningmsg#
@@ -67,6 +67,9 @@ set statusline+=\ Buf:%n\
 set list
 " Настройка подсветки невидимых символов
 set listchars=tab:·\ ,trail:·,extends:»,precedes:«
+
+" Открывать новое окно справа по-вертикали
+set splitright
 
 if v:version >= 703
     " mark the ideal max text width
@@ -181,8 +184,12 @@ set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 let xml_tag_completion_map = "></"
 
 " New file templates
-:autocmd BufNewFile *.py 0r ~/.vim/templates/py.tmpl
-:autocmd BufNewFile *.xsl 0r ~/.vim/templates/xsl.tmpl
+autocmd BufNewFile *.py 0r ~/.vim/templates/py.tmpl
+autocmd BufNewFile *.xml 0r ~/.vim/templates/xml.tmpl
+autocmd BufNewFile *.xsl 0r ~/.vim/templates/xsl.tmpl
+
+" Customisations based on filetype
+autocmd BufNewFile,BufRead *.rss.*.atom setfiletype xml
 
 
 "-------------------------
