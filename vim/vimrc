@@ -18,6 +18,8 @@ set expandtab
 set wildmenu
 set wildmode=list:longest
 set wildignore=*.o,*.obj,*~,*.pyc,*.pyo,*.bak
+" Make it easier to complete buffers, open files, etc...
+set wildignorecase
 
 set cursorline
 set number
@@ -71,9 +73,12 @@ set listchars=tab:·\ ,trail:·,extends:»,precedes:«
 " Открывать новое окно справа по-вертикали
 set splitright
 
+" Set the textwidth to be 80 chars
+set textwidth=80
+
 if v:version >= 703
     " mark the ideal max text width
-    set colorcolumn=+1 
+    set colorcolumn=+1
 endif
 
 
@@ -159,6 +164,9 @@ nmap <silent> <C-i> 10zh
 
 " Key mapping for saving file
 nmap <C-s> :w<CR>
+
+" Add a GUID to the current line
+imap <C-J>d <C-r>=substitute(system("uuidgen"), '.$', '', 'g')<CR>
 
 
 "-------------------------
