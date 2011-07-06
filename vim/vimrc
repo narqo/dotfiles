@@ -251,3 +251,10 @@ let g:user_zen_settings = {
 \    },
 \}
 
+
+"------------------------
+" Solarized
+"------------------------
+
+let g:solarized_termcolor = 256 
+
