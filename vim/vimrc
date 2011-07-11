@@ -202,6 +202,12 @@ autocmd BufNewFile *.xsl 0r ~/.vim/templates/xsl.tmpl
 " Customisations based on filetype
 autocmd BufNewFile,BufRead *.rss.*.atom setfiletype xml
 
+" Omni Completion
+autocmd FileType python     set omnifunc=pythoncomplete#Complete
+autocmd FileType html       set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+
 
 "-------------------------
 " BufExplorer
