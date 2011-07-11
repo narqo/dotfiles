@@ -18,9 +18,9 @@ set expandtab
 set wildmenu
 set wildmode=list:longest
 set wildignore=*.o,*.obj,*~,*.pyc,*.pyo,*.bak
-if v:version >= 703 
+if v:version >= 703
     " Make it easier to complete buffers, open files, etc...
-    set wildignorecase
+    "set wildignorecase
 endif
 
 set cursorline
