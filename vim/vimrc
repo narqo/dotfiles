@@ -18,10 +18,11 @@ set expandtab
 set wildmenu
 set wildmode=list:longest
 set wildignore=*.o,*.obj,*~,*.pyc,*.pyo,*.bak
-if v:version >= 703
-    " Make it easier to complete buffers, open files, etc...
-    "set wildignorecase
-endif
+" This feature is availble since Vim 7.3.072
+"if v:version >= 703 
+"    " Make it easier to complete buffers, open files, etc...
+"    set wildignorecase
+"endif
 
 set cursorline
 set number
@@ -200,6 +201,12 @@ autocmd BufNewFile *.xsl 0r ~/.vim/templates/xsl.tmpl
 
 " Customisations based on filetype
 autocmd BufNewFile,BufRead *.rss.*.atom setfiletype xml
+
+" Omni Completion
+autocmd FileType python     set omnifunc=pythoncomplete#Complete
+autocmd FileType html       set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
 
 "-------------------------
