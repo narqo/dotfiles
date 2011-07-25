@@ -45,5 +45,5 @@ if [ -f `brew --prefix`/share/python/virtualenvwrapper.sh ]; then
 fi
 
 # Node.js libraries path 
-export NODE_PATH=`brew --prefix`/lib/node
+export NODE_PATH=`npm root -g`
 
