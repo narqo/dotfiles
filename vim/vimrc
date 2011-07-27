@@ -78,11 +78,11 @@ set splitright
 
 " Set the textwidth to be 80 chars
 "set textwidth=80
-
-if v:version >= 703
-    " mark the ideal max text width
-    set colorcolumn=+1
-endif
+"
+"if v:version >= 703
+"    " mark the ideal max text width
+"    set colorcolumn=+1
+"endif
 
 
 """ ПОИСК
