@@ -77,7 +77,7 @@ set listchars=tab:·\ ,trail:·,extends:»,precedes:«
 set splitright
 
 " Set the textwidth to be 80 chars
-set textwidth=80
+"set textwidth=80
 
 if v:version >= 703
     " mark the ideal max text width
@@ -113,11 +113,11 @@ filetype plugin on
 filetype indent on
 
 " Метод фолдинга - вручную (для обычных файлов)
-"set foldmethod=manual
+set foldmethod=manual
 " Уровень сокрытия по умолчанию для вновь открытых файлов
-setlocal foldlevelstart=0
+"setlocal foldlevelstart=0
 " Метод фолдинга - по синтаксису
-setlocal foldmethod=syntax
+"setlocal foldmethod=syntax
 
 
 "" BACKUP
