@@ -113,11 +113,11 @@ filetype plugin on
 filetype indent on
 
 " Метод фолдинга - вручную (для обычных файлов)
-"set foldmethod=manual
+set foldmethod=manual
 " Уровень сокрытия по умолчанию для вновь открытых файлов
-setlocal foldlevelstart=0
+"setlocal foldlevelstart=0
 " Метод фолдинга - по синтаксису
-setlocal foldmethod=syntax
+"setlocal foldmethod=syntax
 
 
 "" BACKUP
