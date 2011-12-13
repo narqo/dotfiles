@@ -19,7 +19,7 @@ set wildmenu
 set wildmode=list:longest
 set wildignore=*.o,*.obj,*~,*.pyc,*.pyo,*.bak
 " This feature is availble since Vim 7.3.072
-"if v:version >= 703 
+"if v:version >= 703
 "    " Make it easier to complete buffers, open files, etc...
 "    set wildignorecase
 "endif
@@ -38,8 +38,8 @@ set ruler
 
 " Jump N lines when running out of the screen
 set scrolljump=7
-set scrolloff=7
-set sidescrolloff=7
+set scrolloff=10
+set sidescrolloff=10
 set sidescroll=1
 
 " Turn off any bells
@@ -73,15 +73,27 @@ set list
 " Настройка подсветки невидимых символов
 set listchars=tab:·\ ,trail:·,extends:»,precedes:«
 
-" Открывать новое окно справа по-вертикали
+" Show ↪ at the beginning of wrapped lines
+if has("linebreak")
+    let &sbr = nr2char(8618).' '
+endif
+
+
+" Открывать новое окно справа по-вертикали :vsp
 set splitright
+" Открывать новое окно ниже текущего :sp
+set splitbelow
 
 " Set the textwidth to be 80 chars
-"set textwidth=80
-"
-"if v:version >= 703
-"    " mark the ideal max text width
-"    set colorcolumn=+1
+set textwidth=80
+
+if version >= 703
+    " mark the ideal max text width
+    set colorcolumn=+1
+end
+
+"if has("autocmd")
+"    autocmd! bufwritepost .vimrc source $MYVIMRC
 "endif
 
 
@@ -108,6 +120,22 @@ set fileencodings=utf-8,cp1251,koi8-r,cp866
 " Список форматов файлов
 set fileformats=unix,dos,mac
 
+" Проверка орфографии
+if version >= 700
+    set spell spelllang=
+    " по умолчанию проверка орфографии выключена
+    set nospell
+    menu Spell.off :setlocal spell spelllang= <cr>
+    menu Spell.Russian+English :setlocal spell spelllang=ru,en <cr>
+    menu Spell.Russian :setlocal spell spelllang=ru <cr>
+    menu Spell.English :setlocal spell spelllang=en <cr>
+    menu Spell.-SpellControl- :
+    menu Spell.Word\ Suggest<Tab>z= z=
+    menu Spell.Previous\ Wrong\ Word<Tab>[s [s
+    menu Spell.Next\ Wrong\ Word<Tab>]s ]s
+endif
+
+
 "load ftplugins and indent files
 filetype plugin on
 filetype indent on
@@ -118,6 +146,9 @@ set foldmethod=manual
 "setlocal foldlevelstart=0
 " Метод фолдинга - по синтаксису
 "setlocal foldmethod=syntax
+
+" Не показывать парные <> в HTML
+set noshowmatch
 
 
 "" BACKUP
@@ -138,25 +169,15 @@ set diffopt+=iwhite
 
 "" KEY MAPS
 
+let mapleader = ","
+
 " Очистить подсветку последнего найденного выражения
 nmap <F3> :nohlsearch<CR>
 imap <F3> <Esc>:nohlsearch<CR>
 vmap <F3> <Esc>:nohlsearch<CR>gv
 
-" Дублировать строку после текущей
-map <C-A-up> <esc>yyPi
-" Дублировать строку перед текущей
-map <C-A-down> <esc>yypi
-
 " Auto compleate
 imap <C-space> <C-x><C-o>
-
-" Удалить строку
-imap <C-d> <esc>ddi
-
-" Starts new line
-imap <S-cr> <esc>o
-imap <C-S-cr> <esc>O
 
 vmap <C-C> "+yi
 imap <C-V> <esc>"+gPi
@@ -171,13 +192,32 @@ nmap <C-s> :w<CR>
 " Add a GUID to the current line
 imap <C-J>d <C-r>=substitute(system("uuidgen"), '.$', '', 'g')<CR>
 
+" Вставлять код извне
+set pastetoggle=<Leader>p
+
+" Insert new line
+imap <S-Cr> <C-o>o
+imap <C-S-Cr> <C-o>O
+
+" Move line
+nmap <C-S-k> ddkP
+nmap <C-S-j> ddp
+
+" Позволяем передвигаться с помощью hjkl в Insert mode зажав <Ctrl>
+imap <C-h> <C-o>h
+imap <C-j> <C-o>j
+imap <C-k> <C-o>k
+imap <C-l> <C-o>l
+
+" ,bl show buffers
+nmap <Leader>bl :ls<cr>:b
+
 
 "-------------------------
 " GUI
 "-------------------------
 set background=dark
 
-let g:solarized_termcolors=256
 " tell the term has 256 colors
 set t_Co=256
 colorscheme xoria256
@@ -194,6 +234,9 @@ set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 " XML/HTML tags aut complition map
 let xml_tag_completion_map = "></"
 
+" Auto change the directory to the current file I'm working on
+autocmd BufEnter * lcd %:p:h
+
 " New file templates
 autocmd BufNewFile *.py 0r ~/.vim/templates/py.tmpl
 autocmd BufNewFile *.xml 0r ~/.vim/templates/xml.tmpl
@@ -207,7 +250,6 @@ autocmd FileType python     set omnifunc=pythoncomplete#Complete
 autocmd FileType html       set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-
 
 "-------------------------
 " BufExplorer
@@ -229,6 +271,15 @@ let NERDTreeBookmarksFile="~/.vim/NERDTreeBookmarks"
 let NERDTreeShowBookmarks=1
 " Don't display these kinds of files
 let NERDTreeIgnore=['\.pyc$', '\~$']
+
+let NERDTreeQuitOnOpen=1
+let NERDTreeShowHidden=1
+let NERDTreeKeepTreeInNewTab=0
+
+" Disables display of the 'Bookmarks' label and 'Press ? for help' text
+let NERDTreeMinimalUI=1
+" Tells the NERD tree to use arrows instead of + ~ chars when displaying directories
+let NERDTreeDirArrows=1
 
 
 "-------------------------
@@ -273,5 +324,5 @@ let g:user_zen_settings = {
 " Solarized
 "------------------------
 
-let g:solarized_termcolor = 256 
+let g:solarized_termcolor=256
 
