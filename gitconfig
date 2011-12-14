@@ -9,5 +9,13 @@
     user = narqo
 [alias]
     ci = commit
+    co = checkout
     st = status
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+[color]
+    ui = auto
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+
