@@ -1,23 +1,33 @@
-PREFIX = ~/.
-EXCLUDE = GNUmakefile README eclipse ssh osx
+prefix = $(HOME)/.
 
-SRC := $(filter-out $(EXCLUDE), $(notdir $(shell find . -maxdepth 1 -not -name '.*' )))
-DEST := $(addprefix $(PREFIX), $(SRC))
+vim_files = $(notdir $(wildcard $(addprefix vim/, vimrc gvimrc)))
+ignore = $(wildcard GNUmakefile README* eclipse ssh osx)
+
+files := $(filter-out $(ignore), $(shell ls -1))
+files += $(vim_files)
+
+dest := $(addprefix $(prefix), $(files))
+
+git_up = @git pull
+setup = @ln -s -v -F $(realpath $<) $@
 
 all:
-	@git pull
+	$(git_up)
 
-install: $(DEST)
+install: $(dest)
 	@echo All done
 
-$(PREFIX)%: %
-	@ln -s -v -F $(realpath $<) $@
+$(prefix)%: %
+	$(setup)
 
-$(EXCLUDE):
-	@echo Skipping $@
+$(prefix)%imrc: vim/%imrc
+	$(setup)
+
+$(ignore):
+	@echo Skipping $(ignore)
 
 clean:
-	-@ $(RM) -rf $(DEST)
+	-@ $(RM) -rf $(dest)
 
 .PHONY: all clean install
 
