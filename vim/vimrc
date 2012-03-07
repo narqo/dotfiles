@@ -30,7 +30,7 @@ set number
 " Hide buffers when not displayed
 set hidden
 
-" Automaticaly set cwd to opened buffer 
+" Automaticaly set cwd to opened buffer
 "set autochdir
 
 " Show the cursor position all the time
@@ -55,6 +55,8 @@ set nolinebreak
 
 " Отборажение текущей комманды
 set showcmd
+
+set ttyfast
 
 " Включаем отображение дополнительной информации в статусной строке
 set laststatus=2
@@ -85,7 +87,7 @@ set splitright
 set splitbelow
 
 " Set the textwidth to be 80 chars
-set textwidth=80
+set textwidth=0
 
 if version >= 703
     " mark the ideal max text width
@@ -164,7 +166,8 @@ set noswapfile
 "" DIFF
 
 " Add ignorance of whitespace to diff
-set diffopt+=iwhite
+set diffopt=filler,iwhite,vertical,context:15
+let g:html_diff_one_file = 1
 
 
 "" KEY MAPS
@@ -212,6 +215,13 @@ imap <C-l> <C-o>l
 " ,bl show buffers
 nmap <Leader>bl :ls<cr>:b
 
+nnoremap j gj
+nnoremap k gk
+
+" This allows us to save a file as root with the :w!! command, if we have sudo
+" privileges, when we're not currently useing vim as root
+cmap w!! %!sudo tee > /dev/null %
+
 
 "-------------------------
 " GUI
@@ -252,6 +262,14 @@ autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
 autocmd FileType xml    setlocal textwidth=0
+
+" see http://lloyd.github.com/yajl/ `json_reformat`
+autocmd FileType json,bemjson.js    set equalprg=json_reformat
+autocmd FileType xml                set equalprg=xmllint\ --format\ -
+
+" For all text files set 'textwidth' to 78 characters.
+autocmd FileType text,txt setlocal textwidth=78
+
 
 "-------------------------
 " BufExplorer
