@@ -14,6 +14,8 @@ set shiftround
 " Ставим табы пробелами
 set expandtab
 
+set backspace=indent,eol,start
+
 " Make cmdline tab completion similar to bash
 set wildmenu
 set wildmode=list:longest
