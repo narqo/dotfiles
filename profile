@@ -9,6 +9,8 @@ export LSCOLORS=fxfxcxdxbxegedabagacad
 
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/python:$PATH
 
+export LANG=ru_RU.UTF-8
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
