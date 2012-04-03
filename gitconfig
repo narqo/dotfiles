@@ -12,6 +12,7 @@
     co = checkout
     st = status
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    ls = ls-files
 [color]
     ui = auto
     branch = auto

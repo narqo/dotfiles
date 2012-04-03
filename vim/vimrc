@@ -14,6 +14,8 @@ set shiftround
 " Ставим табы пробелами
 set expandtab
 
+set backspace=indent,eol,start
+
 " Make cmdline tab completion similar to bash
 set wildmenu
 set wildmode=list:longest
@@ -215,8 +217,14 @@ imap <C-l> <C-o>l
 " ,bl show buffers
 nmap <Leader>bl :ls<cr>:b
 
-nnoremap j gj
 nnoremap k gk
+nnoremap j gj
+nnoremap gk k
+nnoremap gj j
+
+" line start/end
+nnoremap H ^
+nnoremap L $
 
 " This allows us to save a file as root with the :w!! command, if we have sudo
 " privileges, when we're not currently useing vim as root
@@ -264,11 +272,26 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType xml    setlocal textwidth=0
 
 " see http://lloyd.github.com/yajl/ `json_reformat`
-autocmd FileType json,bemjson.js    set equalprg=json_reformat
-autocmd FileType xml                set equalprg=xmllint\ --format\ -
+autocmd FileType json    set equalprg=json_reformat
+autocmd FileType xml     set equalprg=xmllint\ --format\ -
 
 " For all text files set 'textwidth' to 78 characters.
 autocmd FileType text,txt setlocal textwidth=78
+
+" Automatically removing all trailing whitespace
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
+autocmd BufWritePre *.py,*.js,*.css,*.html,*.xml :call <SID>StripTrailingWhitespaces()
 
 
 "-------------------------
