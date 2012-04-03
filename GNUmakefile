@@ -27,7 +27,9 @@ $(ignore):
 	@echo Skipping $(ignore)
 
 clean:
-	-@ $(RM) -rf $(dest)
+	@- for file in $(dest); do \
+		test -L "$$file" && "$(RM) -r $$file"; \
+	done
 
 .PHONY: all clean install
 
