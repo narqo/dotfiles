@@ -111,6 +111,7 @@ set incsearch
 set nowrapscan
 " Игнорировать регистр букв при поиске
 set ignorecase
+set smartcase
 
 
 " Размер истории для отмены
@@ -250,7 +251,7 @@ set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
 
 " XML/HTML tags aut complition map
-let xml_tag_completion_map = "></"
+let xml_tag_completion_map = ">"
 
 " Auto change the directory to the current file I'm working on
 autocmd BufEnter * lcd %:p:h
