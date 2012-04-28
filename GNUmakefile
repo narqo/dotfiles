@@ -9,7 +9,7 @@ files += $(vim_files)
 dest := $(addprefix $(prefix), $(files))
 
 git_up = @git pull
-setup = @ln -s -v -F $(realpath $<) $@
+setup = @ln -svfF $(realpath $<) $@
 
 all:
 	$(git_up)
@@ -17,11 +17,12 @@ all:
 install: $(dest)
 	@echo All done
 
-$(prefix)%: %
-	$(setup)
+$(prefix)%: %; $(setup)
 
-$(prefix)vimrc: vim/vimrc
+$(prefix)vimrc: vim/vimrc $(prefix)vim
 	$(setup)
+	@git submodule init; \
+		git submodule update
 	vim +BundleInstall +qall
 
 $(ignore):
