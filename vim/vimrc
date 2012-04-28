@@ -1,42 +1,71 @@
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
+" 
 set nocompatible
+filetype off
 
-filetype on
+" vundle init (github.com/gmarik/vundle)
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle, required! 
+Bundle 'gmarik/vundle'
+
+" Custom bundles
+Bundle 'tpope/vim-fugitive'
+
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+Bundle 'kien/ctrlp.vim'
+
+Bundle 'scrooloose/nerdtree'
+Bundle 'jistr/vim-nerdtree-tabs'
+
+Bundle 'neocomplcache'
+Bundle 'snipMate'
+
+Bundle 'michaeljsmith/vim-indent-object'
+
+Bundle 'scrooloose/syntastic'
+
+Bundle 'skwp/vim-colors-solarized'
+
+Bundle 'sukima/xmledit'
+Bundle 'pangloss/vim-javascript'
+
+" General options =============================================================
+
+filetype plugin indent on
 syntax on
 
+set ttyfast
+
+set encoding=utf-8
+" Кодировка по-умолчанию
+set termencoding=utf-8
+" Список кодировок файлов для автоопределения
+set fileencodings=utf-8,cp1251,koi8-r,cp866
+" Список форматов файлов
+set fileformats=unix,dos,mac
+
+" Reload files changed outside vim
+set autoread
+
+set backspace=indent,eol,start
+set history=1000
+set undolevels=100
+
+" Indentation
+set autoindent
+set smartindent
+set smarttab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set autoindent
-set smartindent
 set shiftround
-" Ставим табы пробелами
 set expandtab
 
-set backspace=indent,eol,start
-
-" Make cmdline tab completion similar to bash
-set wildmenu
-set wildmode=list:longest
-set wildignore=*.o,*.obj,*~,*.pyc,*.pyo,*.bak
-" This feature is availble since Vim 7.3.072
-"if v:version >= 703
-"    " Make it easier to complete buffers, open files, etc...
-"    set wildignorecase
-"endif
-
-set cursorline
-set number
-
-" Hide buffers when not displayed
-set hidden
-
-" Automaticaly set cwd to opened buffer
-"set autochdir
-
-" Show the cursor position all the time
-set ruler
+" Выключаем перенос строк
+set nowrap
+set nolinebreak
 
 " Jump N lines when running out of the screen
 set scrolljump=7
@@ -44,21 +73,40 @@ set scrolloff=10
 set sidescrolloff=10
 set sidescroll=1
 
-" Turn off any bells
-set novisualbell
-set t_vb=
+set cursorline
+set number
+set ruler
 
-" Fix <Enter> for comment
-set fo+=cr
+set splitright
+set splitbelow
 
-" Выключаем перенос строк
-set nowrap
-set nolinebreak
+" Hide buffers when not displayed
+set hidden
 
-" Отборажение текущей комманды
+" Show incomplete cmds down the bottom
 set showcmd
+" Show current mode down the bottom
+set showmode
 
-set ttyfast
+" Включить подсветку невидимых символов
+set list
+set listchars=tab:·\ ,trail:·,extends:»,precedes:«
+
+" Show ↪ at the beginning of wrapped lines
+if has("linebreak")
+    let &sbr = nr2char(8618).' '
+endif
+
+set textwidth=0
+if version >= 703
+    " mark the ideal max text width
+    set colorcolumn=+1
+end
+
+" Paste mode toggle on <,p>
+set pastetoggle=<Leader>p
+
+" Status line ==================================================================
 
 " Включаем отображение дополнительной информации в статусной строке
 set laststatus=2
@@ -72,174 +120,58 @@ set statusline+=%*
 set statusline+=%=Line:%l/%L[%p%%]\ Col:%c\ [%b][0x%B]
 set statusline+=\ Buf:%n\ 
 
-" Включить подсветку невидимых символов
-set list
-" Настройка подсветки невидимых символов
-set listchars=tab:·\ ,trail:·,extends:»,precedes:«
+" Search settings =============================================================
 
-" Show ↪ at the beginning of wrapped lines
-if has("linebreak")
-    let &sbr = nr2char(8618).' '
-endif
-
-
-" Открывать новое окно справа по-вертикали :vsp
-set splitright
-" Открывать новое окно ниже текущего :sp
-set splitbelow
-
-" Set the textwidth to be 80 chars
-set textwidth=0
-
-if version >= 703
-    " mark the ideal max text width
-    set colorcolumn=+1
-end
-
-"if has("autocmd")
-"    autocmd! bufwritepost .vimrc source $MYVIMRC
-"endif
-
-
-""" ПОИСК
-
-" Включаем подсветку выражения, которое ищется в тексте
-set hlsearch
 " При поиске перескакивать на найденный текст в процессе набора строки
 set incsearch
+" Включаем подсветку выражения, которое ищется в тексте
+set hlsearch
 " Останавливать поиск при достижении конца файла
 set nowrapscan
 " Игнорировать регистр букв при поиске
 set ignorecase
-set smartcase
 
+" Backups ======================================================================
 
-" Размер истории для отмены
-set undolevels=100
-
-set encoding=utf-8
-" Кодировка по-умолчанию
-set termencoding=utf-8
-" Список кодировок файлов для автоопределения
-set fileencodings=utf-8,cp1251,koi8-r,cp866
-" Список форматов файлов
-set fileformats=unix,dos,mac
-
-" Проверка орфографии
-if version >= 700
-    set spell spelllang=
-    " по умолчанию проверка орфографии выключена
-    set nospell
-    menu Spell.off :setlocal spell spelllang= <cr>
-    menu Spell.Russian+English :setlocal spell spelllang=ru,en <cr>
-    menu Spell.Russian :setlocal spell spelllang=ru <cr>
-    menu Spell.English :setlocal spell spelllang=en <cr>
-    menu Spell.-SpellControl- :
-    menu Spell.Word\ Suggest<Tab>z= z=
-    menu Spell.Previous\ Wrong\ Word<Tab>[s [s
-    menu Spell.Next\ Wrong\ Word<Tab>]s ]s
-endif
-
-
-"load ftplugins and indent files
-filetype plugin on
-filetype indent on
-
-" Метод фолдинга - вручную (для обычных файлов)
-set foldmethod=manual
-" Уровень сокрытия по умолчанию для вновь открытых файлов
-"setlocal foldlevelstart=0
-" Метод фолдинга - по синтаксису
-"setlocal foldmethod=syntax
-
-" Не показывать парные <> в HTML
-set noshowmatch
-
-
-"" BACKUP
-
-" Отключаем создание бэкапов
 set nobackup
-" Отключаем создание swap файлов
 set noswapfile
-" Все swap файлы будут помещаться в эту папку
-"set dir=~/.vim/swp
+set nowb
 
+" Folds ========================================================================
 
-"" DIFF
+set foldmethod=indent
+" dont fold by default
+set nofoldenable
+
+" Completion ===================================================================
+
+" Make cmdline tab completion similar to bash
+" enable <ctrl-n> and <ctrl-p> to scroll thru matches
+set wildmenu
+set wildmode=list:longest
+set wildignore=*.o,*.obj,*~,*.pyc,*.pyo,*.bak
+set wildignore+=*DS_Store*
+set wildignore+=*.png,*.jpg,*.gif
+
+" Diff settings ================================================================
 
 " Add ignorance of whitespace to diff
 set diffopt=filler,iwhite,vertical,context:15
 let g:html_diff_one_file = 1
 
+" GUI ==========================================================================
 
-"" KEY MAPS
-
-let mapleader = ","
-
-" Очистить подсветку последнего найденного выражения
-nmap <F3> :nohlsearch<CR>
-imap <F3> <Esc>:nohlsearch<CR>
-vmap <F3> <Esc>:nohlsearch<CR>gv
-
-" Auto compleate
-imap <C-space> <C-x><C-o>
-
-vmap <C-C> "+yi
-imap <C-V> <esc>"+gPi
-
-" Make horizontal scrolling easier
-nmap <silent> <C-o> 10zl
-nmap <silent> <C-i> 10zh
-
-" Key mapping for saving file
-nmap <C-s> :w<CR>
-
-" Add a GUID to the current line
-imap <C-J>d <C-r>=substitute(system("uuidgen"), '.$', '', 'g')<CR>
-
-" Вставлять код извне
-set pastetoggle=<Leader>p
-
-" Insert new line
-imap <S-Cr> <C-o>o
-imap <C-S-Cr> <C-o>O
-
-" Move line
-nmap <C-S-k> ddkP
-nmap <C-S-j> ddp
-
-" Позволяем передвигаться с помощью hjkl в Insert mode зажав <Ctrl>
-imap <C-h> <C-o>h
-imap <C-j> <C-o>j
-imap <C-k> <C-o>k
-imap <C-l> <C-o>l
-
-" ,bl show buffers
-nmap <Leader>bl :ls<cr>:b
-
-nnoremap k gk
-nnoremap j gj
-nnoremap gk k
-nnoremap gj j
-
-" line start/end
-nnoremap H ^
-nnoremap L $
-
-" This allows us to save a file as root with the :w!! command, if we have sudo
-" privileges, when we're not currently useing vim as root
-cmap w!! %!sudo tee > /dev/null %
-
-
-"-------------------------
-" GUI
-"-------------------------
 set background=dark
 
 " tell the term has 256 colors
 set t_Co=256
 colorscheme xoria256
+
+if has('gui_running')
+    colorscheme solarized
+    set cmdheight=2
+    set guifont=Monaco:h13
+endif
 
 " Set up the gui cursor to look nice
 set guicursor=n-v-c:block-Cursor-blinkon0
@@ -249,37 +181,87 @@ set guicursor+=i-ci:ver25-Cursor
 set guicursor+=r-cr:hor20-Cursor
 set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
+" Turn off any bells
+set novisualbell
+set t_vb=
+set gcr=a:blinkon0
 
-" XML/HTML tags aut complition map
-let xml_tag_completion_map = ">"
+" Disable the scrollbars (NERDTree)
+set guioptions-=r
+set guioptions-=L
+
+" Disable the macvim toolbar
+set guioptions-=T
+
+" Macvim settings
+if has("gui_macvim")
+    set transp=0
+    set formatoptions-=tc
+    let macvim_hig_shift_movement=1
+    set gcr=n:blinkon0
+endif
+
+if has("gui_win32") || has("gui_win32s")
+    set guifont=Consolas:h12
+endif
+
+" Keymaps ======================================================================
+
+let mapleader = ","
+
+" Очистить подсветку последнего найденного выражения
+nmap <silent> <F3> :nohlsearch<CR>
+imap <F3> <Esc>:nohlsearch<CR>
+
+" Auto compleate
+"imap <c-space> <c-x><c-o>
+
+" Add a GUID to the current line
+imap <c-J>d <C-r>=substitute(system("uuidgen"), '.$', '', 'g')<CR>
+
+" copy current filename into system clipboard - mnemonic: (c)urrent(f)ilename
+nnoremap <silent> ,cf :let @* = expand("%:~")<CR>
+nnoremap <silent> ,cn :let @* = expand("%:t")<CR>
+
+" Позволяем передвигаться с помощью hjkl в Insert mode зажав <ctrl>
+imap <c-h> <c-o>h
+imap <c-j> <c-o>j
+imap <c-k> <c-o>k
+imap <c-l> <c-o>l
+
+nnoremap j gj
+nnoremap k gk
+
+" Resize windows with arrow keys
+nnoremap <D-Up> <C-w>+
+nnoremap <D-Down> <C-w>-
+nnoremap <D-Left> <C-w><
+nnoremap <D-Right>  <C-w>>
+
+" This allows us to save a file as root with the :w!! command, if we have sudo
+" privileges, when we're not currently useing vim as root
+cmap w!! w !sudo tee % >/dev/null
+
+" Autocmds =====================================================================
 
 " Auto change the directory to the current file I'm working on
 autocmd BufEnter * lcd %:p:h
 
 " New file templates
-autocmd BufNewFile *.py 0r ~/.vim/templates/py.tmpl
-autocmd BufNewFile *.xml 0r ~/.vim/templates/xml.tmpl
-autocmd BufNewFile *.xsl 0r ~/.vim/templates/xsl.tmpl
+"autocmd BufNewFile *.py 0r ~/.vim/templates/py.tmpl
+"autocmd BufNewFile *.xml 0r ~/.vim/templates/xml.tmpl
+"autocmd BufNewFile *.xsl 0r ~/.vim/templates/xsl.tmpl
 
 " Customisations based on filetype
 autocmd BufNewFile,BufRead *.rss.*.atom setfiletype xml
 
-" Omni Completion
-autocmd FileType python     set omnifunc=pythoncomplete#Complete
-autocmd FileType html       set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-
-autocmd FileType xml    setlocal textwidth=0
-
-" see http://lloyd.github.com/yajl/ `json_reformat`
-autocmd FileType json    set equalprg=json_reformat
-autocmd FileType xml     set equalprg=xmllint\ --format\ -
-
 " For all text files set 'textwidth' to 78 characters.
 autocmd FileType text,txt setlocal textwidth=78
 
-" Automatically removing all trailing whitespace
+" Customg functions ============================================================
+
+" via: http://rails-bestpractices.com/posts/60-remove-trailing-whitespace
+" Strip trailing whitespace
 function! <SID>StripTrailingWhitespaces()
     " Preparation: save last search, and cursor position.
     let _s=@/
@@ -291,82 +273,109 @@ function! <SID>StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunction
+command! StripTrailingWhitespaces call <SID>StripTrailingWhitespaces()
+nmap ,w :StripTrailingWhitespaces<CR>
 
-autocmd BufWritePre *.py,*.js,*.css,*.html,*.xml :call <SID>StripTrailingWhitespaces()
+" Plugins settings =============================================================
 
-
-"-------------------------
-" BufExplorer
-"-------------------------
-
-" Show BufExplorer
-nnoremap <F5> :BufExplorer<cr>
-
-
-"-------------------------
-" NERD Tree
-"-------------------------
-
-" Toggle the NERD Tree on an off
-nnoremap <F6> :NERDTreeToggle<cr>
-" Store the bookmarks file in perforce
-let NERDTreeBookmarksFile="~/.vim/NERDTreeBookmarks"
-" Show the bookmarks table on startup
-let NERDTreeShowBookmarks=1
+" === NERD Tree =================================
 " Don't display these kinds of files
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
-let NERDTreeQuitOnOpen=1
-let NERDTreeShowHidden=1
-let NERDTreeKeepTreeInNewTab=0
-
+" Make nerdtree look nice
 " Disables display of the 'Bookmarks' label and 'Press ? for help' text
-let NERDTreeMinimalUI=1
+let NERDTreeMinimalUI = 1
 " Tells the NERD tree to use arrows instead of + ~ chars when displaying directories
-let NERDTreeDirArrows=1
+let NERDTreeDirArrows = 1
+let g:NERDTreeWinSize = 30
 
+let NERDTreeShowHidden=1
 
-"-------------------------
-" Fugitive
-"-------------------------
+" Toggle the NERD Tree on an off
+nnoremap <F6> :NERDTreeToggle<CR>
+" Open the project tree and expose current file in the nerdtree with Ctrl-\
+nnoremap <silent> <C-\> :NERDTreeFind<CR>
 
-" Add a mapping on .. to view parent tree
-autocmd BufReadPost fugitive://* set bufhidden=delete
+" === NERD Tree tabs ============================
+" Auto open nerd tree on startup
+let g:nerdtree_tabs_open_on_gui_startup = 1
+" Focus in the main content window
+let g:nerdtree_tabs_focus_on_files = 1
 
+" === Conqueterm ================================
+let g:ConqueTerm_InsertOnEnter = 1
+let g:ConqueTerm_CWInsert = 1
+let g:ConqueTerm_Color = 2
+" Update conqueterm buffer while we're not looking (for running tests)
+let g:ConqueTerm_ReadUnfocused = 1 
 
-"------------------------
-" Gundo
-" sjl.bitbucket.org/gundo.vim/
-"------------------------
+" Open up a variety of commands in the ConqueTerm
+nmap <silent> <Leader>cc :execute 'ConqueTermSplit script/console --irb=pry'<CR>
+nmap <silent> <Leader>pp :execute 'ConqueTermSplit pry'<CR>
 
-nnoremap <F2> :GundoToggle<CR>
+let g:ConqueTerm_SendVisKey = '<Leader>e'
 
+" === CtrlP ======================================
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 
-"------------------------
-" Syntastic
-"------------------------
+" Additional mapping for buffer search
+nnoremap ,b :CtrlPBuffer<cr>
+nnoremap <C-b> :CtrlPBuffer<cr>
 
-" Use the |:sign| interface to mark syntax errors
+" === Neocomplcache ==============================
+" A beter autocomplete system!
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_enable_smart_case = 1
+
+" default # of completions is 100, that's crazy
+let g:neocomplcache_max_list = 5
+
+" words less than 3 letters long aren't worth completing
+let g:neocomplcache_auto_completion_start_length = 3
+
+" Map standard <Ctrl-N> completion to <Ctrl-Space>
+inoremap <C-Space> <C-n>
+
+let g:neocomplcache_force_overwrite_completefunc = 1
+
+" Define keyword.
+if !exists('g:neocomplcache_keyword_patterns')
+  let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+
+" Enable heavy omni completion.
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+
+" === Powerline ==================================
+" github.com/Lokaltog/vim-powerline
+let g:Powerline_symbols='fancy'
+let g:Powerline_theme='skwp'
+let g:Powerline_colorscheme='skwp'
+
+" === Syntastic ==================================
+" mark syntax errors with :signs
 let g:syntastic_enable_signs=1
+" automatically jump to the error when saving the file
+let g:syntastic_auto_jump=0
+" show the error list automatically
+let g:syntastic_auto_loc_list=1
+" don't care about warnings
+let g:syntastic_quiet_warnings=0
 
-
-"-----------------------
-" Zencoding vim
-"-----------------------
-
-let g:user_zen_settings = {
-\   'xml' : {
-\        'extends' : 'html',
-\    },
-\   'haml' : {
-\        'extends' : 'html',
-\    },
-\}
-
-
-"------------------------
-" Solarized
-"------------------------
-
+" === Solarized ==================================
 let g:solarized_termcolor=256
 
