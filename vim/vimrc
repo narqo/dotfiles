@@ -297,7 +297,7 @@ nnoremap <F6> :NERDTreeToggle<CR>
 nnoremap <silent> <C-\> :NERDTreeFind<CR>
 
 " === Vundle ====================================
-g:vundle_default_git_proto = 'git'
+let g:vundle_default_git_proto = 'git'
 
 " === NERD Tree tabs ============================
 " Auto open nerd tree on startup
