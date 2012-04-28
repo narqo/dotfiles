@@ -296,6 +296,9 @@ nnoremap <F6> :NERDTreeToggle<CR>
 " Open the project tree and expose current file in the nerdtree with Ctrl-\
 nnoremap <silent> <C-\> :NERDTreeFind<CR>
 
+" === Vundle ====================================
+g:vundle_default_git_proto = 'git'
+
 " === NERD Tree tabs ============================
 " Auto open nerd tree on startup
 let g:nerdtree_tabs_open_on_gui_startup = 1
