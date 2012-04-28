@@ -1,6 +1,6 @@
 prefix = $(HOME)/.
 
-vim_files = $(notdir $(wildcard $(addprefix vim/, vimrc gvimrc)))
+vim_files = $(notdir $(wildcard $(addprefix vim/, vimrc)))
 ignore = $(wildcard GNUmakefile README* eclipse ssh osx)
 
 files := $(filter-out $(ignore), $(shell ls -1))
@@ -20,8 +20,9 @@ install: $(dest)
 $(prefix)%: %
 	$(setup)
 
-$(prefix)%imrc: vim/%imrc
+$(prefix)vimrc: vim/vimrc
 	$(setup)
+	vim +BundleInstall +qall
 
 $(ignore):
 	@echo Skipping $(ignore)
