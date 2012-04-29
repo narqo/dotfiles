@@ -21,12 +21,14 @@ Bundle 'jistr/vim-nerdtree-tabs'
 
 Bundle 'neocomplcache'
 Bundle 'snipMate'
+Bundle 'scrooloose/nerdcommenter'
 
 Bundle 'michaeljsmith/vim-indent-object'
 
 Bundle 'scrooloose/syntastic'
 
 Bundle 'skwp/vim-colors-solarized'
+Bundle 'Xoria256m'
 
 Bundle 'sukima/xmledit'
 Bundle 'pangloss/vim-javascript'
@@ -171,6 +173,8 @@ if has('gui_running')
     colorscheme solarized
     set cmdheight=2
     set guifont=Monaco:h13
+    " Automatically resize splits when resizing MacVim window
+    autocmd VimResized * wincmd =
 endif
 
 " Set up the gui cursor to look nice
@@ -304,6 +308,13 @@ nnoremap <silent> <C-\> :NERDTreeFind<CR>
 let g:nerdtree_tabs_open_on_gui_startup = 1
 " Focus in the main content window
 let g:nerdtree_tabs_focus_on_files = 1
+
+" === NERD Commenter ============================
+if has("gui_macvim") && has("gui_running")
+    map <D-/> <plug>NERDCommenterToggle<CR>
+else
+    map <Leader>/ <plug>NERDCommenterToggle<CR>
+endif
 
 "" === Conqueterm ================================
 "let g:ConqueTerm_InsertOnEnter = 1
