@@ -5,6 +5,8 @@
     whitespace = fix,-indent-with-non-tab,trailing-space,-cr-at-eol
     excludesfile = ~/.gitignore
     editor = vim
+[merge]
+    ff = false
 [github]
     user = narqo
 [alias]
@@ -19,4 +21,3 @@
     diff = auto
     interactive = auto
     status = auto
-

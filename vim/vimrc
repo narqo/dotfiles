@@ -21,6 +21,7 @@ Bundle 'jistr/vim-nerdtree-tabs'
 
 Bundle 'neocomplcache'
 Bundle 'snipMate'
+Bundle 'scrooloose/nerdcommenter'
 
 Bundle 'matchit.zip'
 Bundle 'michaeljsmith/vim-indent-object'
@@ -28,6 +29,7 @@ Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'scrooloose/syntastic'
 
 Bundle 'skwp/vim-colors-solarized'
+Bundle 'Xoria256m'
 
 Bundle 'sukima/xmledit'
 Bundle 'pangloss/vim-javascript'
@@ -172,6 +174,8 @@ if has('gui_running')
     colorscheme solarized
     set cmdheight=2
     set guifont=Monaco:h13
+    " Automatically resize splits when resizing MacVim window
+    autocmd VimResized * wincmd =
 endif
 
 " Set up the gui cursor to look nice
@@ -279,6 +283,9 @@ nmap ,w :StripTrailingWhitespaces<CR>
 
 " Plugins settings =============================================================
 
+" === Vundle ====================================
+let g:vundle_default_git_proto = 'git'
+
 " === NERD Tree =================================
 " Don't display these kinds of files
 let NERDTreeIgnore=['\.pyc$', '\~$']
@@ -297,30 +304,34 @@ nnoremap <F6> :NERDTreeToggle<CR>
 " Open the project tree and expose current file in the nerdtree with Ctrl-\
 nnoremap <silent> <C-\> :NERDTreeFind<CR>
 
-" === Vundle ====================================
-let g:vundle_default_git_proto = 'git'
-
 " === NERD Tree tabs ============================
 " Auto open nerd tree on startup
 let g:nerdtree_tabs_open_on_gui_startup = 1
 " Focus in the main content window
 let g:nerdtree_tabs_focus_on_files = 1
 
-" === Conqueterm ================================
-let g:ConqueTerm_InsertOnEnter = 1
-let g:ConqueTerm_CWInsert = 1
-let g:ConqueTerm_Color = 2
-" Update conqueterm buffer while we're not looking (for running tests)
-let g:ConqueTerm_ReadUnfocused = 1 
+" === NERD Commenter ============================
+if has("gui_macvim") && has("gui_running")
+    map <D-/> <plug>NERDCommenterToggle<CR>
+else
+    map <Leader>/ <plug>NERDCommenterToggle<CR>
+endif
 
-" Open up a variety of commands in the ConqueTerm
-nmap <silent> <Leader>cc :execute 'ConqueTermSplit script/console --irb=pry'<CR>
-nmap <silent> <Leader>pp :execute 'ConqueTermSplit pry'<CR>
-
-let g:ConqueTerm_SendVisKey = '<Leader>e'
+"" === Conqueterm ================================
+"let g:ConqueTerm_InsertOnEnter = 1
+"let g:ConqueTerm_CWInsert = 1
+"let g:ConqueTerm_Color = 2
+"" Update conqueterm buffer while we're not looking (for running tests)
+"let g:ConqueTerm_ReadUnfocused = 1 
+"
+"" Open up a variety of commands in the ConqueTerm
+"nmap <silent> <Leader>cc :execute 'ConqueTermSplit script/console --irb=pry'<CR>
+"nmap <silent> <Leader>pp :execute 'ConqueTermSplit pry'<CR>
+"
+"let g:ConqueTerm_SendVisKey = '<Leader>e'
 
 " === CtrlP ======================================
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$|debian$'
 
 " Additional mapping for buffer search
 nnoremap ,b :CtrlPBuffer<cr>
@@ -364,11 +375,11 @@ if !exists('g:neocomplcache_omni_patterns')
 endif
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 
-" === Powerline ==================================
-" github.com/Lokaltog/vim-powerline
-let g:Powerline_symbols='fancy'
-let g:Powerline_theme='skwp'
-let g:Powerline_colorscheme='skwp'
+"" === Powerline ==================================
+"" github.com/Lokaltog/vim-powerline
+"let g:Powerline_symbols='fancy'
+"let g:Powerline_theme='skwp'
+"let g:Powerline_colorscheme='skwp'
 
 " === Syntastic ==================================
 " mark syntax errors with :signs
