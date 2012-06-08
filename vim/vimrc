@@ -210,6 +210,8 @@ if has("gui_win32") || has("gui_win32s")
     set guifont=Consolas:h12
 endif
 
+set mouse=a
+
 " Keymaps ======================================================================
 
 let mapleader = ","
