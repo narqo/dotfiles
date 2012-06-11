@@ -23,6 +23,7 @@ Bundle 'neocomplcache'
 Bundle 'snipMate'
 Bundle 'scrooloose/nerdcommenter'
 
+Bundle 'matchit.zip'
 Bundle 'michaeljsmith/vim-indent-object'
 
 Bundle 'scrooloose/syntastic'
@@ -209,6 +210,8 @@ if has("gui_win32") || has("gui_win32s")
     set guifont=Consolas:h12
 endif
 
+set mouse=a
+
 " Keymaps ======================================================================
 
 let mapleader = ","
@@ -262,7 +265,7 @@ autocmd BufNewFile,BufRead *.rss.*.atom setfiletype xml
 " For all text files set 'textwidth' to 78 characters.
 autocmd FileType text,txt setlocal textwidth=78
 
-" Customg functions ============================================================
+" Custom functions =============================================================
 
 " via: http://rails-bestpractices.com/posts/60-remove-trailing-whitespace
 " Strip trailing whitespace
@@ -386,7 +389,7 @@ let g:syntastic_enable_signs=1
 " automatically jump to the error when saving the file
 let g:syntastic_auto_jump=0
 " show the error list automatically
-let g:syntastic_auto_loc_list=1
+let g:syntastic_auto_loc_list=0
 " don't care about warnings
 let g:syntastic_quiet_warnings=0
 
