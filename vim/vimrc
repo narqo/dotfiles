@@ -29,7 +29,6 @@ Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'scrooloose/syntastic'
 
 Bundle 'skwp/vim-colors-solarized'
-Bundle 'Xoria256m'
 
 Bundle 'sukima/xmledit'
 Bundle 'pangloss/vim-javascript'
@@ -78,6 +77,7 @@ set sidescroll=1
 
 set cursorline
 set number
+set numberwidth=3
 set ruler
 
 set splitright
@@ -168,14 +168,15 @@ set background=dark
 
 " tell the term has 256 colors
 set t_Co=256
-colorscheme xoria256
 
 if has('gui_running')
-    colorscheme solarized
+    colorscheme Tomorrow-Night
     set cmdheight=2
     set guifont=Monaco:h13
     " Automatically resize splits when resizing MacVim window
     autocmd VimResized * wincmd =
+else
+    colorscheme xoria256
 endif
 
 " Set up the gui cursor to look nice
@@ -212,6 +213,9 @@ endif
 
 set mouse=a
 
+" Support for yankring
+set viminfo+=!
+
 " Keymaps ======================================================================
 
 let mapleader = ","
@@ -245,9 +249,17 @@ nnoremap <D-Down> <C-w>-
 nnoremap <D-Left> <C-w><
 nnoremap <D-Right>  <C-w>>
 
+" Window movement
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 " This allows us to save a file as root with the :w!! command, if we have sudo
 " privileges, when we're not currently useing vim as root
 cmap w!! w !sudo tee % >/dev/null
+
+nnoremap <leader>dd :windo diffthis<CR>
 
 " Autocmds =====================================================================
 
@@ -282,6 +294,9 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 command! StripTrailingWhitespaces call <SID>StripTrailingWhitespaces()
 nmap ,w :StripTrailingWhitespaces<CR>
+
+" Show also matching html parenthesis
+set matchpairs+=<:>
 
 " Plugins settings =============================================================
 
@@ -394,5 +409,5 @@ let g:syntastic_auto_loc_list=0
 let g:syntastic_quiet_warnings=0
 
 " === Solarized ==================================
-let g:solarized_termcolor=256
+"let g:solarized_termcolor=256
 
