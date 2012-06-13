@@ -22,16 +22,16 @@ shopt -s histappend
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+    source ~/.bash_aliases
 fi
 
 # Enable programmable completion features
 if [ -f `brew --prefix`/etc/bash_completion ]; then
-  . `brew --prefix`/etc/bash_completion
+    source `brew --prefix`/etc/bash_completion
 fi
 
 if [ -f `brew --prefix`/Library/Contributions/brew_bash_completion.sh ]; then
-	. `brew --prefix`/Library/Contributions/brew_bash_completion.sh
+    source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
 fi
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
@@ -47,9 +47,21 @@ export PIP_DOWNLOAD_CACHE=$HOME/.cache/pip
 #export VIRTUALENVWRAPPER_PYTHON=`brew --prefix`/Cellar/python/2.7.1/bin/python
 export WORKON_HOME=$HOME/.virtualenvs
 if [ -f `brew --prefix`/share/python/virtualenvwrapper.sh ]; then
-	source `brew --prefix`/share/python/virtualenvwrapper.sh
+    source `brew --prefix`/share/python/virtualenvwrapper.sh
 fi
 
-# Node.js libraries path 
+# Node.js libraries path
 export NODE_PATH=`npm root -g`
+
+# bash prompt
+case "$TERM" in
+    xterm-color|xterm-256color) color_prompt=yes;;
+esac
+
+if [ "$color_prompt" = yes ]; then
+    # Default is: PS1='\h:\W \u\$ '
+    PS1='\[\033[00;31m\]\h\[\033[00m\]: \[\033[01;34m\]\W\[\033[01;30m\]›\[\033[00m\] '
+fi
+
+unset color_prompt
 
