@@ -1,4 +1,4 @@
-" 
+"
 set nocompatible
 filetype off
 
@@ -79,6 +79,7 @@ set cursorline
 set number
 set numberwidth=3
 set ruler
+set nolazyredraw
 
 set splitright
 set splitbelow
@@ -108,6 +109,10 @@ end
 
 " Paste mode toggle on <,p>
 set pastetoggle=<Leader>p
+
+if has('unnamedplus')
+    set clipboard=unnamedplus
+endif
 
 " Status line ==================================================================
 
@@ -170,7 +175,7 @@ set background=dark
 set t_Co=256
 
 if has('gui_running')
-    colorscheme Tomorrow-Night
+    colorscheme Tomorrow-Night-Eighties
     set cmdheight=2
     set guifont=Monaco:h13
     " Automatically resize splits when resizing MacVim window
