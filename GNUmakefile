@@ -1,12 +1,13 @@
 prefix = $(HOME)/.
 
 vim_files = $(notdir $(wildcard $(addprefix vim/, vimrc)))
-ignore = $(wildcard GNUmakefile README* eclipse ssh osx)
+ignore = $(wildcard GNUmakefile README* functions eclipse ssh osx bin)
 
-files := $(filter-out $(ignore), $(shell ls -1))
+files := $(filter-out $(ignore),$(shell ls -1))
 files += $(vim_files)
 
-dest := $(addprefix $(prefix), $(files))
+bin := $(addprefix $(HOME)/,$(wildcard bin/*))
+conf := $(addprefix $(prefix),$(files))
 
 git_up = @git pull
 setup = @ln -svfF $(realpath $<) $@
@@ -14,8 +15,10 @@ setup = @ln -svfF $(realpath $<) $@
 all:
 	$(git_up)
 
-install: $(dest)
+install: $(bin) $(conf)
 	@echo All done
+
+$(HOME)/bin/%: bin/%; $(setup)
 
 $(prefix)%: %; $(setup)
 
@@ -29,7 +32,7 @@ $(ignore):
 	@echo Skipping $(ignore)
 
 clean:
-	@- for file in $(dest); do \
+	@- for file in $(conf); do \
 		test -L "$$file" && "$(RM) -r $$file"; \
 	done
 
