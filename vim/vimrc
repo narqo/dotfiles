@@ -279,8 +279,14 @@ autocmd BufEnter * lcd %:p:h
 " Customisations based on filetype
 autocmd BufNewFile,BufRead *.rss.*.atom setfiletype xml
 
-" For all text files set 'textwidth' to 78 characters.
-autocmd FileType text,txt setlocal textwidth=78
+" For all text files set 'textwidth' to 80 characters.
+autocmd FileType text,txt setlocal tw=80
+
+autocmd BufRead,BufNewFile *.md         set ft=mkd tw=80 ts=2 sw=2 expandtab
+autocmd BufRead,BufNewFile *.markdown   set ft=mkd tw=80 ts=2 sw=2 expandtab
+autocmd BufRead,BufNewFile *.wiki       set ft=wiki tw=80 ts=2 sw=2 expandtab
+
+autocmd Filetype gitcommit set tw=68  spell
 
 " Custom functions =============================================================
 
