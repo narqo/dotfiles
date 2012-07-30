@@ -1,4 +1,4 @@
-" 
+"
 set nocompatible
 filetype off
 
@@ -79,6 +79,7 @@ set cursorline
 set number
 set numberwidth=3
 set ruler
+set nolazyredraw
 
 set splitright
 set splitbelow
@@ -108,6 +109,10 @@ end
 
 " Paste mode toggle on <,p>
 set pastetoggle=<Leader>p
+
+if has('unnamedplus')
+    set clipboard=unnamedplus
+endif
 
 " Status line ==================================================================
 
@@ -170,7 +175,7 @@ set background=dark
 set t_Co=256
 
 if has('gui_running')
-    colorscheme Tomorrow-Night
+    colorscheme Tomorrow-Night-Eighties
     set cmdheight=2
     set guifont=Monaco:h13
     " Automatically resize splits when resizing MacVim window
@@ -211,8 +216,6 @@ if has("gui_win32") || has("gui_win32s")
     set guifont=Consolas:h12
 endif
 
-set mouse=a
-
 " Support for yankring
 set viminfo+=!
 
@@ -223,9 +226,6 @@ let mapleader = ","
 " Очистить подсветку последнего найденного выражения
 nmap <silent> <F3> :nohlsearch<CR>
 imap <F3> <Esc>:nohlsearch<CR>
-
-" Auto compleate
-"imap <c-space> <c-x><c-o>
 
 " Add a GUID to the current line
 imap <c-J>d <C-r>=substitute(system("uuidgen"), '.$', '', 'g')<CR>
@@ -259,6 +259,7 @@ nnoremap <C-l> <C-w>l
 " privileges, when we're not currently useing vim as root
 cmap w!! w !sudo tee % >/dev/null
 
+" Diff this
 nnoremap <leader>dd :windo diffthis<CR>
 
 " Autocmds =====================================================================
@@ -266,16 +267,17 @@ nnoremap <leader>dd :windo diffthis<CR>
 " Auto change the directory to the current file I'm working on
 autocmd BufEnter * lcd %:p:h
 
-" New file templates
-"autocmd BufNewFile *.py 0r ~/.vim/templates/py.tmpl
-"autocmd BufNewFile *.xml 0r ~/.vim/templates/xml.tmpl
-"autocmd BufNewFile *.xsl 0r ~/.vim/templates/xsl.tmpl
-
 " Customisations based on filetype
 autocmd BufNewFile,BufRead *.rss.*.atom setfiletype xml
 
-" For all text files set 'textwidth' to 78 characters.
-autocmd FileType text,txt setlocal textwidth=78
+" For all text files set 'textwidth' to 80 characters.
+autocmd FileType text,txt setlocal tw=80
+
+autocmd BufRead,BufNewFile *.md         set ft=mkd tw=80 ts=2 sw=2 expandtab
+autocmd BufRead,BufNewFile *.markdown   set ft=mkd tw=80 ts=2 sw=2 expandtab
+autocmd BufRead,BufNewFile *.wiki       set ft=wiki tw=80 ts=2 sw=2 expandtab
+
+autocmd Filetype gitcommit set tw=68  spell
 
 " Custom functions =============================================================
 
@@ -323,7 +325,7 @@ nnoremap <silent> <C-\> :NERDTreeFind<CR>
 
 " === NERD Tree tabs ============================
 " Auto open nerd tree on startup
-let g:nerdtree_tabs_open_on_gui_startup = 1
+"let g:nerdtree_tabs_open_on_gui_startup = 1
 " Focus in the main content window
 let g:nerdtree_tabs_focus_on_files = 1
 
@@ -333,19 +335,6 @@ if has("gui_macvim") && has("gui_running")
 else
     map <Leader>/ <plug>NERDCommenterToggle<CR>
 endif
-
-"" === Conqueterm ================================
-"let g:ConqueTerm_InsertOnEnter = 1
-"let g:ConqueTerm_CWInsert = 1
-"let g:ConqueTerm_Color = 2
-"" Update conqueterm buffer while we're not looking (for running tests)
-"let g:ConqueTerm_ReadUnfocused = 1 
-"
-"" Open up a variety of commands in the ConqueTerm
-"nmap <silent> <Leader>cc :execute 'ConqueTermSplit script/console --irb=pry'<CR>
-"nmap <silent> <Leader>pp :execute 'ConqueTermSplit pry'<CR>
-"
-"let g:ConqueTerm_SendVisKey = '<Leader>e'
 
 " === CtrlP ======================================
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$|debian$'
@@ -391,12 +380,6 @@ if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
 endif
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-
-"" === Powerline ==================================
-"" github.com/Lokaltog/vim-powerline
-"let g:Powerline_symbols='fancy'
-"let g:Powerline_theme='skwp'
-"let g:Powerline_colorscheme='skwp'
 
 " === Syntastic ==================================
 " mark syntax errors with :signs

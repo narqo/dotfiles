@@ -3,10 +3,9 @@
     email = nek.narqo+git@gmail.com
 [core]
     whitespace = fix,-indent-with-non-tab,trailing-space,-cr-at-eol
-    excludesfile = ~/.gitignore
-    editor = vim
+    editor = /usr/bin/vim
 [merge]
-    ff = false
+    ff = true
 [github]
     user = narqo
 [alias]
@@ -21,3 +20,4 @@
     diff = auto
     interactive = auto
     status = auto
+
