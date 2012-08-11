@@ -18,20 +18,20 @@ Bundle 'kien/ctrlp.vim'
 
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'scrooloose/nerdcommenter'
 
 Bundle 'neocomplcache'
 Bundle 'snipMate'
-Bundle 'scrooloose/nerdcommenter'
 
 Bundle 'matchit.zip'
 Bundle 'michaeljsmith/vim-indent-object'
 
 Bundle 'scrooloose/syntastic'
 
-Bundle 'skwp/vim-colors-solarized'
-
 Bundle 'sukima/xmledit'
 Bundle 'pangloss/vim-javascript'
+
+Bundle 'Tagbar'
 
 " General options =============================================================
 
@@ -340,8 +340,7 @@ endif
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$|debian$'
 
 " Additional mapping for buffer search
-nnoremap ,b :CtrlPBuffer<cr>
-nnoremap <C-b> :CtrlPBuffer<cr>
+nnoremap <Leader>b :CtrlPBuffer<cr>
 
 " === Neocomplcache ==============================
 " A beter autocomplete system!
@@ -391,6 +390,8 @@ let g:syntastic_auto_loc_list=0
 " don't care about warnings
 let g:syntastic_quiet_warnings=0
 
-" === Solarized ==================================
-"let g:solarized_termcolor=256
+" === Tagbar =====================================
+let g:tagbar_iconchars = ['▾', '▸']
+
+nnoremap <F5> :TagbarToggle<cr>
 
