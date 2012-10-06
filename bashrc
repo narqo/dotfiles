@@ -50,9 +50,6 @@ if [ -f `brew --prefix`/share/python/virtualenvwrapper.sh ]; then
     source `brew --prefix`/share/python/virtualenvwrapper.sh
 fi
 
-# Node.js libraries path
-export NODE_PATH=`npm root -g`
-
 # bash prompt
 case "$TERM" in
     xterm-color|xterm-256color) color_prompt=yes;;
@@ -60,7 +57,7 @@ esac
 
 if [ "$color_prompt" = yes ]; then
     # Default is: PS1='\h:\W \u\$ '
-    PS1='\[\033[00;31m\]\h\[\033[00m\]: \[\033[01;34m\]\W\[\033[01;30m\]›\[\033[00m\] '
+    PS1='\[\033[00;31m\]\h\[\033[00m\] £ \[\033[01;34m\]\W\[\033[01;30m\]›\[\033[00m\] '
 fi
 
 unset color_prompt
