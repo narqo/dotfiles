@@ -96,6 +96,9 @@ set showmode
 set list
 set listchars=tab:·\ ,trail:·,extends:»,precedes:«
 
+" Использовать <,> в качестве <leader>-кнопки
+let mapleader = ","
+
 " Show ↪ at the beginning of wrapped lines
 if has("linebreak")
     let &sbr = nr2char(8618).' '
@@ -108,7 +111,7 @@ if version >= 703
 end
 
 " Paste mode toggle on <,p>
-set pastetoggle=<Leader>p
+set pastetoggle=<leader>p
 
 if has('unnamedplus')
     set clipboard=unnamedplus
@@ -221,8 +224,6 @@ set viminfo+=!
 
 " Keymaps ======================================================================
 
-let mapleader = ","
-
 " Очистить подсветку последнего найденного выражения
 nmap <silent> <F3> :nohlsearch<CR>
 imap <F3> <Esc>:nohlsearch<CR>
@@ -333,14 +334,14 @@ let g:nerdtree_tabs_focus_on_files = 1
 if has("gui_macvim") && has("gui_running")
     map <D-/> <plug>NERDCommenterToggle<CR>
 else
-    map <Leader>/ <plug>NERDCommenterToggle<CR>
+    map <leader>/ <plug>NERDCommenterToggle<CR>
 endif
 
 " === CtrlP ======================================
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$|debian$'
 
 " Additional mapping for buffer search
-nnoremap <Leader>b :CtrlPBuffer<cr>
+nnoremap <leader>b :CtrlPBuffer<cr>
 
 " === Neocomplcache ==============================
 " A beter autocomplete system!
