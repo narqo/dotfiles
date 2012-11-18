@@ -12,13 +12,14 @@ conf := $(addprefix $(prefix),$(files))
 git_up = @git pull
 setup = @ln -svfF $(realpath $<) $@
 
-all:
-	$(git_up)
+all: ; $(git_up)
 
 install: $(bin) $(conf)
 	@echo All done
 
-$(HOME)/bin/%: bin/%; $(setup)
+$(HOME)/bin/%: bin/%
+	@mkdir -p $(HOME)/bin
+	$(setup)
 
 $(prefix)%: %; $(setup)
 
