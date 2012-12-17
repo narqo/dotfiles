@@ -1,0 +1,24 @@
+{
+  "name": "dotfiles",
+  "version": "0.0.1",
+  "private": true,
+  "description": "My own private dotfiles project",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/narqo/dotfiles.git"
+  },
+  "keywords": [
+    "dotfiles",
+    "vim",
+    "bash",
+    "git",
+    "npm"
+  ],
+  "author": "Vladimir 'Vii' Varankin <nek.narqo@gmail.com>",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "prettyjson": "~0.7.1",
+    "jshint": "~0.9.1"
+  }
+}
