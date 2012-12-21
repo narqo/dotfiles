@@ -12,7 +12,7 @@
     ci = commit
     co = checkout
     st = status
-    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    hist = log --pretty=format:\"%C(yellow)%h%Creset %ad | %s%Cgreen%d%Creset [%an]\" --graph --date=short
     ls = ls-files
 [color]
     ui = auto
