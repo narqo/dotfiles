@@ -21,18 +21,15 @@ shopt -s histappend
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
+[ -f ~/.bash_aliases ] && \
     source ~/.bash_aliases
-fi
 
 # Enable programmable completion features
-if [ -f `brew --prefix`/etc/bash_completion ]; then
+[ -f `brew --prefix`/etc/bash_completion ] && \
     source `brew --prefix`/etc/bash_completion
-fi
 
-if [ -f `brew --prefix`/Library/Contributions/brew_bash_completion.sh ]; then
+[ -f `brew --prefix`/Library/Contributions/brew_bash_completion.sh ] && \
     source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
-fi
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" \
@@ -46,9 +43,8 @@ export PIP_DOWNLOAD_CACHE=$HOME/.cache/pip
 # Virtualenvwrapper Shell Startup File
 #export VIRTUALENVWRAPPER_PYTHON=`brew --prefix`/Cellar/python/2.7.1/bin/python
 export WORKON_HOME=$HOME/.virtualenvs
-if [ -f `brew --prefix`/share/python/virtualenvwrapper.sh ]; then
+[ -f `brew --prefix`/share/python/virtualenvwrapper.sh ] && \
     source `brew --prefix`/share/python/virtualenvwrapper.sh
-fi
 
 # bash prompt
 case "$TERM" in
