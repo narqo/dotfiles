@@ -22,6 +22,7 @@ Bundle 'scrooloose/nerdcommenter'
 
 Bundle 'neocomplcache'
 Bundle 'snipMate'
+Bundle 'Tagbar'
 
 Bundle 'matchit.zip'
 Bundle 'michaeljsmith/vim-indent-object'
@@ -30,8 +31,6 @@ Bundle 'scrooloose/syntastic'
 
 Bundle 'sukima/xmledit'
 Bundle 'pangloss/vim-javascript'
-
-Bundle 'Tagbar'
 
 " General options =============================================================
 
