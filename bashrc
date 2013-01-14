@@ -61,3 +61,6 @@ fi
 
 unset color_prompt
 
+# Node.js root directory for npm modules
+export NODE_PATH=`npm root -g`
+
