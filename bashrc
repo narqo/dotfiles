@@ -32,19 +32,17 @@ shopt -s histappend
     source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
-[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" \
+[ -e "~/.ssh/config" ] && complete -o "default" -o "nospace" \
     -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2)" scp sftp ssh
 
 export EDITOR=vim
 
 # Pip download cache directory path
-export PIP_DOWNLOAD_CACHE=$HOME/.cache/pip
+export PIP_DOWNLOAD_CACHE=~/.cache/pip
 
-# Virtualenvwrapper Shell Startup File
-#export VIRTUALENVWRAPPER_PYTHON=`brew --prefix`/Cellar/python/2.7.1/bin/python
-export WORKON_HOME=$HOME/.virtualenvs
-[ -f `brew --prefix`/share/python/virtualenvwrapper.sh ] && \
-    source `brew --prefix`/share/python/virtualenvwrapper.sh
+# Node.js root directory for npm modules
+[ -z "`which npm`" ] || \
+    export NODE_PATH=`npm root -g`
 
 # bash prompt
 case "$TERM" in
@@ -52,7 +50,6 @@ case "$TERM" in
 esac
 
 if [ "$color_prompt" = yes ]; then
-    #PS1='\[\033[00;31m\]\h\[\033[00m\] £ \[\033[01;34m\]\W\[\033[01;30m\]›\[\033[00m\] '
     PS1='\[\033[00;31m\]\h\[\033[00m\] £ \[\033[01;34m\]\w\n  \[\033[01;30m\]›\[\033[00m\] '
 else
     # Default is: PS1='\h:\W \u\$ '
@@ -60,7 +57,4 @@ else
 fi
 
 unset color_prompt
-
-# Node.js root directory for npm modules
-export NODE_PATH=`npm root -g`
 
