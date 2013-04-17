@@ -28,6 +28,9 @@ shopt -s histappend
 [ -f `brew --prefix`/etc/bash_completion ] && \
     source `brew --prefix`/etc/bash_completion
 
+[ -f ~/.bash_completion ] && \
+    source ~/.bash_completion
+
 [ -f `brew --prefix`/Library/Contributions/brew_bash_completion.sh ] && \
     source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
 
