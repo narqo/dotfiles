@@ -1,7 +1,36 @@
-*.pyc
+# OSX
 .DS_Store
-*.svn
 ._*
+.Trashes
+
+# SVN
+*.svn/
+
+# Mercurial
+.hgignore
+
+# Eclipse
+*.pydevproject
+.project
+.metadata
+.classpath
+.settings/
+
+# PyCharm/WebStorm/Etc
+.idea/
+.iml
+
+# vim
+.*.s[a-w][a-z]
 *~
-gitapikey
+.netrwhist
+
+# Node.js
+npm-debug.log
+
+# Python
+*.py[cod]
+
+# Sublime
+*.sublime-workspace
 
