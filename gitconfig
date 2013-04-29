@@ -5,6 +5,8 @@
     editor = /usr/bin/vim
     excludesfile = ~/.gitignore
     whitespace = fix,-indent-with-non-tab,trailing-space,-cr-at-eol
+[diff]
+    algorithm = patience
 [github]
     user = narqo
 [alias]
@@ -19,4 +21,3 @@
     diff = auto
     interactive = auto
     status = auto
-
