@@ -32,6 +32,8 @@ Bundle 'scrooloose/syntastic'
 Bundle 'sukima/xmledit'
 Bundle 'pangloss/vim-javascript'
 
+Bundle 'sudo.vim'
+
 " General options =============================================================
 
 filetype plugin indent on
