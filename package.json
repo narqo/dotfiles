@@ -1,6 +1,6 @@
 {
   "name": "dotfiles",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": true,
   "description": "My own private dotfiles project",
   "repository": {
@@ -18,8 +18,8 @@
   "license": "BSD",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "prettyjson": "~0.7.1",
-    "jshint": "~0.9.1",
-    "jsong": "~0.0.3"
+    "prettyjson": "*",
+    "jshint": "*",
+    "jsong": "*"
   }
 }
