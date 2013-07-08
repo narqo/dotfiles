@@ -19,6 +19,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'bling/vim-airline'
 
 Bundle 'neocomplcache'
 Bundle 'snipMate'
@@ -396,4 +397,11 @@ let g:syntastic_quiet_warnings=0
 let g:tagbar_iconchars = ['▾', '▸']
 
 nnoremap <F5> :TagbarToggle<cr>
+
+" === Airline ====================================
+
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+
+let g:airline_theme='badwolf'
 
