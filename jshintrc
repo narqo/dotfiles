@@ -14,9 +14,7 @@
 
   "boss"            : true,
   "eqnull"          : true,
-  "es5"             : true,
   "expr"            : true,
-  //"globalstrict"    : true,
   "lastsemic"       : true,
   "regexp"          : true,
   "shadow"          : true,
