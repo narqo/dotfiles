@@ -2,9 +2,9 @@
 # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
 # exists.
 
-export TERM=xterm-color
-export CLICOLOR=1
-export LSCOLORS=fxfxcxdxbxegedabagacad
+#export TERM=xterm-color
+#export CLICOLOR=1
+#export LSCOLORS=fxfxcxdxbxegedabagacad
 
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:/usr/local/share/python:$PATH
 
