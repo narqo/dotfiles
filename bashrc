@@ -48,16 +48,9 @@ export PIP_DOWNLOAD_CACHE=~/.cache/pip
     export NODE_PATH=`npm root -g`
 
 # bash prompt
-case "$TERM" in
-    xterm-color|xterm-256color) color_prompt=yes;;
-esac
-
-if [ "$color_prompt" = yes ]; then
-    PS1='\[\033[00;31m\]\h\[\033[00m\] £ \[\033[01;34m\]\w\n  \[\033[01;30m\]›\[\033[00m\] '
+if [ -f ~/.bash_prompt ]; then
+    source ~/.bash_prompt
 else
-    # Default is: PS1='\h:\W \u\$ '
-    PS1='\h £ \w\n  › '
+    PS1="\h £ \w\n  › "
 fi
-
-unset color_prompt
 
