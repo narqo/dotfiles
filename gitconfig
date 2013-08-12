@@ -10,6 +10,7 @@
 [github]
     user = narqo
 [alias]
+    di = diff
     ci = commit
     co = checkout
     st = status
