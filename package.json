@@ -20,6 +20,7 @@
   "devDependencies": {
     "prettyjson": "*",
     "jshint": "*",
-    "jsong": "*"
+    "jsong": "*",
+    "http-console2": "*"
   }
 }
