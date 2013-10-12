@@ -6,7 +6,7 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" let Vundle manage Vundle, required! 
+" let Vundle manage Vundle, required!
 Bundle 'gmarik/vundle'
 
 " Custom bundles
@@ -124,7 +124,7 @@ endif
 
 " Включаем отображение дополнительной информации в статусной строке
 set laststatus=2
-set statusline=%f%h\ %y\ %m\ %r\ %{&encoding}\ 
+set statusline=%f%h\ %y\ %m\ %r\ %{&encoding}\
 
 " The statusline flag for syntastic plugin
 set statusline+=%#warningmsg#
@@ -132,7 +132,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 set statusline+=%=Line:%l/%L[%p%%]\ Col:%c\ [%b][0x%B]
-set statusline+=\ Buf:%n\ 
+set statusline+=\ Buf:%n\
 
 " Search settings =============================================================
 
@@ -320,7 +320,7 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 let NERDTreeMinimalUI = 1
 " Tells the NERD tree to use arrows instead of + ~ chars when displaying directories
 let NERDTreeDirArrows = 1
-let g:NERDTreeWinSize = 30
+let g:NERDTreeWinSize = 50
 
 let NERDTreeShowHidden=1
 
@@ -394,7 +394,7 @@ let g:syntastic_auto_jump=0
 " show the error list automatically
 let g:syntastic_auto_loc_list=0
 " don't care about warnings
-let g:syntastic_quiet_warnings=0
+"let g:syntastic_quiet_warnings=0
 
 " === Tagbar =====================================
 let g:tagbar_iconchars = ['▾', '▸']
