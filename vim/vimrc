@@ -25,6 +25,7 @@ Bundle 'neocomplcache'
 Bundle 'snipMate'
 Bundle 'Tagbar'
 
+Bundle 'delimitMate.vim'
 Bundle 'matchit.zip'
 Bundle 'michaeljsmith/vim-indent-object'
 
