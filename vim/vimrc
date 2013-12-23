@@ -24,6 +24,7 @@ Bundle 'bling/vim-airline'
 Bundle 'neocomplcache'
 Bundle 'snipMate'
 Bundle 'Tagbar'
+Bundle 'mattn/emmet-vim'
 
 Bundle 'delimitMate.vim'
 Bundle 'matchit.zip'
