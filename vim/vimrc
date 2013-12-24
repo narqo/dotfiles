@@ -34,6 +34,8 @@ Bundle 'scrooloose/syntastic'
 
 Bundle 'sukima/xmledit'
 Bundle 'pangloss/vim-javascript'
+Bundle 'wookiehangover/jshint.vim'
+Bundle 'jelera/vim-javascript-syntax'
 
 Bundle 'sudo.vim'
 
@@ -278,11 +280,10 @@ autocmd BufEnter * lcd %:p:h
 autocmd BufNewFile,BufRead *.rss.*.atom setfiletype xml
 
 " For all text files set 'textwidth' to 80 characters.
-autocmd FileType text,txt setlocal tw=80
+autocmd FileType text,txt setlocal tw=120
 
-autocmd BufRead,BufNewFile *.md         set ft=mkd tw=80 ts=2 sw=2 expandtab
-autocmd BufRead,BufNewFile *.markdown   set ft=mkd tw=80 ts=2 sw=2 expandtab
-autocmd BufRead,BufNewFile *.wiki       set ft=wiki tw=80 ts=2 sw=2 expandtab
+autocmd BufRead,BufNewFile *.md,*.markdown set tw=120 ts=2 sw=2 expandtab
+autocmd BufRead,BufNewFile *.wiki set ft=wiki tw=120 ts=2 sw=2 expandtab
 
 autocmd Filetype gitcommit set tw=68  spell
 
@@ -404,8 +405,17 @@ nnoremap <F5> :TagbarToggle<cr>
 
 " === Airline ====================================
 
-let g:airline_left_sep=''
+let g:airline_left_sep = ''
 let g:airline_right_sep=''
 
 let g:airline_theme='ubaryd'
+
+" === JavaScript vim =============================
+
+" Enables concealing characters. For example, `function` is replaced with `ƒ`
+let g:javascript_conceal=1
+
+" === JSHint =====================================
+
+let JSHintUpdateWriteOnly=1
 
