@@ -33,6 +33,7 @@ Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'scrooloose/syntastic'
 
 Bundle 'sukima/xmledit'
+Bundle 'tpope/vim-markdown'
 Bundle 'pangloss/vim-javascript'
 Bundle 'wookiehangover/jshint.vim'
 Bundle 'jelera/vim-javascript-syntax'
