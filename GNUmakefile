@@ -54,7 +54,7 @@ $(npm_bin): package.json
 
 define setup_binaries
 
-$$(HOME)/bin/$(notdir $1):: $(1)
+$$(HOME)/bin/$(notdir $1):: $(1) $$(HOME)/bin
 	$$(setup)
 
 endef
