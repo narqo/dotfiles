@@ -181,19 +181,18 @@ let g:html_diff_one_file = 1
 
 " GUI ==========================================================================
 
-set background=dark
-
 " tell the term has 256 colors
 set t_Co=256
 
+set background=dark
+colorscheme xoria256
+
 if has('gui_running')
-    colorscheme Tomorrow-Night-Eighties
+    "colorscheme mango
     set cmdheight=2
     set guifont=Monaco:h13
     " Automatically resize splits when resizing MacVim window
     autocmd VimResized * wincmd =
-else
-    colorscheme xoria256
 endif
 
 " Set up the gui cursor to look nice
