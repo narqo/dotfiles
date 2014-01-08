@@ -34,9 +34,11 @@ Bundle 'scrooloose/syntastic'
 
 Bundle 'sukima/xmledit'
 Bundle 'tpope/vim-markdown'
+
 Bundle 'pangloss/vim-javascript'
-Bundle 'wookiehangover/jshint.vim'
 Bundle 'jelera/vim-javascript-syntax'
+Bundle 'moll/vim-node'
+Bundle 'ahayman/vim-nodejs-complete'
 
 Bundle 'sudo.vim'
 
@@ -240,8 +242,8 @@ imap <F3> <Esc>:nohlsearch<CR>
 imap <c-J>d <C-r>=substitute(system("uuidgen"), '.$', '', 'g')<CR>
 
 " copy current filename into system clipboard - mnemonic: (c)urrent(f)ilename
-nnoremap <silent> ,cf :let @* = expand("%:~")<CR>
-nnoremap <silent> ,cn :let @* = expand("%:t")<CR>
+nnoremap <silent> <leader>cf :let @* = expand("%:~")<CR>
+nnoremap <silent> <leader>cn :let @* = expand("%:t")<CR>
 
 " Позволяем передвигаться с помощью hjkl в Insert mode зажав <ctrl>
 imap <c-h> <c-o>h
@@ -317,12 +319,15 @@ let g:vundle_default_git_proto = 'git'
 " Don't display these kinds of files
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
+" Change the current working directory (CWD) whenever the tree root is changed
+let NERDTreeChDirMode = 2
+
 " Make nerdtree look nice
 " Disables display of the 'Bookmarks' label and 'Press ? for help' text
 let NERDTreeMinimalUI = 1
 " Tells the NERD tree to use arrows instead of + ~ chars when displaying directories
 let NERDTreeDirArrows = 1
-let g:NERDTreeWinSize = 50
+let NERDTreeWinSize = 50
 
 let NERDTreeShowHidden=1
 
@@ -333,7 +338,7 @@ nnoremap <silent> <C-\> :NERDTreeFind<CR>
 
 " === NERD Tree tabs ============================
 " Auto open nerd tree on startup
-"let g:nerdtree_tabs_open_on_gui_startup = 1
+let g:nerdtree_tabs_open_on_gui_startup = 0
 " Focus in the main content window
 let g:nerdtree_tabs_focus_on_files = 1
 
@@ -347,6 +352,8 @@ endif
 " === CtrlP ======================================
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$|debian$'
 
+" Additional mapping to open CtrlP prompt in find file mode
+nnoremap <leader>o :CtrlP<cr>
 " Additional mapping for buffer search
 nnoremap <leader>b :CtrlPBuffer<cr>
 
@@ -390,13 +397,13 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 
 " === Syntastic ==================================
 " mark syntax errors with :signs
-let g:syntastic_enable_signs=1
+let g:syntastic_enable_signs = 1
 " automatically jump to the error when saving the file
-let g:syntastic_auto_jump=0
+let g:syntastic_auto_jump = 0
 " show the error list automatically
-let g:syntastic_auto_loc_list=0
+let g:syntastic_auto_loc_list = 0
 " don't care about warnings
-"let g:syntastic_quiet_warnings=0
+"let g:syntastic_quiet_warnings = 0
 
 " === Tagbar =====================================
 let g:tagbar_iconchars = ['▾', '▸']
