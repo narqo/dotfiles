@@ -20,7 +20,10 @@
   "devDependencies": {
     "prettyjson": "*",
     "jshint": "*",
+    "eslint": "*",
     "jsong": "*",
-    "http-console2": "*"
+    "http-console2": "*",
+    "jsonlint": "*",
+    "csslint": "*"
   }
 }
