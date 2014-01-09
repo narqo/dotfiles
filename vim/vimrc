@@ -417,12 +417,3 @@ let g:airline_right_sep=''
 
 let g:airline_theme='ubaryd'
 
-" === JavaScript vim =============================
-
-" Enables concealing characters. For example, `function` is replaced with `ƒ`
-let g:javascript_conceal=1
-
-" === JSHint =====================================
-
-let JSHintUpdateWriteOnly=1
-
