@@ -16,6 +16,7 @@
     st = status
     hist = log --pretty=format:\"%h %ad | %s%Cgreen%d%Creset [%an]\" --graph --date=short
     ls = ls-files
+    ff = merge --ff-only
     # list files marked with "--assume-unchanged"
     mu = !git ls-files -v | grep "^[[:lower:]]"
 [color]
