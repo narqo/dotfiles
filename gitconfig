@@ -14,7 +14,7 @@
     ci = commit
     co = checkout
     st = status
-    hist = log --pretty=format:\"%h %ad | %s%Cgreen%d%Creset [%an]\" --graph --date=short
+    hist = log --graph --pretty=format:\"%C(bold red)%h%Creset %ad - %s%C(green)%d%Creset %C(blue)<%an>%Creset\" --date=short
     ls = ls-files
     ff = merge --ff-only
     # list files marked with "--assume-unchanged"
