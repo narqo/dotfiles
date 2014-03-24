@@ -1,24 +1,25 @@
 [user]
     name = Vladimir Varankin
     email = nek.narqo+git@gmail.com
+[github]
+    user = narqo
 [core]
-    editor = /usr/bin/vim
+    editor = vim
     excludesfile = ~/.gitignore
     whitespace = fix,-indent-with-non-tab,trailing-space,-cr-at-eol
 [diff]
     algorithm = patience
-[github]
-    user = narqo
 [alias]
-    di = diff
+    br = branch -v
     ci = commit
     co = checkout
-    st = status
+    di = diff
     hist = log --graph --pretty=format:\"%C(bold red)%h%Creset %ad - %s%C(green)%d%Creset %C(blue)<%an>%Creset\" --date=short
-    ls = ls-files
     ff = merge --ff-only
+    ls = ls-files
     # list files marked with "--assume-unchanged"
     mu = !git ls-files -v | grep "^[[:lower:]]"
+    st = status
 [color]
     ui = auto
     branch = auto
