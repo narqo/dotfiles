@@ -24,6 +24,7 @@
     "jsong": "*",
     "http-console2": "*",
     "jsonlint": "*",
-    "csslint": "*"
+    "csslint": "*",
+    "travis-encrypt": "*"
   }
 }
