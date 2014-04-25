@@ -16,12 +16,14 @@
     ci = commit
     co = checkout
     di = diff
+    st = status
     hist = log --graph --pretty=format:\"%C(bold red)%h%Creset %ad - %s%C(green)%d%Creset %C(blue)<%an>%Creset\" --date=short
     ff = merge --ff-only
     ls = ls-files
     # list files marked with "--assume-unchanged"
     mu = !git ls-files -v | grep "^[[:lower:]]"
-    st = status
+    branches = branch -a
+    remotes = remote -v
 [color]
     ui = auto
     branch = auto
