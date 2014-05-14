@@ -35,9 +35,13 @@ $(prefix)%: %; $(setup)
 
 $(prefix)vimrc: vim/vimrc $(prefix)vim
 	$(setup)
-	@git submodule init; \
-		git submodule update
+	@git submodule update --init
 	vim +BundleInstall +qall
+	@[ -d $(prefix)vim/bundle/tern_for_vim ] && \
+		cd $(prefix)vim/bundle/tern_for_vim; \
+		npm install; \
+		cd -; \
+		echo "tern_for_vim post install done"
 
 clean:
 	@- for file in $(conf); do \
