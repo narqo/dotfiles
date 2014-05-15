@@ -36,7 +36,7 @@ $(prefix)%: %; $(setup)
 $(prefix)vimrc: vim/vimrc $(prefix)vim
 	$(setup)
 	@git submodule update --init
-	vim +BundleInstall +qall
+	vim +PluginInstall +qall
 	@[ -d $(prefix)vim/bundle/tern_for_vim ] && \
 		cd $(prefix)vim/bundle/tern_for_vim; \
 		npm install; \

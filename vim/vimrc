@@ -4,43 +4,45 @@ filetype off
 
 " vundle init (github.com/gmarik/vundle)
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
 " let Vundle manage Vundle, required!
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " Custom bundles
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-Bundle 'kien/ctrlp.vim'
+Plugin 'L9'
+Plugin 'FuzzyFinder'
+Plugin 'kien/ctrlp.vim'
 
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'bling/vim-airline'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'bling/vim-airline'
 
-Bundle 'neocomplcache'
-Bundle 'snipMate'
-Bundle 'Tagbar'
-Bundle 'mattn/emmet-vim'
+Plugin 'neocomplcache'
+Plugin 'snipMate'
+Plugin 'Tagbar'
+Plugin 'mattn/emmet-vim'
 
-Bundle 'delimitMate.vim'
-Bundle 'matchit.zip'
-Bundle 'michaeljsmith/vim-indent-object'
+Plugin 'delimitMate.vim'
+Plugin 'matchit.zip'
+Plugin 'michaeljsmith/vim-indent-object'
 
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 
-Bundle 'sukima/xmledit'
-Bundle 'tpope/vim-markdown'
+Plugin 'sukima/xmledit'
+Plugin 'tpope/vim-markdown'
 
-Bundle 'pangloss/vim-javascript'
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'moll/vim-node'
-Bundle 'marijnh/tern_for_vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'moll/vim-node'
+Plugin 'marijnh/tern_for_vim'
 
-Bundle 'sudo.vim'
+Plugin 'sudo.vim'
+
+call vundle#end()
 
 " General options =============================================================
 
