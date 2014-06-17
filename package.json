@@ -15,7 +15,7 @@
     "npm"
   ],
   "author": "Vladimir 'Vii' Varankin <nek.narqo@gmail.com>",
-  "license": "BSD",
+  "license": "WTFPL",
   "readmeFilename": "README.md",
   "devDependencies": {
     "prettyjson": "*",
@@ -25,6 +25,7 @@
     "http-console2": "*",
     "jsonlint": "*",
     "csslint": "*",
-    "travis-encrypt": "*"
+    "travis-encrypt": "*",
+    "gh": "*"
   }
 }
