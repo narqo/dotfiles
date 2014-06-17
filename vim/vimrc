@@ -40,6 +40,8 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'moll/vim-node'
 Plugin 'marijnh/tern_for_vim'
 
+Plugin 'dart-lang/dart-vim-plugin'
+
 Plugin 'sudo.vim'
 
 call vundle#end()
