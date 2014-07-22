@@ -24,15 +24,18 @@ shopt -s histappend
 [ -f ~/.bash_aliases ] && \
     source ~/.bash_aliases
 
-# Enable programmable completion features
-[ -f `brew --prefix`/etc/bash_completion ] && \
-    source `brew --prefix`/etc/bash_completion
+if [ ! -z `which brew` ]; then
+    BREW_PREFIX=`brew --prefix`
+    # Enable programmable completion features
+    [ -f ${BREW_PREFIX}/etc/bash_completion ] && \
+        source ${BREW_PREFIX}/etc/bash_completion
+
+    [ -f ${BREW_PREFIX}/Library/Contributions/brew_bash_completion.sh ] && \
+        source ${BREW_PREFIX}/Library/Contributions/brew_bash_completion.sh
+fi
 
 [ -f ~/.bash_completion ] && \
     source ~/.bash_completion
-
-[ -f `brew --prefix`/Library/Contributions/brew_bash_completion.sh ] && \
-    source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "~/.ssh/config" ] && complete -o "default" -o "nospace" \
