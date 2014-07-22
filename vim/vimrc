@@ -15,6 +15,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'L9'
 Plugin 'FuzzyFinder'
 Plugin 'kien/ctrlp.vim'
+Plugin 'sudo.vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -32,17 +33,19 @@ Plugin 'michaeljsmith/vim-indent-object'
 
 Plugin 'scrooloose/syntastic'
 
+" HTML/XML
 Plugin 'sukima/xmledit'
+" Markdown
 Plugin 'tpope/vim-markdown'
-
+" JavaScript
 Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'moll/vim-node'
 Plugin 'marijnh/tern_for_vim'
-
+" Dart
 Plugin 'dart-lang/dart-vim-plugin'
-
-Plugin 'sudo.vim'
+" JSON
+Plugin 'elzr/vim-json'
 
 call vundle#end()
 
@@ -333,7 +336,7 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeWinSize = 50
 
-let NERDTreeShowHidden=1
+let NERDTreeShowHidden = 1
 
 " Toggle the NERD Tree on an off
 nnoremap <F6> :NERDTreeToggle<CR>
@@ -429,14 +432,18 @@ let g:airline_theme='ubaryd'
 
 " === Tern =======================================
 " look up the documentation of something
-nnoremap <leader>td  :TernDoc<cr>
+nnoremap <leader>td :TernDoc<cr>
 " find the type of the thing under the cursor
-nnoremap <leader>tt  :TernType<cr>
+nnoremap <leader>tt :TernType<cr>
 " jump to the definition of the thing under the cursor
-nnoremap <leader>tb  :TernDef<cr>
+nnoremap <leader>tb :TernDef<cr>
 nnoremap <leader>tsb :TernDefSplit<cr>
 " show all references to the variable or property under the cursor
-nnoremap <leader>tr  :TernRefs<cr>
+nnoremap <leader>tr :TernRefs<cr>
 " rename the variable under the cursor
-nnoremap <leader><F6>  :TernRename<cr>
+nnoremap <leader><F6> :TernRename<cr>
+
+" === JSON =======================================
+" disable concealing of double quotes
+let g:vim_json_syntax_conceal = 0
 
