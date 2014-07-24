@@ -48,7 +48,6 @@ Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'elzr/vim-json'
 " YAML
 Plugin 'ingydotnet/yaml-vim'
-Plugin 'chase/vim-ansible-yaml'
 
 call vundle#end()
 
