@@ -41,7 +41,12 @@ $(prefix)vimrc: vim/vimrc $(prefix)vim
 		cd $(prefix)vim/bundle/tern_for_vim; \
 		npm install; \
 		cd -; \
-		echo "tern_for_vim post install done"
+		echo "==> tern_for_vim post install done"
+	@[ -d $(prefix)vim/bundle/vimproc ] && \
+		cd $(prefix)vim/bundle/vimproc; \
+		make; \
+		cd -; \
+		echo "==> vimproc post install done"
 
 clean:
 	@- for file in $(conf); do \
