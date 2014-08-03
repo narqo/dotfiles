@@ -1,7 +1,8 @@
 prefix = $(HOME)/.
 
-npm_root := $(shell npm root)
-npm_bin := $(shell npm bin)
+NPM ?= npm
+NPM_ROOT := $(shell $(NPM) root)
+NPM_BIN := $(shell $(NPM) bin)
 
 vim_files = $(notdir $(wildcard $(addprefix vim/, vimrc)))
 ignore = $(wildcard GNUmakefile README* functions eclipse ssh osx bin node_modules package.json)
@@ -9,20 +10,21 @@ ignore = $(wildcard GNUmakefile README* functions eclipse ssh osx bin node_modul
 files := $(filter-out $(ignore),$(shell ls -1))
 files += $(vim_files)
 
-bin := $(addprefix $(HOME)/,$(wildcard bin/*))
-conf := $(addprefix $(prefix),$(files))
+BIN_FILES = $(addprefix $(HOME)/,$(wildcard bin/*))
+NPMBIN_FILES = $(addprefix $(HOME)/,$(subst $(NPM_ROOT)/.,,$(wildcard $(NPM_BIN)/*)))
+CONF_FILES = $(addprefix $(prefix),$(files))
 
-npmbin = $(addprefix $(HOME)/,$(subst $(npm_root)/.,,$(wildcard $(npm_bin)/*)))
-
+# == Functions
 git_up = @git pull
 setup = @ln -svfF $(realpath $<) $@
 
+# == Targets
 all: ; $(git_up) $(npm)
 
 $(ignore):
 	@echo Skipping $(@)
 
-install:: $(npm_bin) $(bin) $(npmbin) $(conf)
+install:: $(NPM_BIN) $(BIN_FILES) $(NPMBIN_FILES) $(CONF_FILES)
 	@echo All done
 
 $(HOME)/bin/%:: $(HOME)/bin
@@ -39,7 +41,7 @@ $(prefix)vimrc: vim/vimrc $(prefix)vim
 	vim +PluginInstall +qall
 	@[ -d $(prefix)vim/bundle/tern_for_vim ] && \
 		cd $(prefix)vim/bundle/tern_for_vim; \
-		npm install; \
+		$(NPM) install; \
 		cd -; \
 		echo "==> tern_for_vim post install done"
 	@[ -d $(prefix)vim/bundle/vimproc ] && \
@@ -49,15 +51,15 @@ $(prefix)vimrc: vim/vimrc $(prefix)vim
 		echo "==> vimproc post install done"
 
 clean:
-	@- for file in $(conf); do \
+	@- for file in $(CONF_FILES); do \
 		test -L "$$file" && "$(RM) -r $$file"; \
 	done
 
-npm: $(npm_bin)
-	@echo $(npmbin)
+$(NPM): $(NPM_BIN)
+	@echo $(NPMBIN_FILES)
 
-$(npm_bin): package.json
-	@npm install
+$(NPM_BIN): package.json
+	@$(NPM) install
 
 .PHONY: all clean install npm
 
@@ -69,5 +71,5 @@ $$(HOME)/bin/$(notdir $1):: $(1) $$(HOME)/bin
 endef
 
 $(foreach b,$(wildcard bin/*),$(eval $(call setup_binaries,$(b))))
-$(foreach b,$(wildcard $(npm_bin)/*),$(eval $(call setup_binaries,$b)))
+$(foreach b,$(wildcard $(NPM_BIN)/*),$(eval $(call setup_binaries,$b)))
 

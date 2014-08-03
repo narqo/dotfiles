@@ -9,7 +9,7 @@ export LANG=ru_RU.UTF-8
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
+    if [ -r "$HOME/.bashrc" ]; then
         source "$HOME/.bashrc"
     fi
 fi
@@ -17,6 +17,15 @@ fi
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH=$HOME/bin:$PATH
+fi
+
+# load additional profile settings from user-land space
+if [ -d ~/.profile.d ]; then
+    for i in ~/.profile.d/*.sh; do
+        if [ -r "$i" ]; then
+            source $i;
+        fi
+    done
 fi
 
 PATH=./node_modules/.bin:$PATH

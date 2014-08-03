@@ -21,11 +21,11 @@ shopt -s histappend
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-[ -f ~/.bash_aliases ] && \
+[ -r ~/.bash_aliases ] && \
     source ~/.bash_aliases
 
-if [ ! -z `which brew` ]; then
-    BREW_PREFIX=`brew --prefix`
+if [ ! -z "`which brew 2>/dev/null`" ]; then
+    BREW_PREFIX=`brew --prefix 2>/dev/null`
     # Enable programmable completion features
     [ -f ${BREW_PREFIX}/etc/bash_completion ] && \
         source ${BREW_PREFIX}/etc/bash_completion
@@ -34,11 +34,11 @@ if [ ! -z `which brew` ]; then
         source ${BREW_PREFIX}/Library/Contributions/brew_bash_completion.sh
 fi
 
-[ -f ~/.bash_completion ] && \
+[ -r ~/.bash_completion ] && \
     source ~/.bash_completion
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
-[ -e "~/.ssh/config" ] && complete -o "default" -o "nospace" \
+[ -e ~/.ssh/config ] && complete -o "default" -o "nospace" \
     -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2)" scp sftp ssh
 
 export EDITOR=vim
@@ -47,11 +47,11 @@ export EDITOR=vim
 export PIP_DOWNLOAD_CACHE=~/.cache/pip
 
 # Node.js root directory for npm modules
-[ -z "`which npm`" ] || \
+[ -z "`which npm 2>/dev/null`" ] || \
     export NODE_PATH=`npm root -g`
 
 # bash prompt
-if [ -f ~/.bash_prompt ]; then
+if [ -r ~/.bash_prompt ]; then
     source ~/.bash_prompt
 else
     PS1="\h £ \w\n  › "
