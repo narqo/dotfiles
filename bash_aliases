@@ -13,5 +13,3 @@ alias ll="ls -la $lscolorflag"
 
 alias gti="git"
 
-alias ynpm="npm --userconfig=$HOME/Disk/configs/npmrc/yt"
-
