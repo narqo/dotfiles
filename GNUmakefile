@@ -1,3 +1,5 @@
+PRJDIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+
 prefix = $(HOME)/.
 
 NPM ?= npm
@@ -40,15 +42,17 @@ $(prefix)vimrc: vim/vimrc $(prefix)vim
 	@git submodule update --init
 	vim +PluginInstall +qall
 	@[ -d $(prefix)vim/bundle/tern_for_vim ] && \
+		echo -n "==> tern_for_vim postinstall... "
 		cd $(prefix)vim/bundle/tern_for_vim; \
 		$(NPM) install; \
-		cd -; \
-		echo "==> tern_for_vim post install done"
-	@[ -d $(prefix)vim/bundle/vimproc ] && \
-		cd $(prefix)vim/bundle/vimproc; \
+		cd $(PRJDIR) \
+		echo "done"
+	@[ -d $(prefix)vim/bundle/vimproc.vim ] && \
+		echo -n "==> vimproc postinstall... "; \
+		cd $(prefix)vim/bundle/vimproc.vim; \
 		make; \
-		cd -; \
-		echo "==> vimproc post install done"
+		cd $(PRJDIR); \
+		echo "done"
 
 clean:
 	@- for file in $(CONF_FILES); do \
