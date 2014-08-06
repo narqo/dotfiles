@@ -31,6 +31,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'delimitMate.vim'
 Plugin 'matchit.zip'
 Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'editorconfig/editorconfig-vim'
 
 Plugin 'scrooloose/syntastic'
 
