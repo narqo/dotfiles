@@ -37,6 +37,10 @@ $(HOME)/bin::
 
 $(prefix)%: %; $(setup)
 
+$(prefix)gitconfig: gitconfig
+	$(setup)
+	mkdir -p $(prefix)gitconfig.d
+
 $(prefix)vimrc: vim/vimrc $(prefix)vim
 	$(setup)
 	@git submodule update --init
