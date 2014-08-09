@@ -25,7 +25,6 @@
     "http-console2": "*",
     "jsonlint": "*",
     "csslint": "*",
-    "travis-encrypt": "*",
-    "gh": "*"
+    "travis-encrypt": "*"
   }
 }
