@@ -12,10 +12,6 @@ set __fish_git_prompt_char_upstream_behind '↓'
 
 function fish_prompt
    set_color red
-   printf '%s' (whoami)
-   printf ' @ '
-
-   set_color red
    printf '%s' (hostname|cut -d . -f 1)
    set_color normal
    printf ' £ '
