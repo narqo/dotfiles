@@ -6,14 +6,20 @@ NPM ?= npm
 NPM_ROOT := $(shell $(NPM) root)
 NPM_BIN := $(shell $(NPM) bin)
 
+fish_config = $(wildcard fish)
+fish_files = $(addprefix config/,$(wildcard $(fish_config)/*))
 vim_files = $(notdir $(wildcard $(addprefix vim/, vimrc)))
+
 ignore = $(wildcard GNUmakefile README* functions eclipse ssh osx bin node_modules package.json)
+ignore += $(fish_config)
 
 files := $(filter-out $(ignore),$(shell ls -1))
 files += $(vim_files)
+files += $(fish_files)
 
 BIN_FILES = $(addprefix $(HOME)/,$(wildcard bin/*))
 NPMBIN_FILES = $(addprefix $(HOME)/,$(subst $(NPM_ROOT)/.,,$(wildcard $(NPM_BIN)/*)))
+
 CONF_FILES = $(addprefix $(prefix),$(files))
 
 # == Functions
@@ -57,6 +63,10 @@ $(prefix)vimrc: vim/vimrc $(prefix)vim
 		make; \
 		cd $(PRJDIR); \
 		echo "done"
+
+$(prefix)config/fish/%: fish/%
+	@mkdir -p $(shell dirname $(@))
+	$(setup)
 
 clean:
 	@- for file in $(CONF_FILES); do \
