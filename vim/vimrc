@@ -55,6 +55,8 @@ call vundle#end()
 
 " General options =============================================================
 
+set shell=/bin/bash
+
 filetype plugin indent on
 syntax on
 
