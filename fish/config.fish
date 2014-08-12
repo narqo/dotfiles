@@ -4,3 +4,7 @@ if status --is-interactive
 end
 
 set -g -x fish_greeting ''
+
+# colors
+set -U fish_color_command ffd7ff
+set -U fish_color_param ffd7ff
