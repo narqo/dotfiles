@@ -7,15 +7,13 @@ NPM_ROOT := $(shell $(NPM) root)
 NPM_BIN := $(shell $(NPM) bin)
 
 # === fish related files
-fish_confdir = $(wildcard fish)
-fish_files = $(addprefix local/share/,$(wildcard $(fish_confdir)/*))
+fish_files = $(addprefix local/share/,$(wildcard fish))
 fish_files += config/fish/config.fish
 
 # === vim related files
 vim_files = $(notdir $(wildcard $(addprefix vim/, vimrc)))
 
 ignore = $(wildcard GNUmakefile README* functions eclipse ssh osx bin node_modules package.json)
-ignore += $(fish_confdir)
 
 files := $(filter-out $(ignore),$(shell ls -1))
 files += $(vim_files)
@@ -42,7 +40,7 @@ install:: $(NPM_BIN) $(BIN_FILES) $(NPMBIN_FILES) $(CONF_FILES)
 $(HOME)/bin/%:: $(HOME)/bin
 	@echo trying $@
 
-$(HOME)/bin:
+$(addprefix $(HOME),bin .config .local/share)::
 	mkdir -p $@
 
 $(prefix)%: %; $(setup)
@@ -70,17 +68,14 @@ $(prefix)vimrc: vim/vimrc $(prefix)vim
 		echo "done"; \
 	fi
 
-$(prefix)config/fish/config.fish:
+$(prefix)config/fish/config.fish: $(prefix)local/share/fish
 	if [ ! -s "$@" ]; then \
 		touch $@; \
 		echo "# vim: ft=conf\\n\\n# Source the common user config.fish\\nsource ~/.local/share/fish/config.fish" > $@; \
 	fi
 
-$(prefix)local/share/fish/%: fish/% $(prefix)local/share/fish
+$(prefix)local/share/fish: fish $(prefix)local/share
 	$(setup)
-
-$(prefix)local/share/fish::
-	mkdir -p $@
 
 clean:
 	@- for file in $(CONF_FILES); do \
