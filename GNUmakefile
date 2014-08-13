@@ -6,12 +6,16 @@ NPM ?= npm
 NPM_ROOT := $(shell $(NPM) root)
 NPM_BIN := $(shell $(NPM) bin)
 
-fish_config = $(wildcard fish)
-fish_files = $(addprefix config/,$(wildcard $(fish_config)/*))
+# === fish related files
+fish_confdir = $(wildcard fish)
+fish_files = $(addprefix local/share/,$(wildcard $(fish_confdir)/*))
+fish_files += config/fish/config.fish
+
+# === vim related files
 vim_files = $(notdir $(wildcard $(addprefix vim/, vimrc)))
 
 ignore = $(wildcard GNUmakefile README* functions eclipse ssh osx bin node_modules package.json)
-ignore += $(fish_config)
+ignore += $(fish_confdir)
 
 files := $(filter-out $(ignore),$(shell ls -1))
 files += $(vim_files)
@@ -38,8 +42,8 @@ install:: $(NPM_BIN) $(BIN_FILES) $(NPMBIN_FILES) $(CONF_FILES)
 $(HOME)/bin/%:: $(HOME)/bin
 	@echo trying $@
 
-$(HOME)/bin::
-	@mkdir -p $@
+$(HOME)/bin:
+	mkdir -p $@
 
 $(prefix)%: %; $(setup)
 
@@ -51,22 +55,32 @@ $(prefix)vimrc: vim/vimrc $(prefix)vim
 	$(setup)
 	@git submodule update --init
 	vim +PluginInstall +qall
-	@[ -d $(prefix)vim/bundle/tern_for_vim ] && \
-		echo -n "==> tern_for_vim postinstall... "
+	@if [ -d $(prefix)vim/bundle/tern_for_vim ]; then \
+		echo -n "==> tern_for_vim postinstall... "; \
 		cd $(prefix)vim/bundle/tern_for_vim; \
 		$(NPM) install; \
 		cd $(PRJDIR) \
-		echo "done"
-	@[ -d $(prefix)vim/bundle/vimproc.vim ] && \
+		echo "done"; \
+	fi
+	@if [ -d $(prefix)vim/bundle/vimproc.vim ]; then \
 		echo -n "==> vimproc postinstall... "; \
 		cd $(prefix)vim/bundle/vimproc.vim; \
 		make; \
 		cd $(PRJDIR); \
-		echo "done"
+		echo "done"; \
+	fi
 
-$(prefix)config/fish/%: fish/%
-	@mkdir -p $(shell dirname $(@))
+$(prefix)config/fish/config.fish:
+	if [ ! -s "$@" ]; then \
+		touch $@; \
+		echo "# vim: ft=conf\\n\\n# Source the common user config.fish\\nsource ~/.local/share/fish/config.fish" > $@; \
+	fi
+
+$(prefix)local/share/fish/%: fish/% $(prefix)local/share/fish
 	$(setup)
+
+$(prefix)local/share/fish::
+	mkdir -p $@
 
 clean:
 	@- for file in $(CONF_FILES); do \
