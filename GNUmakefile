@@ -40,14 +40,11 @@ install:: $(NPM_BIN) $(BIN_FILES) $(NPMBIN_FILES) $(CONF_FILES)
 $(HOME)/bin/%:: $(HOME)/bin
 	@echo trying $@
 
-$(addprefix $(HOME),bin .config .local/share)::
-	mkdir -p $@
-
 $(prefix)%: %; $(setup)
 
 $(prefix)gitconfig: gitconfig
 	$(setup)
-	mkdir -p $(prefix)gitconfig.d
+	@mkdir -p $(prefix)gitconfig.d
 
 $(prefix)vimrc: vim/vimrc $(prefix)vim
 	$(setup)
@@ -69,13 +66,19 @@ $(prefix)vimrc: vim/vimrc $(prefix)vim
 	fi
 
 $(prefix)config/fish/config.fish: $(prefix)local/share/fish
+	@mkdir -p $(shell dirname $@)
 	if [ ! -s "$@" ]; then \
 		touch $@; \
-		echo "# vim: ft=conf\\n\\n# Source the common user config.fish\\nsource ~/.local/share/fish/config.fish" > $@; \
+		/usr/bin/env bash -c \
+			"echo -e '# vim: ft=conf\n\n# Source the common user config.fish\nsource $$HOME/.local/share/fish/config.fish' \
+				> $@"; \
 	fi
 
 $(prefix)local/share/fish: fish $(prefix)local/share
 	$(setup)
+
+$(addprefix $(HOME),bin .config .local/share)::
+	@mkdir -p $@
 
 clean:
 	@- for file in $(CONF_FILES); do \
