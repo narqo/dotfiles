@@ -13,7 +13,7 @@ fish_files += config/fish/config.fish
 # === vim related files
 vim_files = $(notdir $(wildcard $(addprefix vim/, vimrc)))
 
-ignore = $(wildcard GNUmakefile README* functions eclipse ssh osx bin node_modules package.json)
+ignore = $(wildcard GNUmakefile README* functions eclipse ssh osx bin fish node_modules package.json)
 
 files := $(filter-out $(ignore),$(shell ls -1))
 files += $(vim_files)
