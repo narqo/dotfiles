@@ -15,10 +15,10 @@ set -g fish_color_command ffd7ff
 set -g fish_color_param ffd7ff
 
 if status --is-login
-    set -gx LANG ru_RU.UTF-8
+    set -gx LANG en_US.UTF-8
 end
 
 if status --is-interactive
     set EDITOR vim
-    set PATH $PATH ~/bin ~/.local/bin ./node_modules/.bin
+    set PATH ./node_modules/.bin ~/.local/bin ~/bin /usr/local/bin $PATH
 end
