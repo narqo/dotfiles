@@ -1,0 +1,19 @@
+# vi: set ft=sh:
+
+# set up brew cask
+install caskroom/cask/brew-cask
+
+# common dev tools
+cask install atom
+cask install iterm2
+cask install vagrant
+cask install virtualbox
+
+# browsers
+cask install firefox
+cask install google-chrome
+cask install chromium
+cask install opera-next
+
+# other stuff
+cask install mplayerx
