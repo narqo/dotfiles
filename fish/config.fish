@@ -1,8 +1,8 @@
 # vim: ft=conf
 
 # Some local XDG-like dirs
-set -l confdir ~/.config
-set -l datadir ~/.local/share
+set -l confdir $HOME/.config
+set -l datadir $HOME/.local/share
 
 # Set up function paths
 set fish_function_path $confdir/fish/functions $datadir/fish/functions $__fish_sysconfdir/functions $__fish_datadir/functions
@@ -19,6 +19,6 @@ if status --is-login
 end
 
 if status --is-interactive
-    set EDITOR vim
-    set PATH ./node_modules/.bin ~/.local/bin ~/bin /usr/local/bin $PATH
+    set -x EDITOR vim
+    set -x PATH ./node_modules/.bin $HOME/.local/bin $HOME/bin /usr/local/bin $PATH
 end
