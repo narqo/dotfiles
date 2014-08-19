@@ -51,6 +51,8 @@ Plugin 'elzr/vim-json'
 " YAML
 Plugin 'ingydotnet/yaml-vim'
 
+Plugin 'rizzatti/dash.vim'
+
 call vundle#end()
 
 " General options =============================================================
