@@ -404,6 +404,13 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
+" === DelimitMate ================================
+let delimitMate_smart_quotes = 0
+" tells delimitMate which characters are matching pairs
+let delimitMate_matchpairs = "(:),[:],{:}"
+" tells delimitMate which quotes should be used
+let delimitMate_quotes = ""
+
 " === Syntastic ==================================
 " mark syntax errors with :sign
 let g:syntastic_enable_signs = 1
