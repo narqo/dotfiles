@@ -11,6 +11,7 @@ install gh
 install git
 install go
 install htop-osx
+install jq
 install mercurial
 install midnight-commander
 install node
