@@ -1,11 +1,8 @@
 # vi: set ft=sh:
 
+# Usage: brew bundle <dotfiles>/Brewfile
+
 tap homebrew/binary
-
-install vim --override-system-vi
-
-install openssl --with-keychain-support
-link --force openssl
 
 install ack
 install dart
@@ -16,7 +13,7 @@ install go
 install htop-osx
 install mercurial
 install midnight-commander
-install node --without-completion
+install node
 install nvm
 install packer
 install pkg-config
@@ -26,3 +23,7 @@ install tree
 install watch
 install xz
 
+install openssl --with-keychain-support
+link --force openssl
+
+install vim --override-system-vi
