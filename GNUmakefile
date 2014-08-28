@@ -51,18 +51,20 @@ $(prefix)vimrc: vim/vimrc $(prefix)vim
 	@git submodule update --init
 	vim +PluginInstall +qall
 	@if [ -d $(prefix)vim/bundle/tern_for_vim ]; then \
-		echo -n "==> tern_for_vim postinstall... "; \
-		cd $(prefix)vim/bundle/tern_for_vim; \
-		$(NPM) install; \
-		cd $(PRJDIR) \
-		echo "done"; \
+		( \
+			echo -n "==> tern_for_vim postinstall... "; \
+			cd $(prefix)vim/bundle/tern_for_vim; \
+			$(NPM) install; \
+			echo "done"; \
+		) \
 	fi
 	@if [ -d $(prefix)vim/bundle/vimproc.vim ]; then \
-		echo -n "==> vimproc postinstall... "; \
-		cd $(prefix)vim/bundle/vimproc.vim; \
-		make; \
-		cd $(PRJDIR); \
-		echo "done"; \
+		( \
+			echo -n "==> vimproc postinstall... "; \
+			cd $(prefix)vim/bundle/vimproc.vim; \
+			make; \
+			echo "done"; \
+		) \
 	fi
 
 $(prefix)config/fish/config.fish: $(prefix)local/share/fish
