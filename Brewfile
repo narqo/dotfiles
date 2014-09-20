@@ -4,7 +4,7 @@
 
 tap homebrew/binary
 
-install ack
+install ag
 install dart
 install fish
 install gh
