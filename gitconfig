@@ -31,4 +31,4 @@
     interactive = auto
     status = auto
 [include]
-    path = .gitconfig.d/gh
+    path = ~/.config/git
