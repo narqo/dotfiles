@@ -10,8 +10,11 @@ end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[{bower.json,package.json}]
+[*.json]
 indent_size = 2
+
+[*.go]
+indent_style = tab
 
 [{GNUmakefile,Makefile}]
 indent_style = tab

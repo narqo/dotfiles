@@ -50,6 +50,8 @@ Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'elzr/vim-json'
 " YAML
 Plugin 'ingydotnet/yaml-vim'
+" Go
+Plugin 'fatih/vim-go'
 
 Plugin 'rizzatti/dash.vim'
 
@@ -294,15 +296,17 @@ nnoremap <leader>dd :windo diffthis<CR>
 autocmd BufEnter * lcd %:p:h
 
 " Customisations based on filetype
-autocmd BufNewFile,BufRead *.rss.*.atom setfiletype xml
+autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
 
-" For all text files set 'textwidth' to 80 characters.
-autocmd FileType text,txt setlocal tw=120
+autocmd BufRead,BufNewFile *.md,*.markdown setl tw=120 ts=2 sw=2 expandtab
+autocmd BufRead,BufNewFile *.wiki setl ft=wiki tw=120 ts=2 sw=2 expandtab
 
-autocmd BufRead,BufNewFile *.md,*.markdown set tw=120 ts=2 sw=2 expandtab
-autocmd BufRead,BufNewFile *.wiki set ft=wiki tw=120 ts=2 sw=2 expandtab
-
-autocmd Filetype gitcommit set tw=68  spell
+autocmd FileType gitcommit setl tw=68 spell
+autocmd FileType go setl ts=4 sts=4 sw=4 noet
+" Show also matching html parenthesis
+autocmd FileType html,xml,xslt setl matchpairs+=<:>
+" For all text files set 'textwidth' to 120 characters.
+autocmd FileType text,txt setl tw=120
 
 " Custom functions =============================================================
 
@@ -321,9 +325,6 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 command! StripTrailingWhitespaces call <SID>StripTrailingWhitespaces()
 nmap ,w :StripTrailingWhitespaces<CR>
-
-" Show also matching html parenthesis
-set matchpairs+=<:>
 
 " Plugins settings =============================================================
 
