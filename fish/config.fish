@@ -15,7 +15,7 @@ set -g fish_color_command ffd7ff
 set -g fish_color_param ffd7ff
 
 if status --is-login
-    set -gx LANG en_US.UTF-8
+    set -x LANG en_US.UTF-8
 end
 
 if status --is-interactive
