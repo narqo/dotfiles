@@ -7,13 +7,14 @@ tap homebrew/binary
 install ag
 install dart
 install fish
-install gh
 install git
 install go
 install htop-osx
+install hub --HEAD
 install jq
 install mercurial
 install midnight-commander
+install mdp
 install node
 install nvm
 install packer
@@ -21,7 +22,8 @@ install pkg-config
 install python
 install siege
 install tree
-install watch
+#install watch
+install fswatch
 install xz
 
 install openssl --with-keychain-support
