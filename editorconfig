@@ -16,6 +16,6 @@ indent_size = 2
 [*.go]
 indent_style = tab
 
-[{GNUmakefile,Makefile}]
+[{GNUmakefile,Makefile,debian/rules}]
 indent_style = tab
 trim_trailing_whitespace = false
