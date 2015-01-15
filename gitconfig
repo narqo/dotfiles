@@ -18,6 +18,7 @@
     di = diff
     st = status
     hist = log --graph --pretty=format:\"%C(bold red)%h%Creset %ad - %s%C(green)%d%Creset %C(blue)<%an>%Creset\" --date=short
+    staged = diff --cached
     ff = merge --ff-only
     ls = ls-files
     # list files marked with "--assume-unchanged"
