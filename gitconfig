@@ -10,7 +10,7 @@
 [diff]
     algorithm = patience
 [push]
-    default = simple
+    default = current
 [alias]
     br = branch -v
     ci = commit
