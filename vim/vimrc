@@ -457,3 +457,9 @@ nnoremap <leader><F6> :TernRename<cr>
 " disable concealing of double quotes
 let g:vim_json_syntax_conceal = 0
 
+" === EditorConfig ===============================
+" this is a list contains file path patterns which will be ignored
+let g:EditorConfig_exclude_patterns = [
+    \ 'Makefile',
+    \ 'GNUmakefile',
+    \ '.*/debian/rules']
