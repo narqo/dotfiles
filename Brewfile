@@ -17,12 +17,11 @@ install midnight-commander
 install mdp
 install node
 install nvm
-install packer
+install par
 install pkg-config
 install python
 install siege
 install tree
-#install watch
 install fswatch
 install xz
 
