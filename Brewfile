@@ -1,6 +1,6 @@
 # vi: set ft=sh:
 
-# Usage: brew bundle <dotfiles>/Brewfile
+# Usage: brew $(cat <dotfiles>/Brewfile | grep -v)
 
 tap homebrew/binary
 
