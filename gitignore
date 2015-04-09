@@ -18,7 +18,7 @@
 
 # PyCharm/WebStorm/Etc
 .idea/
-.iml
+*.iml
 
 # vim
 .*.s[a-w][a-z]
@@ -34,3 +34,5 @@ npm-debug.log
 # Sublime
 *.sublime-workspace
 
+# syncd
+/.syncd
