@@ -10,6 +10,10 @@ set fish_function_path $confdir/fish/functions $datadir/fish/functions $__fish_s
 # Clean up default fish greeting
 set -gx fish_greeting ''
 
+# Set up colors (reset default colours)
+set -g fish_color_command
+set -g fish_color_param
+
 if status --is-login
     set -x LANG en_US.UTF-8
 end
