@@ -36,3 +36,6 @@ npm-debug.log
 
 # syncd
 /.syncd
+
+# srclib build cache
+.srclib-cache/
