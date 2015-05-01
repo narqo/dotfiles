@@ -9,6 +9,9 @@ cask install iterm2
 cask install vagrant
 cask install virtualbox
 
+# a tool for managing secrets
+cask install vault
+
 # browsers
 cask install firefox
 cask install google-chrome
