@@ -32,12 +32,12 @@ function __fish_prompt_symbols -d "Display symbols"
   # background job indicator
   if [ (jobs | wc -l)  -gt 0 ]
     set_color -o $__fish_colors[11]
-    echo -n " ⚙"
+    echo -n " 🐾"
   end
   # write protection indicator
   if [ ! -w . ]
     set_color -o $__fish_colors[6]
-    echo -n " L"
+    echo -n " 🔒"
   end
   echo -n " "
   set_color -b normal
