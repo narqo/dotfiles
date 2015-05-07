@@ -11,6 +11,7 @@ install git
 install go
 install htop-osx
 install hub --HEAD
+install iojs
 install jq
 install mercurial
 install midnight-commander
