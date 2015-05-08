@@ -21,6 +21,7 @@ files += $(vim_files)
 files += $(fish_files)
 
 BIN_FILES = $(addprefix $(prefix),$(wildcard bin/*))
+CONF_DIRS = $(addprefix $(root_prefix),config/ $(addprefix local/,bin/ share/ opt/))
 CONF_FILES = $(addprefix $(root_prefix),$(files))
 
 # == Functions
@@ -28,12 +29,12 @@ git_up = @git pull
 setup = @ln -svfF $(realpath $<) $@
 
 # == Targets
-all: ; $(git_up) $(npm)
+all: ; $(git_up)
 
 $(ignore):
 	@echo Skipping $(@)
 
-install:: $(NPM_BIN) $(BIN_FILES) $(CONF_FILES)
+install:: $(CONF_DIRS) $(CONF_FILES)
 	@echo All done
 
 $(root_prefix)%: %; $(setup)
@@ -44,7 +45,7 @@ $(root_prefix)vimrc: vim/vimrc $(root_prefix)vim
 	vim +PluginInstall +qall
 	@if [ -d $(root_prefix)vim/bundle/tern_for_vim ]; then \
 		( \
-			echo -n "==> tern_for_vim postinstall... "; \
+			echo "==> tern_for_vim postinstall... "; \
 			cd $(root_prefix)vim/bundle/tern_for_vim; \
 			npm install; \
 			echo "done"; \
@@ -52,7 +53,7 @@ $(root_prefix)vimrc: vim/vimrc $(root_prefix)vim
 	fi
 	@if [ -d $(prefix)vim/bundle/vimproc.vim ]; then \
 		( \
-			echo -n "==> vimproc postinstall... "; \
+			echo "==> vimproc postinstall... "; \
 			cd $(prefix)vim/bundle/vimproc.vim; \
 			make; \
 			echo "done"; \
@@ -68,23 +69,20 @@ $(root_prefix)config/fish/config.fish: $(prefix)share/fish
 				> $@"; \
 	fi
 
-$(root_prefix)gitconfig: gitconfig
-	$(setup)
+$(root_prefix)gitconfig: gitconfig $(CONF_DIRS)
 	@mkdir -p $(root_prefix)config/git
+	$(setup)
 
 $(prefix)share/fish: fish $(prefix)share
 	$(setup)
 
-$(addprefix $(root_prefix), config local/bin local/share local/opt)::
+$(CONF_DIRS):
 	@mkdir -p $@
 
 clean:
-	@- for file in $(CONF_FILES); do \
-		test -L "$$file" && "$(RM) -r $$file"; \
+	@-for file in $(CONF_FILES); do \
+		test -L "$$file" && rm -rf "$$file"; \
 	done
-
-$(NPM_BIN): package.json
-	@$(NPM) install
 
 .PHONY: all clean install npm
 
