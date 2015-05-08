@@ -1,8 +1,9 @@
 PRJDIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
-prefix = $(HOME)/.
+root_prefix = $(HOME)/.
+prefix = $(addprefix $(root_prefix),local/)
 
-NPM ?= npm
+NPM ?= npm -g --prefix=$(prefix)
 NPM_ROOT := $(shell $(NPM) root)
 NPM_BIN := $(shell $(NPM) bin)
 
@@ -13,16 +14,14 @@ fish_files += config/fish/config.fish
 # === vim related files
 vim_files = $(notdir $(wildcard $(addprefix vim/, vimrc)))
 
-ignore = $(wildcard GNUmakefile Brewfile Caskfile README* functions eclipse ssh osx bin fish node_modules package.json)
+ignore = $(wildcard GNUmakefile Brewfile Caskfile README* osx fish package.json)
 
 files := $(filter-out $(ignore),$(shell ls -1))
 files += $(vim_files)
 files += $(fish_files)
 
-BIN_FILES = $(addprefix $(HOME)/,$(wildcard bin/*))
-NPMBIN_FILES = $(addprefix $(HOME)/,$(subst $(NPM_ROOT)/.,,$(wildcard $(NPM_BIN)/*)))
-
-CONF_FILES = $(addprefix $(prefix),$(files))
+BIN_FILES = $(addprefix $(prefix),$(wildcard bin/*))
+CONF_FILES = $(addprefix $(root_prefix),$(files))
 
 # == Functions
 git_up = @git pull
@@ -34,27 +33,20 @@ all: ; $(git_up) $(npm)
 $(ignore):
 	@echo Skipping $(@)
 
-install:: $(NPM_BIN) $(BIN_FILES) $(NPMBIN_FILES) $(CONF_FILES)
+install:: $(NPM_BIN) $(BIN_FILES) $(CONF_FILES)
 	@echo All done
 
-$(HOME)/bin/%:: $(HOME)/bin
-	@echo trying $@
+$(root_prefix)%: %; $(setup)
 
-$(prefix)%: %; $(setup)
-
-$(prefix)gitconfig: gitconfig
-	$(setup)
-	@mkdir -p $(prefix)gitconfig.d
-
-$(prefix)vimrc: vim/vimrc $(prefix)vim
+$(root_prefix)vimrc: vim/vimrc $(root_prefix)vim
 	$(setup)
 	@git submodule update --init
 	vim +PluginInstall +qall
-	@if [ -d $(prefix)vim/bundle/tern_for_vim ]; then \
+	@if [ -d $(root_prefix)vim/bundle/tern_for_vim ]; then \
 		( \
 			echo -n "==> tern_for_vim postinstall... "; \
-			cd $(prefix)vim/bundle/tern_for_vim; \
-			$(NPM) install; \
+			cd $(root_prefix)vim/bundle/tern_for_vim; \
+			npm install; \
 			echo "done"; \
 		) \
 	fi
@@ -67,8 +59,8 @@ $(prefix)vimrc: vim/vimrc $(prefix)vim
 		) \
 	fi
 
-$(prefix)config/fish/config.fish: $(prefix)local/share/fish
-	@mkdir -p $(shell dirname $@)
+$(root_prefix)config/fish/config.fish: $(prefix)share/fish
+	@mkdir -p $(shell dirname $@)/functions
 	if [ ! -s "$@" ]; then \
 		touch $@; \
 		/usr/bin/env bash -c \
@@ -76,10 +68,14 @@ $(prefix)config/fish/config.fish: $(prefix)local/share/fish
 				> $@"; \
 	fi
 
-$(prefix)local/share/fish: fish $(prefix)local/share
+$(root_prefix)gitconfig: gitconfig
+	$(setup)
+	@mkdir -p $(root_prefix)config/git
+
+$(prefix)share/fish: fish $(prefix)share
 	$(setup)
 
-$(addprefix $(HOME),bin .config .local/share)::
+$(addprefix $(root_prefix), config local/bin local/share local/opt)::
 	@mkdir -p $@
 
 clean:
@@ -87,21 +83,8 @@ clean:
 		test -L "$$file" && "$(RM) -r $$file"; \
 	done
 
-$(NPM): $(NPM_BIN)
-	@echo $(NPMBIN_FILES)
-
 $(NPM_BIN): package.json
 	@$(NPM) install
 
 .PHONY: all clean install npm
-
-define setup_binaries
-
-$$(HOME)/bin/$(notdir $1):: $(1) $$(HOME)/bin
-	$$(setup)
-
-endef
-
-$(foreach b,$(wildcard bin/*),$(eval $(call setup_binaries,$(b))))
-$(foreach b,$(wildcard $(NPM_BIN)/*),$(eval $(call setup_binaries,$b)))
 

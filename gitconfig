@@ -31,4 +31,4 @@
     interactive = auto
     status = auto
 [include]
-    path = ~/.config/git
+    path = ~/.config/git/local
