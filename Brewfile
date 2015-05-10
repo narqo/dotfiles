@@ -21,6 +21,7 @@ install nvm
 install par
 install pkg-config
 install python
+install rename
 install siege
 install tree
 install fswatch
