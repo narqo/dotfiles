@@ -5,6 +5,7 @@
 tap homebrew/binary
 
 install ag
+install ctags
 install dart
 install fish
 install git

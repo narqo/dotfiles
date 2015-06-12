@@ -35,23 +35,18 @@ Plugin 'editorconfig/editorconfig-vim'
 
 Plugin 'scrooloose/syntastic'
 
+Plugin 'tpope/vim-markdown'
+Plugin 'dart-lang/dart-vim-plugin'
+Plugin 'elzr/vim-json'
+Plugin 'stephpy/vim-yaml'
+Plugin 'fatih/vim-go'
 " HTML/XML
 Plugin 'sukima/xmledit'
-" Markdown
-Plugin 'tpope/vim-markdown'
 " JavaScript
 Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'moll/vim-node'
 Plugin 'marijnh/tern_for_vim'
-" Dart
-Plugin 'dart-lang/dart-vim-plugin'
-" JSON
-Plugin 'elzr/vim-json'
-" YAML
-Plugin 'ingydotnet/yaml-vim'
-" Go
-Plugin 'fatih/vim-go'
 
 Plugin 'rizzatti/dash.vim'
 
