@@ -124,6 +124,9 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
 
+# Set Safari's home page to 'about:blank' for faster loading
+defaults write com.apple.Safari HomePage -string "about:blank"
+
 # Disable Safari’s thumbnail cache for History and Top Sites
 defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
 
@@ -143,8 +146,14 @@ defaults write com.apple.iTunes disablePingSidebar -bool true
 defaults write com.apple.iTunes disablePing -bool true
 
 # Disable send and reply animations in Mail.app
-defaults write com.apple.Mail DisableReplyAnimations -bool true
-defaults write com.apple.Mail DisableSendAnimations -bool true
+defaults write com.apple.mail DisableReplyAnimations -bool true
+defaults write com.apple.mail DisableSendAnimations -bool true
+
+# Copy email addresses as 'foo@example.com' instead of 'Foo Bar <foo@example.com>' in Mail.app
+defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
+
+# Show all processes in Activity Monitor
+defaults write com.apple.ActivityMonitor ShowCategory -int 0
 
 # Disable Resume system-wide
 defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
@@ -165,7 +174,7 @@ sudo ln -sf /Applications/Xcode.app/Contents/Applications/iOS\ Simulator.app /Ap
 [ -e ~/Library/Application\ Support/Dock/*.db ] && rm ~/Library/Application\ Support/Dock/*.db
 
 # Show the ~/Library folder
-chflags nohidden ~/Library
+chflags nohidden $HOME/Library
 
 # Fix for the ancient UTF-8 bug in QuickLook (http://mths.be/bbo)
 # Commented out, as this is known to cause problems when saving files in Adobe Illustrator CS5 :(

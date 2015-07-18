@@ -3,6 +3,8 @@
     email = nek.narqo+git@gmail.com
 [github]
     user = narqo
+[url "https://github.com/"]
+    insteadOf = "gh:"
 [core]
     editor = vim
     excludesfile = ~/.gitignore
@@ -16,7 +18,7 @@
     ci = commit
     co = checkout
     di = diff
-    st = status
+    st = status -sb
     hist = log --graph --pretty=format:\"%C(bold red)%h%Creset %ad - %s%C(green)%d%Creset %C(blue)<%an>%Creset\" --date=short
     staged = diff --cached
     ff = merge --ff-only

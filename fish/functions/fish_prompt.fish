@@ -18,21 +18,15 @@ set __fish_git_prompt_char_untrackedfiles "…"
 set __fish_colors 000000 083743    445659     fdf6e3 b58900 cb4b16 dc121f af005f  6c71c4 268bd2 2aa198 859900
 
 function __fish_prompt_symbols -d "Display symbols"
-  #set_color -b $__fish_colors[2]
   # indicator for vim parent process
   if set -q -x VIM
     set_color -o $__fish_colors[9]
     echo -n " V"
   end
-  # indicator for ranger parent process
-  if set -q -x RANGER_LEVEL
-    set_color -o $__fish_colors[9]
-    echo -n " R"
-  end
   # background job indicator
   if [ (jobs | wc -l)  -gt 0 ]
     set_color -o $__fish_colors[11]
-    echo -n " ⚙"
+    echo -n " ≡"
   end
   # write protection indicator
   if [ ! -w . ]
