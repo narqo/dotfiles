@@ -4,7 +4,7 @@
 [github]
     user = narqo
 [url "https://github.com/"]
-    insteadOf = "gh:"
+    insteadOf = "gh://"
 [core]
     editor = vim
     excludesfile = ~/.gitignore
@@ -34,3 +34,7 @@
     status = auto
 [include]
     path = ~/.config/git/local
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true

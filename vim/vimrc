@@ -31,7 +31,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'delimitMate.vim'
 Plugin 'matchit.zip'
 Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'editorconfig/editorconfig-vim'
+"Plugin 'editorconfig/editorconfig-vim'
 
 Plugin 'scrooloose/syntastic'
 
@@ -46,9 +46,7 @@ Plugin 'sukima/xmledit'
 Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'moll/vim-node'
-Plugin 'marijnh/tern_for_vim'
-
-Plugin 'rizzatti/dash.vim'
+"Plugin 'marijnh/tern_for_vim'
 
 call vundle#end()
 
