@@ -22,3 +22,5 @@ if status --is-interactive
     set -x EDITOR vim
     set -x PATH ./node_modules/.bin $HOME/.local/bin /usr/local/bin $PATH
 end
+
+set -x PYTHONUSERBASE $HOME/.local
