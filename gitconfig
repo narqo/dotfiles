@@ -25,6 +25,7 @@
     ls = ls-files
     up = !git pull --rebase --prune $@
     sweep = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs git branch -d; }; f"
+    root = rev-parse --show-toplevel
     pr = pull-request
 [color]
     ui = auto
