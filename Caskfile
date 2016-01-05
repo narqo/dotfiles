@@ -5,7 +5,9 @@ install caskroom/cask/brew-cask
 
 # common dev tools
 cask install atom
+cask install dockertoolbox
 cask install iterm2
+cask install sauce-connect
 cask install vagrant
 cask install virtualbox
 

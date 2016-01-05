@@ -12,7 +12,6 @@ install git
 install go
 install htop-osx
 install hub --HEAD
-install iojs
 install jq
 install mercurial
 install midnight-commander
@@ -32,3 +31,7 @@ install openssl --with-keychain-support
 link --force openssl
 
 install vim --override-system-vi
+
+# simplified community-driven man pages
+tap tldr-pages/tldr
+install tldr
