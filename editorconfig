@@ -12,10 +12,21 @@ trim_trailing_whitespace = true
 
 [*.json]
 indent_size = 2
+indent_style = space
+
+[*.yml]
+indent_size = 2
+indent_style = space
 
 [*.go]
 indent_style = tab
 
+[*.mk]
+insert_final_newline = true
+indent_style = tab
+indent_size = 4
+
 [{GNUmakefile,Makefile,debian/rules}]
+indent_size = 4
 indent_style = tab
 trim_trailing_whitespace = false
