@@ -9,6 +9,7 @@ install ctags
 install dart
 install fish
 install git
+install gnu-sed --with-default-names
 install go
 install htop-osx
 install hub --HEAD
@@ -16,7 +17,7 @@ install jq
 install mercurial
 install midnight-commander
 install mdp
-install node
+install node4-lts
 install nvm
 install par
 install pkg-config
