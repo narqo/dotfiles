@@ -23,4 +23,7 @@ if status --is-interactive
     set -x PATH ./node_modules/.bin $HOME/.local/bin /usr/local/bin $PATH
 end
 
+# Don’t clear the screen after quitting a manual page
+set -x MANPAGER "less -X"
+
 set -x PYTHONUSERBASE $HOME/.local
