@@ -5,7 +5,8 @@ install caskroom/cask/brew-cask
 
 # common dev tools
 cask install atom
-cask install dockertoolbox
+# TODO: use bocker for mac, https://beta.docker.com
+#cask install dockertoolbox
 cask install iterm2
 cask install sauce-connect
 cask install vagrant
