@@ -2,3 +2,15 @@
 ignore = ~/.hgignore
 username = Vladimir 'Vii' Varankin <nek.narqo@gmail.com>
 verbose = True
+
+[pager]
+pager = LESS='FSRX' less
+ignore = version, help, update, serve, record
+
+[extensions]
+color =
+graphlog =
+histedit =
+pager =
+purge =
+rebase =
