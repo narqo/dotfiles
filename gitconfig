@@ -19,7 +19,7 @@
     co = checkout
     di = diff
     st = status -sb
-    hist = log --graph --pretty=format:\"%C(bold red)%h%Creset %ad - %s%C(green)%d%Creset %C(blue)<%an>%Creset\" --date=short
+    hist = log --graph --pretty=format:'%C(red)%h%Creset %s - %ad%C(green)%d%Creset %C(blue)<%an>%Creset' --date=short
     staged = diff --cached
     ff = merge --ff-only
     ls = ls-files
