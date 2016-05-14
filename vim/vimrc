@@ -45,7 +45,6 @@ Plugin 'fatih/vim-go'
 Plugin 'sukima/xmledit'
 " JavaScript
 Plugin 'pangloss/vim-javascript'
-Plugin 'jelera/vim-javascript-syntax'
 Plugin 'moll/vim-node'
 "Plugin 'marijnh/tern_for_vim'
 
