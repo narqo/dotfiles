@@ -21,6 +21,7 @@
 *.iml
 
 # Visual Studio Code
+.vscode/
 jsconfig.json
 
 # vim
