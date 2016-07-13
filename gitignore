@@ -20,6 +20,9 @@
 .idea/
 *.iml
 
+# Visual Studio Code
+jsconfig.json
+
 # vim
 .*.s[a-w][a-z]
 *~

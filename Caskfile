@@ -4,7 +4,8 @@
 install caskroom/cask/brew-cask
 
 # common dev tools
-cask install atom
+#cask install atom
+cask install visual-studio-code
 # TODO: use bocker for mac, https://beta.docker.com
 #cask install dockertoolbox
 cask install iterm2
