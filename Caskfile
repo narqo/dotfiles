@@ -10,7 +10,6 @@ cask install visual-studio-code
 #cask install dockertoolbox
 cask install iterm2
 cask install sauce-connect
-cask install vagrant
 cask install virtualbox
 
 # a tool for managing secrets
@@ -23,4 +22,5 @@ cask install chromium
 cask install opera-next
 
 # other stuff
+cask install appcleaner
 cask install mplayerx
