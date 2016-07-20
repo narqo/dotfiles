@@ -10,6 +10,9 @@ set fish_function_path $confdir/fish/functions $datadir/fish/functions $__fish_s
 # Clean up default fish greeting
 set -gx fish_greeting ''
 
+# Set up fisherman datadir
+set -U fish_path $datadir/fish
+
 # Set up colors (reset default colours)
 set -g fish_color_command
 set -g fish_color_param
@@ -20,7 +23,7 @@ end
 
 if status --is-interactive
     set -x EDITOR vim
-    set -x PATH ./node_modules/.bin $HOME/.local/bin /usr/local/bin $PATH
+    set -x PATH $HOME/.local/bin /usr/local/bin $PATH
 end
 
 # Don’t clear the screen after quitting a manual page
