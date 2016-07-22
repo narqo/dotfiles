@@ -47,7 +47,7 @@ function fish_prompt
     set prompt $prompt (set_color $__fish_colors[6])$host(set_color normal)": "
   end
 
-  set prompt $prompt (set_color $fish_color_cwd)(pwd | sed "s:^$HOME:~:")
+  set prompt $prompt (set_color $fish_color_cwd)(pwd | sed "s:^$HOME\/:~/:")
   echo -n -s $prompt (set_color normal)
 
   set -l git_prompt_format (set_color normal)" £ %s"
