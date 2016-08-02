@@ -11,6 +11,7 @@ install fish
 install git
 install gnu-sed --with-default-names
 install go
+install go-delve/delve/delve
 install htop-osx
 install hub --HEAD
 install jq
@@ -34,5 +35,4 @@ link --force openssl
 install vim --override-system-vi
 
 # simplified community-driven man pages
-tap tldr-pages/tldr
-install tldr
+install tldr-pages/tldr/tldr
