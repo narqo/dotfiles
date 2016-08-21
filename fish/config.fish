@@ -1,8 +1,13 @@
 # vim: ft=conf
 
+# See https://specifications.freedesktop.org/basedir-spec/latest/ar01s03.html
+set -x XDG_CONFIG_HOME $HOME/.config
+set -x XDG_CACHE_HOME $HOME/.cache
+set -x XDG_DATA_HOME $HOME/.local/share
+
 # Some local XDG-like dirs
-set -l confdir $HOME/.config
-set -l datadir $HOME/.local/share
+set -l confdir $XDG_CONFIG_HOME
+set -l datadir $XDG_DATA_HOME
 
 # Set up function paths
 set fish_function_path $confdir/fish/functions $datadir/fish/functions $__fish_sysconfdir/functions $__fish_datadir/functions
