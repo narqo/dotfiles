@@ -57,7 +57,9 @@ set shell=/bin/bash
 filetype plugin indent on
 syntax on
 
-set ttyfast
+if !has('nvim')
+    set ttyfast
+endif
 
 set encoding=utf-8
 " Кодировка по-умолчанию
@@ -132,9 +134,10 @@ end
 " Paste mode toggle on <,p>
 set pastetoggle=<leader>p
 
-if has('unnamedplus')
-    set clipboard=unnamedplus
-endif
+set mouse=
+"if has('unnamedplus')
+"    set clipboard=unnamedplus
+"endif
 
 " Status line ==================================================================
 
