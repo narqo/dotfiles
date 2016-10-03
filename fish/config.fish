@@ -28,7 +28,7 @@ end
 
 if status --is-interactive
     set -x EDITOR vim
-    set -x PATH $HOME/.local/bin /usr/local/bin $PATH
+    set PATH $HOME/.local/bin /usr/local/bin $PATH
 end
 
 # Don’t clear the screen after quitting a manual page
