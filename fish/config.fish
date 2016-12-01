@@ -35,3 +35,4 @@ end
 set -x MANPAGER "less -X"
 
 set -x PYTHONUSERBASE $HOME/.local
+set -x GOPATH $HOME/.local/lib/go
