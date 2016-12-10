@@ -19,7 +19,6 @@ cask install vault
 cask install firefox
 cask install google-chrome
 cask install chromium
-cask install opera-next
 
 # other stuff
 cask install appcleaner

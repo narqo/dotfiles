@@ -6,7 +6,6 @@ tap homebrew/binary
 
 install ag
 install ctags
-install dart
 install fish
 install git
 install gnu-sed --with-default-names
@@ -18,16 +17,17 @@ install jq
 install mercurial
 install midnight-commander
 install mdp
-install node4-lts
-install nvm
+install node
 install par
 install pkg-config
 install python
+install python3
 install rename
 install siege
 install tree
 install fswatch
 install xz
+install the_silver_searcher
 
 install openssl --with-keychain-support
 link --force openssl
