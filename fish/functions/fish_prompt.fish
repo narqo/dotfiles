@@ -1,13 +1,17 @@
 # fish git prompt
 set __fish_git_prompt_showdirtystate "yes"
+set __fish_git_prompt_showstashstate "yes"
 set __fish_git_prompt_showupstream "yes"
-set __fish_git_prompt_color_branch purple
+#set __fish_git_prompt_color_branch purple
+set __fish_git_prompt_color normal
+set __fish_git_prompt_color_branch normal
 
 # Status Chars
 set __fish_git_prompt_char_cleanstate ""
 set __fish_git_prompt_char_dirtystate "±"
 set __fish_git_prompt_char_stagedstate "⇈"
 set __fish_git_prompt_char_invalidstate "✖"
+set __fish_git_prompt_char_stashstate "↩"
 set __fish_git_prompt_char_upstream_ahead "↑"
 set __fish_git_prompt_char_upstream_behind "↓"
 set __fish_git_prompt_char_upstream_equal ""
@@ -18,11 +22,6 @@ set __fish_git_prompt_char_untrackedfiles "…"
 set __fish_colors 000000 083743    445659     fdf6e3 b58900 cb4b16 dc121f af005f  6c71c4 268bd2 2aa198 859900
 
 function __fish_prompt_symbols -d "Display symbols"
-  # indicator for vim parent process
-  if set -q -x VIM
-    set_color -o $__fish_colors[9]
-    echo -n " V"
-  end
   # background job indicator
   if [ (jobs | wc -l)  -gt 0 ]
     set_color -o $__fish_colors[11]
@@ -31,7 +30,7 @@ function __fish_prompt_symbols -d "Display symbols"
   # write protection indicator
   if [ ! -w . ]
     set_color -o $__fish_colors[6]
-    echo -n " L"
+    echo -n " 𝕷"
   end
   echo -n " "
   set_color -b normal
@@ -50,14 +49,14 @@ function fish_prompt
   set prompt $prompt (set_color $fish_color_cwd)(pwd | sed "s:^$HOME\/:~/:")
   echo -n -s $prompt (set_color normal)
 
-  set -l git_prompt_format (set_color normal)" £ %s"
+  set -l git_prompt_format (set_color normal)" 𝒪𝓃 %s"
   echo -n -s (__fish_git_prompt $git_prompt_format)
 
   # Line 2
   set_color normal
   echo
-  if [ $exit_code != 0 ]; echo -n -s (set_color $__fish_colors[6])"  › "
-  else;                   echo -n -s "  › "
+  if [ $exit_code != 0 ]; echo -n -s (set_color $__fish_colors[8])"  𝒹ℴ "
+  else;                   echo -n -s "  𝒹ℴ "
   end
   set_color normal
 end

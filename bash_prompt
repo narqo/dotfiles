@@ -6,7 +6,7 @@ case "$TERM" in
 esac
 
 function parse_git_dirty() {
-    [[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]] && echo -n "⚛"
+    [[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]] && echo -n " ±"
 }
 
 function parse_git_branch() {
@@ -14,14 +14,13 @@ function parse_git_branch() {
 }
 
 if [ "$color_prompt" = yes ]; then
-    #PS1="\[\033[00;31m\]\h\[\033[00m\] £ \[\033[01;34m\]\w\n  \[\033[01;30m\]›\[\033[00m\] "
     PS1="\
-\[\033[0;31m\]\h\[\033[0m\] £ \[\033[1;34m\]\w\[\033[0m\]\
-\$([[ -n \$(git branch 2> /dev/null) ]] && echo -n \" ⤳ \")\[\033[1;35m\]\$(parse_git_branch)\[\033[0m\]\n\
-  \[\033[1;30m\]›\[\033[0m\] "
+\[\033[0;31m\]\h\[\033[0m\]: \[\033[1;34m\]\w\[\033[0m\]\
+\$([[ -n \$(git branch 2> /dev/null) ]] && echo -n \" 𝒪𝓃 \")\[\033[1;35m\]\$(parse_git_branch)\[\033[0m\]\n\
+  𝒹ℴ "
 else
     # Default is: PS1='\h:\W \u\$ '
-    PS1="\h £ \w\n  › "
+    PS1="\h: \w\n  𝒹ℴ "
 fi
 
 unset color_prompt
