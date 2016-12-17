@@ -16,7 +16,7 @@
 .classpath
 .settings/
 
-# PyCharm/WebStorm/Etc
+# PyCharm/WebStorm/IDEA
 .idea/
 *.iml
 
@@ -33,13 +33,14 @@ jsconfig.json
 npm-debug.log
 
 # Python
+__pycache__/
 *.py[cod]
 
 # Sublime
 *.sublime-workspace
 
 # syncd
-/.syncd
+/.syncd/
 
 # srclib build cache
 .srclib-cache/
