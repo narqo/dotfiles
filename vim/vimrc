@@ -37,7 +37,6 @@ Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'scrooloose/syntastic'
 
 Plugin 'tpope/vim-markdown'
-Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'elzr/vim-json'
 Plugin 'stephpy/vim-yaml'
 Plugin 'fatih/vim-go'
@@ -46,7 +45,6 @@ Plugin 'sukima/xmledit'
 " JavaScript
 Plugin 'pangloss/vim-javascript'
 Plugin 'moll/vim-node'
-"Plugin 'marijnh/tern_for_vim'
 
 call vundle#end()
 
