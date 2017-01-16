@@ -2,3 +2,5 @@
 *.log
 vim/bundle/
 node_modules
+fish/fish_history
+fish/generated_completions/
