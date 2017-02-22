@@ -13,6 +13,7 @@ install go-delve/delve/delve
 install htop-osx
 install hub
 install jq
+install lnav
 install mercurial
 install midnight-commander
 install mdp
@@ -22,9 +23,9 @@ install pkg-config
 install python
 install python3
 install rename
-install siege
 install tree
 install vim --override-system-vi
+install wrk
 install xz
 install the_silver_searcher
 install the_platinum_searcher
