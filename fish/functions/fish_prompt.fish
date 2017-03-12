@@ -55,8 +55,8 @@ function fish_prompt
   # Line 2
   set_color normal
   echo
-  if [ $exit_code != 0 ]; echo -n -s (set_color $__fish_colors[8])"  𝒹ℴ "
-  else;                   echo -n -s "  𝒹ℴ "
+  if [ $exit_code != 0 ]; echo -n -s (set_color $__fish_colors[8])"  𝒟ℴ "
+  else;                   echo -n -s "  𝒟ℴ "
   end
   set_color normal
 end
