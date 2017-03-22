@@ -23,12 +23,11 @@ install pkg-config
 install python
 install python3
 install rename
+install ripgrep
 install tree
 install vim --override-system-vi
 install wrk
 install xz
-install the_silver_searcher
-install the_platinum_searcher
 # simplified community-driven man pages
 install tldr-pages/tldr/tldr
 
