@@ -46,6 +46,8 @@ Plugin 'sukima/xmledit'
 Plugin 'pangloss/vim-javascript'
 Plugin 'moll/vim-node'
 
+Plugin 'wakatime/vim-wakatime'
+
 call vundle#end()
 
 " General options =============================================================
