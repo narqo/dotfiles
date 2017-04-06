@@ -4,7 +4,7 @@
 
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
 
-export LANG=ru_RU.UTF-8
+export LANG=en_US.UTF-8
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then

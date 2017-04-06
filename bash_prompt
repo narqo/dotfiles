@@ -2,7 +2,7 @@
 # Shamelessly copied from mathiasbynens/dotfiles
 
 case "$TERM" in
-    xterm-color|xterm-256color) color_prompt=yes;;
+    xterm-color|xterm-256color|screen-256color) color_prompt=yes;;
 esac
 
 function parse_git_dirty() {
@@ -17,11 +17,10 @@ if [ "$color_prompt" = yes ]; then
     PS1="\
 \[\033[0;31m\]\h\[\033[0m\]: \[\033[1;34m\]\w\[\033[0m\]\
 \$([[ -n \$(git branch 2> /dev/null) ]] && echo -n \" 𝒪𝓃 \")\[\033[1;35m\]\$(parse_git_branch)\[\033[0m\]\n\
-  𝒹ℴ "
+  𝒟ℴ "
 else
     # Default is: PS1='\h:\W \u\$ '
-    PS1="\h: \w\n  𝒹ℴ "
+    PS1="\h: \w\n  𝒟ℴ "
 fi
 
 unset color_prompt
-
