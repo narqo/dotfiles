@@ -24,16 +24,18 @@ set __fish_colors 000000 083743    445659     fdf6e3 b58900 cb4b16 dc121f af005f
 function __fish_prompt_symbols -d "Display symbols"
   # background job indicator
   if [ (jobs | wc -l)  -gt 0 ]
-    set_color -o $__fish_colors[11]
-    echo -n " ≡"
+    set_color -b $__fish_colors[11]
+    echo -n " ⋯ "
+    set_color -b normal
   end
   # write protection indicator
   if [ ! -w . ]
-    set_color -o $__fish_colors[6]
-    echo -n " 𝕷"
+    set_color -b $__fish_colors[6]
+    echo -n " 𝕷 "
+    set_color -b normal
   end
-  echo -n " "
-  set_color -b normal
+  #echo -n " "
+  #set_color -b normal
 end
 
 function fish_prompt
