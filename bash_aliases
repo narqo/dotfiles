@@ -12,4 +12,4 @@ alias ls="command ls $lscolorflag"
 alias ll="ls -la $lscolorflag"
 
 alias gti="git"
-
+alias tmux="tmux -2"

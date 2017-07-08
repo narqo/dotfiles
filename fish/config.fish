@@ -37,3 +37,6 @@ set -x MANPAGER "less -X"
 
 set -x PYTHONUSERBASE $HOME/.local
 set -x GOPATH $HOME/.local/lib/go
+
+alias grep "grep --color"
+alias tmux "tmux -2"
