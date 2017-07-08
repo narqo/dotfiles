@@ -14,7 +14,7 @@ Plugin 'tpope/vim-fugitive'
 
 Plugin 'L9'
 Plugin 'FuzzyFinder'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'sudo.vim'
 
 Plugin 'scrooloose/nerdtree'
@@ -61,12 +61,11 @@ if !has('nvim')
     set ttyfast
 endif
 
+" Default encodings
 set encoding=utf-8
-" Кодировка по-умолчанию
 set termencoding=utf-8
-" Список кодировок файлов для автоопределения
+" Encodings for autodetection
 set fileencodings=utf-8,cp1251,koi8-r,cp866
-" Список форматов файлов
 set fileformats=unix,dos,mac
 
 " Reload files changed outside vim
@@ -85,8 +84,6 @@ set softtabstop=4
 set shiftwidth=4
 set shiftround
 set expandtab
-
-" Выключаем перенос строк
 set nowrap
 set nolinebreak
 
@@ -113,11 +110,10 @@ set showcmd
 " Show current mode down the bottom
 set showmode
 
-" Включить подсветку невидимых символов
+" Show invisible characters
 set list
 set listchars=tab:·\ ,trail:·,extends:»,precedes:«
 
-" Использовать <,> в качестве <leader>-кнопки
 let mapleader = ","
 
 " Show ↪ at the beginning of wrapped lines
@@ -127,7 +123,7 @@ endif
 
 set textwidth=0
 if version >= 703
-    " mark the ideal max text width
+    " show the ideal maximum text width
     set colorcolumn=+1
 end
 
@@ -139,9 +135,9 @@ set mouse=
 "    set clipboard=unnamedplus
 "endif
 
-" Status line ==================================================================
+" Status line =================================================================
 
-" Включаем отображение дополнительной информации в статусной строке
+" Show additional inforfation in statusline
 set laststatus=2
 set statusline=%f%h\ %y\ %m\ %r\ %{&encoding}\
 
@@ -149,7 +145,6 @@ set statusline=%f%h\ %y\ %m\ %r\ %{&encoding}\
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 set statusline+=%=Line:%l/%L[%p%%]\ Col:%c\ [%b][0x%B]
 set statusline+=\ Buf:%n\
 
@@ -166,19 +161,19 @@ set ignorecase
 " ...но учитывать регистр если есть большие буквы с запросе
 set smartcase
 
-" Backups ======================================================================
+" Backups =====================================================================
 
 set nobackup
 set noswapfile
 set nowb
 
-" Folds ========================================================================
+" Folds =======================================================================
 
-set foldmethod=indent
 " dont fold by default
 set nofoldenable
+set foldmethod=indent
 
-" Completion ===================================================================
+" Completion ==================================================================
 
 " Make cmdline tab completion similar to bash
 " enable <ctrl-n> and <ctrl-p> to scroll thru matches
@@ -188,13 +183,13 @@ set wildignore=*.o,*.obj,*~,*.pyc,*.pyo,*.bak
 set wildignore+=*DS_Store*
 set wildignore+=*.png,*.jpg,*.gif
 
-" Diff settings ================================================================
+" Diff settings ===============================================================
 
 " Add ignorance of whitespace to diff
 set diffopt=filler,iwhite,vertical,context:15
 let g:html_diff_one_file = 1
 
-" GUI ==========================================================================
+" GUI =========================================================================
 
 " tell the term has 256 colors
 set t_Co=256
@@ -203,7 +198,6 @@ set background=dark
 colorscheme xoria256
 
 if has('gui_running')
-    "colorscheme mango
     set cmdheight=2
     set guifont=Monaco:h13
     " Automatically resize splits when resizing MacVim window
@@ -247,18 +241,17 @@ set viminfo+=!
 
 " Keymaps ======================================================================
 
-" Очистить подсветку последнего найденного выражения
+" Stop search highlighting
 nmap <silent> <F3> :nohlsearch<CR>
 imap <F3> <Esc>:nohlsearch<CR>
 
 " Add a GUID to the current line
 imap <c-J>d <C-r>=substitute(system("uuidgen"), '.$', '', 'g')<CR>
 
-" copy current filename into system clipboard - mnemonic: (c)urrent(f)ilename
+" Copy current filename into system clipboard - mnemonic: (c)urrent(f)ilename
 nnoremap <silent> <leader>cf :let @* = expand("%:~")<CR>
 nnoremap <silent> <leader>cn :let @* = expand("%:t")<CR>
 
-" Позволяем передвигаться с помощью hjkl в Insert mode зажав <ctrl>
 imap <c-h> <c-o>h
 imap <c-j> <c-o>j
 imap <c-k> <c-o>k
@@ -286,7 +279,7 @@ cmap w!! w !sudo tee % >/dev/null
 " Diff this
 nnoremap <leader>dd :windo diffthis<CR>
 
-" Autocmds =====================================================================
+" Autocmds ====================================================================
 
 " Auto change the directory to the current file I'm working on
 autocmd BufEnter * lcd %:p:h
@@ -298,13 +291,13 @@ autocmd BufRead,BufNewFile *.md,*.markdown setl tw=120 ts=2 sw=2 expandtab
 autocmd BufRead,BufNewFile *.wiki setl ft=wiki tw=120 ts=2 sw=2 expandtab
 
 autocmd FileType gitcommit setl tw=68 spell
-autocmd FileType go setl ts=4 sts=4 sw=4 noet
+autocmd FileType go setl ts=4 sts=4 sw=4 noexpandtab
 " Show also matching html parenthesis
 autocmd FileType html,xml,xslt setl matchpairs+=<:>
-" For all text files set 'textwidth' to 120 characters.
+" For all text files set 'textwidth' to 120 characters
 autocmd FileType text,txt setl tw=120
 
-" Custom functions =============================================================
+" Custom functions ============================================================
 
 " via: http://rails-bestpractices.com/posts/60-remove-trailing-whitespace
 " Strip trailing whitespace
@@ -322,9 +315,10 @@ endfunction
 command! StripTrailingWhitespaces call <SID>StripTrailingWhitespaces()
 nmap ,w :StripTrailingWhitespaces<CR>
 
-" Plugins settings =============================================================
+" Plugins settings ============================================================
 
 " === Vundle ====================================
+
 let g:vundle_default_git_proto = 'git'
 
 " === NERD Tree =================================
@@ -343,13 +337,13 @@ let NERDTreeWinSize = 50
 
 let NERDTreeShowHidden = 1
 
-" Toggle the NERD Tree on an off
-nnoremap <F6> :NERDTreeToggle<CR>
+" Toggle the NERD Tree on and off
+nnoremap <leader>1 :NERDTreeToggle<CR>
 " Open the project tree and expose current file in the nerdtree with Ctrl-\
 nnoremap <silent> <C-\> :NERDTreeFind<CR>
 
 " === NERD Tree tabs ============================
-" Auto open nerd tree on startup
+" Auto open nerd tree on startup (0 for not open)
 let g:nerdtree_tabs_open_on_gui_startup = 0
 " Focus in the main content window
 let g:nerdtree_tabs_focus_on_files = 1
@@ -387,7 +381,7 @@ inoremap <C-Space> <C-n>
 
 let g:neocomplcache_force_overwrite_completefunc = 1
 
-" Define keyword.
+" Define keyword
 if !exists('g:neocomplcache_keyword_patterns')
   let g:neocomplcache_keyword_patterns = {}
 endif
@@ -458,6 +452,29 @@ nnoremap <leader><F6> :TernRename<cr>
 " === JSON =======================================
 " disable concealing of double quotes
 let g:vim_json_syntax_conceal = 0
+
+" === Go =========================================
+" Code highlighting
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+
+" Highlighting of variables that are the same
+"let g:go_auto_sameids = 1
+" Show type information in status line
+let g:go_auto_type_info = 1
+
+" Autoimports and code formation
+let g:go_fmt_command = "goimports"
+
+au FileType go nmap <leader><F1> :GoDoc<cr>
+au FileType go nmap <leader><F6> :GoRename<cr>
+au FileType go nmap <leader><F12> :GoDeclsDir<cr>
 
 " === EditorConfig ===============================
 " this is a list contains file path patterns which will be ignored
