@@ -467,7 +467,7 @@ let g:go_highlight_types = 1
 " Highlighting of variables that are the same
 "let g:go_auto_sameids = 1
 " Show type information in status line
-let g:go_auto_type_info = 1
+"let g:go_auto_type_info = 1
 
 " Autoimports and code formation
 let g:go_fmt_command = "goimports"
