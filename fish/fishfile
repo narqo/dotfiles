@@ -1,11 +1,5 @@
-fisherman/ansible-completion
-fisherman/await
 fisherman/docker-completion
-fisherman/fnm
-fisherman/get_file_age
 fisherman/getopts
 fisherman/gitignore
-fisherman/last_job_id
-fisherman/menu
 0rax/narwhal
 fisherman/spin
