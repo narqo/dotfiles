@@ -25,9 +25,11 @@ Plugin 'vim-airline/vim-airline-themes'
 
 "Plugin 'Shougo/vimproc.vim'
 Plugin 'neocomplcache'
-Plugin 'snipMate'
 Plugin 'Tagbar'
 Plugin 'mattn/emmet-vim'
+
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 Plugin 'delimitMate.vim'
 Plugin 'matchit.zip'
