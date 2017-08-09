@@ -189,6 +189,10 @@ set wildignore+=*.png,*.jpg,*.gif
 set diffopt=filler,iwhite,vertical,context:15
 let g:html_diff_one_file = 1
 
+if &diff
+    syntax off
+endif
+
 " GUI =========================================================================
 
 " tell the term has 256 colors
