@@ -22,8 +22,8 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'airblade/vim-gitgutter'
 
-"Plugin 'Shougo/vimproc.vim'
 Plugin 'neocomplcache'
 Plugin 'Tagbar'
 Plugin 'mattn/emmet-vim'
@@ -74,7 +74,7 @@ set fileformats=unix,dos,mac
 set autoread
 
 set backspace=indent,eol,start
-set history=1000
+set history=100
 set undolevels=100
 
 " Indentation
@@ -96,8 +96,8 @@ set sidescrolloff=10
 set sidescroll=1
 
 set cursorline
-set number
-set numberwidth=3
+set nonumber
+set numberwidth=2
 set ruler
 set nolazyredraw
 
@@ -441,6 +441,12 @@ let g:airline_left_sep = ''
 let g:airline_right_sep=''
 
 let g:airline_theme='ubaryd'
+
+" === Git Gutter =================================
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+
+let g:gitgutter_sign_column_always = 1
 
 " === Tern =======================================
 " look up the documentation of something
