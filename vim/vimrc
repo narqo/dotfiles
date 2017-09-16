@@ -266,6 +266,12 @@ imap <c-l> <c-o>l
 nnoremap j gj
 nnoremap k gk
 
+" MacBook Pro Touch Bar Expert Mode
+" Map `Escape` to ‘nothing’ in Normal, Visual, Select, Operator-pending modes
+noremap <Esc> <Nop>
+" Map `Escape` to ‘nothing’ in Insert and Command modes
+noremap!: <Esc> <Nop>
+
 " Resize windows with arrow keys
 nnoremap <D-Up> <C-w>+
 nnoremap <D-Down> <C-w>-
