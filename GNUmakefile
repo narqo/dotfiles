@@ -14,10 +14,14 @@ fish_files += config/fish/config.fish
 # === vim related files
 vim_files = $(notdir $(wildcard $(addprefix vim/, vimrc)))
 
-ignore = $(wildcard GNUmakefile Brewfile Caskfile README* osx fish package.json)
+# === neovim related files
+nvim_files = config/nvim
+
+ignore = $(wildcard GNUmakefile Brewfile Caskfile README* osx fish nvim package.json)
 
 files := $(filter-out $(ignore),$(shell ls -1))
 files += $(vim_files)
+files += $(nvim_files)
 files += $(fish_files)
 
 BIN_FILES = $(addprefix $(prefix),$(wildcard bin/*))
@@ -39,26 +43,12 @@ install:: $(CONF_DIRS) $(CONF_FILES)
 
 $(root_prefix)%: %; $(setup)
 
-$(root_prefix)vimrc: vim/vimrc $(root_prefix)vim
-	$(setup)
+$(root_prefix)vim/vimrc: vim/vimrc $(root_prefix)vim
 	@git submodule update --init
 	vim +PluginInstall +qall
-	@if [ -d $(root_prefix)vim/bundle/tern_for_vim ]; then \
-		( \
-			echo "==> tern_for_vim postinstall... "; \
-			cd $(root_prefix)vim/bundle/tern_for_vim; \
-			npm install; \
-			echo "done"; \
-		) \
-	fi
-	@if [ -d $(prefix)vim/bundle/vimproc.vim ]; then \
-		( \
-			echo "==> vimproc postinstall... "; \
-			cd $(prefix)vim/bundle/vimproc.vim; \
-			make; \
-			echo "done"; \
-		) \
-	fi
+
+$(root_prefix)config/nvim: nvim $(CONF_DIRS)
+	$(setup)
 
 $(root_prefix)config/fish/config.fish: $(prefix)share/fish
 	@mkdir -p $(shell dirname $@)/functions
