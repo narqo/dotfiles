@@ -13,17 +13,15 @@ install go-delve/delve/delve
 install htop-osx
 install hub
 install jq
-install lnav
 install mercurial
 install midnight-commander
-install mdp
 install node
-install par
 install pkg-config
 install python
 install python3
 install rename
 install ripgrep
+install coreutils
 install tree
 install vim --override-system-vi
 install wrk
