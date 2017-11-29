@@ -22,6 +22,7 @@ install python3
 install rename
 install ripgrep
 install coreutils
+install telnet
 install tree
 install vim --override-system-vi
 install wrk
