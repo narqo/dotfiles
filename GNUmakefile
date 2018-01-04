@@ -12,7 +12,6 @@ fish_files = $(addprefix local/share/,$(wildcard fish))
 fish_files += config/fish/config.fish
 
 # === vim related files
-vim_files = $(notdir $(wildcard $(addprefix vim/, vimrc)))
 
 # === neovim related files
 nvim_files = config/nvim
@@ -20,7 +19,6 @@ nvim_files = config/nvim
 ignore = $(wildcard GNUmakefile Brewfile Caskfile README* osx fish nvim package.json)
 
 files := $(filter-out $(ignore),$(shell ls -1))
-files += $(vim_files)
 files += $(nvim_files)
 files += $(fish_files)
 
@@ -43,11 +41,11 @@ install:: $(CONF_DIRS) $(CONF_FILES)
 
 $(root_prefix)%: %; $(setup)
 
-$(root_prefix)vim/vimrc: vim/vimrc $(root_prefix)vim
+$(root_prefix)vim/vimrc: vim/vimrc | $(root_prefix)vim
 	@git submodule update --init
 	vim +PluginInstall +qall
 
-$(root_prefix)config/nvim: nvim $(CONF_DIRS)
+$(root_prefix)config/nvim: nvim | $(CONF_DIRS)
 	$(setup)
 
 $(root_prefix)config/fish/config.fish: $(prefix)share/fish
@@ -59,11 +57,11 @@ $(root_prefix)config/fish/config.fish: $(prefix)share/fish
 				> $@"; \
 	fi
 
-$(root_prefix)gitconfig: gitconfig $(CONF_DIRS)
+$(root_prefix)gitconfig: gitconfig | $(CONF_DIRS)
 	@mkdir -p $(root_prefix)config/git
 	$(setup)
 
-$(prefix)share/fish: fish $(prefix)share
+$(prefix)share/fish: fish | $(prefix)share
 	$(setup)
 
 $(CONF_DIRS):
