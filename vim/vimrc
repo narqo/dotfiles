@@ -96,7 +96,7 @@ set scrolloff=10
 set sidescrolloff=10
 set sidescroll=1
 
-set cursorline
+set nocursorline
 set nonumber
 set numberwidth=2
 set ruler
@@ -174,7 +174,7 @@ set nowb
 
 " dont fold by default
 set nofoldenable
-set foldmethod=indent
+set foldmethod=manual
 
 " Completion ==================================================================
 
