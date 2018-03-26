@@ -42,6 +42,7 @@ Plugin 'tpope/vim-markdown'
 Plugin 'elzr/vim-json'
 Plugin 'stephpy/vim-yaml'
 Plugin 'fatih/vim-go'
+Plugin 'vim-perl/vim-perl'
 " HTML/XML
 Plugin 'sukima/xmledit'
 " JavaScript
@@ -304,7 +305,7 @@ autocmd BufRead,BufNewFile *.wiki setl ft=wiki tw=120 ts=2 sw=2 expandtab
 
 autocmd FileType gitcommit setl tw=68 spell
 autocmd FileType go setl ts=4 sts=4 sw=4 noexpandtab
-autocmd FileType groovy setl ts=2 ts=2 sw=2 expandtab
+autocmd FileType groovy,perl,ruby setl ts=2 ts=2 sw=2 expandtab
 " Show also matching html parenthesis
 autocmd FileType html,xml,xslt setl matchpairs+=<:>
 " For all text files set 'textwidth' to 120 characters
