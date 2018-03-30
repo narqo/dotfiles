@@ -17,8 +17,6 @@ Plugin 'FuzzyFinder'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'sudo.vim'
 
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -27,9 +25,6 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'neocomplcache'
 Plugin 'Tagbar'
 Plugin 'mattn/emmet-vim'
-
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
 
 Plugin 'delimitMate.vim'
 Plugin 'matchit.zip'
@@ -355,12 +350,6 @@ let NERDTreeShowHidden = 1
 nnoremap <leader>1 :NERDTreeToggle<CR>
 " Open the project tree and expose current file in the nerdtree with Ctrl-\
 nnoremap <silent> <C-\> :NERDTreeFind<CR>
-
-" === NERD Tree tabs ============================
-" Auto open nerd tree on startup (0 for not open)
-let g:nerdtree_tabs_open_on_gui_startup = 0
-" Focus in the main content window
-let g:nerdtree_tabs_focus_on_files = 1
 
 " === NERD Commenter ============================
 if has("gui_macvim") && has("gui_running")
