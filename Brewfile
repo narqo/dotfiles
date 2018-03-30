@@ -21,6 +21,7 @@ install python
 install python3
 install rename
 install ripgrep
+install rust
 install coreutils
 install telnet
 install tree

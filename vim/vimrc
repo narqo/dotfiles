@@ -37,6 +37,7 @@ Plugin 'tpope/vim-markdown'
 Plugin 'elzr/vim-json'
 Plugin 'stephpy/vim-yaml'
 Plugin 'fatih/vim-go'
+Plugin 'rust-lang/rust.vim'
 Plugin 'vim-perl/vim-perl'
 " HTML/XML
 Plugin 'sukima/xmledit'
