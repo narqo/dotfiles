@@ -48,12 +48,12 @@ Plugin 'moll/vim-node'
 Plugin 'wakatime/vim-wakatime'
 
 call vundle#end()
+filetype plugin indent on
 
 " General options =============================================================
 
 set shell=/bin/bash
 
-filetype plugin indent on
 syntax on
 
 if !has('nvim')
@@ -84,7 +84,8 @@ set shiftwidth=4
 set shiftround
 set expandtab
 set nowrap
-set nolinebreak
+set linebreak
+set nojoinspaces
 
 " Jump N lines when running out of the screen
 set scrolljump=7
