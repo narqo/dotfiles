@@ -263,6 +263,8 @@ imap <c-l> <c-o>l
 
 nnoremap j gj
 nnoremap k gk
+nnoremap H ^
+nnoremap L $
 
 " MacBook Pro Touch Bar Expert Mode
 " Map `Escape` to ‘nothing’ in Normal, Visual, Select, Operator-pending modes
@@ -451,19 +453,6 @@ endif
 
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
-
-" === Tern =======================================
-" look up the documentation of something
-nnoremap <leader>td :TernDoc<cr>
-" find the type of the thing under the cursor
-nnoremap <leader>tt :TernType<cr>
-" jump to the definition of the thing under the cursor
-nnoremap <leader>tb :TernDef<cr>
-nnoremap <leader>tsb :TernDefSplit<cr>
-" show all references to the variable or property under the cursor
-nnoremap <leader>tr :TernRefs<cr>
-" rename the variable under the cursor
-nnoremap <leader><F6> :TernRename<cr>
 
 " === JSON =======================================
 " disable concealing of double quotes
