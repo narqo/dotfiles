@@ -41,4 +41,4 @@ set -x GOPATH $HOME/.local/lib/go
 alias grep "grep --color"
 alias tmux "tmux -2"
 
-alias flushdns="dscacheutil -flushcache && killall -HUP mDNSResponder"
+alias flushdns="dscacheutil -flushcache; and killall -HUP mDNSResponder"
