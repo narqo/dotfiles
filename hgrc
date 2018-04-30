@@ -1,6 +1,6 @@
 [ui]
 ignore = ~/.hgignore
-username = Vladimir 'Vii' Varankin <vladimir@varank.in>
+username = Vladimir Varankin <vladimir@varank.in>
 verbose = True
 
 [pager]
