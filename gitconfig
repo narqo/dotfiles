@@ -7,7 +7,7 @@
     insteadOf = "gh://"
 [core]
     editor = vim
-    excludesfile = $HOME/.config/git/ignore
+    excludesfile = ~/.config/git/ignore
     whitespace = fix,-indent-with-non-tab,trailing-space,-cr-at-eol
 [diff]
     algorithm = patience
@@ -47,6 +47,6 @@
     smudge = git-lfs smudge %f
     required = true
 [include]
-    path = $HOME/.config/git/local
+    path = ~/.config/git/local
 [http]
-	cookiefile = $HOME/.config/git/cookies
+	cookiefile = ~/.config/git/cookies
