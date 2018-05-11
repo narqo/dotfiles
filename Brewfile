@@ -4,6 +4,7 @@
 
 tap homebrew/binary
 
+install bat
 install fish
 install fswatch
 install git
