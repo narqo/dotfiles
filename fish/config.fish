@@ -38,6 +38,11 @@ set -x MANPAGER "less -X"
 set -x PYTHONUSERBASE $HOME/.local
 set -x GOPATH $HOME/.local/lib/go
 
+set -x PERL5LIB $HOME/.local/lib/perl5:$PERL5LIB
+set -x PERL_LOCAL_LIB_ROOT $HOME/.local:$PERL_LOCAL_LIB_ROOT
+set -x PERL_MB_OPT --install_base\ \"$HOME/.local\"
+set -x PERL_MM_OPT "INSTALL_BASE=$HOME/.local"\ cpan\ local::lib
+
 alias grep "grep --color"
 alias tmux "tmux -2"
 
