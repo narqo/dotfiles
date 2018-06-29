@@ -183,30 +183,13 @@ set wildignore=*.o,*.obj,*~,*.pyc,*.pyo,*.bak
 set wildignore+=*DS_Store*
 set wildignore+=*.png,*.jpg,*.gif
 
-" Diff settings ===============================================================
-
-" Add ignorance of whitespace to diff
-set diffopt=filler,iwhite,vertical,context:15
-let g:html_diff_one_file = 1
-
-if &diff
-    syntax off
-endif
-
-" GUI =========================================================================
+" UI ==========================================================================
 
 " tell the term has 256 colors
 set t_Co=256
 
 set background=dark
 colorscheme xoria256
-
-if has('gui_running')
-    set cmdheight=2
-    set guifont=Monaco:h13
-    " Automatically resize splits when resizing MacVim window
-    autocmd VimResized * wincmd =
-endif
 
 " Set up the gui cursor to look nice
 set guicursor=n-v-c:block-Cursor-blinkon0
@@ -242,6 +225,18 @@ endif
 
 " Support for yankring
 set viminfo+=!
+
+" Diff settings ===============================================================
+
+" Add ignorance of whitespace to diff
+set diffopt=filler,iwhite,vertical,context:15
+let g:html_diff_one_file = 1
+
+if &diff
+    syntax off
+endif
+
+hi DiffText ctermbg=1
 
 " Keymaps ======================================================================
 
@@ -294,7 +289,7 @@ nnoremap <leader>dd :windo diffthis<CR>
 " Autocmds ====================================================================
 
 " Auto change the directory to the current file I'm working on
-autocmd BufEnter * lcd %:p:h
+"autocmd BufEnter * lcd %:p:h
 
 " Customisations based on filetype
 autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
