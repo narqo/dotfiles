@@ -31,7 +31,7 @@ Plugin 'matchit.zip'
 Plugin 'michaeljsmith/vim-indent-object'
 "Plugin 'editorconfig/editorconfig-vim'
 
-Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 
 Plugin 'tpope/vim-markdown'
 Plugin 'elzr/vim-json'
@@ -107,7 +107,7 @@ set hidden
 
 " Show incomplete cmds down the bottom
 set showcmd
-" Don't show current mode down the bottom, airline has it
+" Don't show current mode down the bottom, airline shows it
 set noshowmode
 
 " Show invisible characters
@@ -135,15 +135,17 @@ set mouse=
 "    set clipboard=unnamedplus
 "endif
 
+if executable('rg')
+    set grepprg=rg\ --no-heading\ --vimgrep
+    set grepformat=%f:%l:%c:%m
+endif
+
 " Status line =================================================================
 
 " Show additional inforfation in statusline
 set laststatus=2
 set statusline=%f%h\ %y\ %m\ %r\ %{&encoding}\
 
-" The statusline flag for syntastic plugin
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set statusline+=%=Line:%l/%L[%p%%]\ Col:%c\ [%b][0x%B]
 set statusline+=\ Buf:%n\
@@ -404,28 +406,16 @@ let delimitMate_matchpairs = "(:),[:],{:}"
 " tells delimitMate which quotes should be used
 let delimitMate_quotes = ""
 
-" === Syntastic ==================================
-" mark syntax errors with :sign
-let g:syntastic_enable_signs = 1
+" === Ale ========================================
+" only lint on save
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_save = 0
+let g:ale_lint_on_enter = 0
+let g:ale_rust_cargo_use_check = 1
+let g:ale_rust_cargo_check_all_targets = 1
 
-" what :sign text contains
-let g:syntastic_error_symbol = '██'
-let g:syntastic_style_error_symbol = 'S█'
-let g:syntastic_warning_symbol = '∙∙'
-let g:syntastic_style_warning_symbol = 'S∙'
-
-" automatically jump to the error when saving the file
-let g:syntastic_auto_jump = 0
-" show the error list automatically (2 to only close error window automatically)
-let g:syntastic_auto_loc_list = 2
-" don't care about warnings
-"let g:syntastic_quiet_warnings = 0
-
-" fine tunes when automatic syntax checking is done (or not)
-let g:syntastic_mode_map = {
-    \ "mode": "active",
-    \ "active_filetypes": [],
-    \ "passive_filetypes": ["python"] }
+" enable airline integration
+let g:airline#extensions#ale#enabled = 1
 
 " === Tagbar =====================================
 let g:tagbar_iconchars = ['▾', '▸']
@@ -440,10 +430,10 @@ let g:airline_theme='ubaryd'
 
 " === Git Gutter =================================
 if exists('&signcolumn')
-	" Vim 7.4.2201
-	set signcolumn=yes
+    " Vim 7.4.2201
+    set signcolumn=yes
 else
-	let g:gitgutter_sign_column_always = 1
+    let g:gitgutter_sign_column_always = 1
 endif
 
 let g:gitgutter_realtime = 0
@@ -475,10 +465,3 @@ let g:go_fmt_command = "goimports"
 au FileType go nmap <leader><F1> :GoDoc<cr>
 au FileType go nmap <leader><F6> :GoRename<cr>
 au FileType go nmap <leader><F12> :GoDeclsDir<cr>
-
-" === EditorConfig ===============================
-" this is a list contains file path patterns which will be ignored
-let g:EditorConfig_exclude_patterns = [
-    \ 'Makefile',
-    \ 'GNUmakefile',
-    \ '.*/debian/rules']
