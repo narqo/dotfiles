@@ -107,8 +107,8 @@ set hidden
 
 " Show incomplete cmds down the bottom
 set showcmd
-" Show current mode down the bottom
-set showmode
+" Don't show current mode down the bottom, airline has it
+set noshowmode
 
 " Show invisible characters
 set list
