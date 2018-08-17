@@ -291,7 +291,7 @@ nnoremap <leader>dd :windo diffthis<CR>
 " Autocmds ====================================================================
 
 " Auto change the directory to the current file I'm working on
-"autocmd BufEnter * lcd %:p:h
+autocmd BufEnter * silent! lcd %:p:h
 
 " Customisations based on filetype
 autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
@@ -360,6 +360,8 @@ else
 endif
 
 " === CtrlP ======================================
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_root_markers = ['Makefile', 'Gopkg.toml', 'Cargo.toml', 'package.json']
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$|debian$'
 
 " Additional mapping to open CtrlP prompt in find file mode
