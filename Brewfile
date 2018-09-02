@@ -5,6 +5,7 @@
 tap homebrew/binary
 
 install bat
+install exa
 install fish
 install fswatch
 install git
