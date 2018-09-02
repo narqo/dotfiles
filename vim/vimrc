@@ -12,25 +12,11 @@ Plugin 'gmarik/vundle'
 " Custom bundles
 Plugin 'tpope/vim-fugitive'
 
-Plugin 'L9'
-Plugin 'FuzzyFinder'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'sudo.vim'
-
-Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
-
-Plugin 'neocomplcache'
-Plugin 'Tagbar'
-Plugin 'mattn/emmet-vim'
-
-Plugin 'delimitMate.vim'
-Plugin 'matchit.zip'
 Plugin 'michaeljsmith/vim-indent-object'
-"Plugin 'editorconfig/editorconfig-vim'
-
 Plugin 'w0rp/ale'
 
 Plugin 'tpope/vim-markdown'
@@ -39,9 +25,6 @@ Plugin 'stephpy/vim-yaml'
 Plugin 'fatih/vim-go'
 Plugin 'rust-lang/rust.vim'
 Plugin 'vim-perl/vim-perl'
-" HTML/XML
-Plugin 'sukima/xmledit'
-" JavaScript
 Plugin 'pangloss/vim-javascript'
 Plugin 'moll/vim-node'
 
@@ -152,15 +135,10 @@ set statusline+=\ Buf:%n\
 
 " Search settings =============================================================
 
-" При поиске перескакивать на найденный текст в процессе набора строки
 set incsearch
-" Включаем подсветку выражения, которое ищется в тексте
 set hlsearch
-" Останавливать поиск при достижении конца файла
 set nowrapscan
-" Игнорировать регистр букв при поиске
 set ignorecase
-" ...но учитывать регистр если есть большие буквы с запросе
 set smartcase
 
 " Backups =====================================================================
@@ -193,7 +171,7 @@ set t_Co=256
 set background=dark
 colorscheme xoria256
 
-" Set up the gui cursor to look nice
+" set up the gui cursor to look nice
 set guicursor=n-v-c:block-Cursor-blinkon0
 set guicursor+=ve:ver35-Cursor
 set guicursor+=o:hor50-Cursor
@@ -201,16 +179,15 @@ set guicursor+=i-ci:ver25-Cursor
 set guicursor+=r-cr:hor20-Cursor
 set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
-" Turn off any bells
+" turn off any bells
 set novisualbell
 set t_vb=
 set gcr=a:blinkon0
 
-" Disable the scrollbars (NERDTree)
+" disable scrollbars
 set guioptions-=r
 set guioptions-=L
-
-" Disable the macvim toolbar
+" disable the macvim toolbar
 set guioptions-=T
 
 " Macvim settings
@@ -225,7 +202,7 @@ if has("gui_win32") || has("gui_win32s")
     set guifont=Consolas:h12
 endif
 
-" Support for yankring
+" support for yankring
 set viminfo+=!
 
 " Diff settings ===============================================================
@@ -258,16 +235,18 @@ imap <c-j> <c-o>j
 imap <c-k> <c-o>k
 imap <c-l> <c-o>l
 
+" No arrow keys, because why bother
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
 nnoremap j gj
 nnoremap k gk
 nnoremap H ^
 nnoremap L $
-
-" MacBook Pro Touch Bar Expert Mode
-" Map `Escape` to ‘nothing’ in Normal, Visual, Select, Operator-pending modes
-"noremap <Esc> <Nop>
-" Map `Escape` to ‘nothing’ in Insert and Command modes
-"noremap!: <Esc> <Nop>
 
 " Resize windows with arrow keys
 nnoremap <D-Up> <C-w>+
@@ -282,11 +261,14 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " This allows us to save a file as root with the :w!! command, if we have sudo
-" privileges, when we're not currently useing vim as root
+" privileges, when we're not currently using vim as root
 cmap w!! w !sudo tee % >/dev/null
 
 " Diff this
 nnoremap <leader>dd :windo diffthis<CR>
+
+" <leader><leader> toggles between buffers
+nnoremap <leader><leader> <c-^>
 
 " Autocmds ====================================================================
 
@@ -331,34 +313,6 @@ nmap ,w :StripTrailingWhitespaces<CR>
 
 let g:vundle_default_git_proto = 'git'
 
-" === NERD Tree =================================
-" Don't display these kinds of files
-let NERDTreeIgnore=['\.pyc$', '\~$']
-
-" Change the current working directory (CWD) whenever the tree root is changed
-let NERDTreeChDirMode = 2
-
-" Make nerdtree look nice
-" Disables display of the 'Bookmarks' label and 'Press ? for help' text
-let NERDTreeMinimalUI = 1
-" Tells the NERD tree to use arrows instead of + ~ chars when displaying directories
-let NERDTreeDirArrows = 1
-let NERDTreeWinSize = 50
-
-let NERDTreeShowHidden = 1
-
-" Toggle the NERD Tree on and off
-nnoremap <leader>1 :NERDTreeToggle<CR>
-" Open the project tree and expose current file in the nerdtree with Ctrl-\
-nnoremap <silent> <C-\> :NERDTreeFind<CR>
-
-" === NERD Commenter ============================
-if has("gui_macvim") && has("gui_running")
-    map <D-/> <plug>NERDCommenterToggle<CR>
-else
-    map <leader>/ <plug>NERDCommenterToggle<CR>
-endif
-
 " === CtrlP ======================================
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_root_markers = ['Makefile', 'Gopkg.toml', 'Cargo.toml', 'package.json']
@@ -368,45 +322,6 @@ let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$|debian$'
 nnoremap <leader>o :CtrlP<cr>
 " Additional mapping for buffer search
 nnoremap <leader>b :CtrlPBuffer<cr>
-
-" === Neocomplcache ==============================
-" A beter autocomplete system!
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 0
-
-" default # of completions is 100, that's crazy
-let g:neocomplcache_max_list = 5
-
-" words less than 3 letters long aren't worth completing
-let g:neocomplcache_auto_completion_start_length = 3
-
-" Map standard <Ctrl-N> completion to <Ctrl-Space>
-inoremap <C-Space> <C-n>
-
-let g:neocomplcache_force_overwrite_completefunc = 1
-
-" Define keyword
-if !exists('g:neocomplcache_keyword_patterns')
-  let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-
-" === DelimitMate ================================
-let delimitMate_smart_quotes = 0
-" tells delimitMate which characters are matching pairs
-let delimitMate_matchpairs = "(:),[:],{:}"
-" tells delimitMate which quotes should be used
-let delimitMate_quotes = ""
 
 " === Ale ========================================
 " only lint on save
