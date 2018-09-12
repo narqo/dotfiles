@@ -43,7 +43,7 @@ set -x PERL_LOCAL_LIB_ROOT $HOME/.local
 set -x PERL_MB_OPT --install_base\ \"$HOME/.local\"
 set -x PERL_MM_OPT "INSTALL_BASE=$HOME/.local"\ cpan\ local::lib
 
-set -g fish_user_abbreviations 'g=git'
+set -g fish_user_abbreviations 'gi=git'
 
 alias grep "grep --color"
 alias tmux "tmux -2"
