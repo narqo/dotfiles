@@ -5,6 +5,7 @@
 tap homebrew/binary
 
 install bat
+# fast and modern replacement for ls
 install exa
 install fish
 install fswatch
@@ -12,15 +13,13 @@ install git
 install gnu-sed --with-default-names
 install go
 install go-delve/delve/delve
-install htop-osx
+install htop
 install hub
 install jq
 install mercurial
 install midnight-commander
 install node
-install pkg-config
 install python
-install python3
 install rename
 install ripgrep
 install rust
@@ -29,6 +28,8 @@ install telnet
 install tree
 install vim --override-system-vi
 install wrk
+# csv command line toolkit
+install xsv
 install xz
 # simplified community-driven man pages
 install tldr-pages/tldr/tldr
