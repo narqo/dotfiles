@@ -5,8 +5,10 @@
 tap homebrew/binary
 
 install bat
-# fast and modern replacement for ls
+# fast replacement for ls
 install exa
+# fast replacement for find
+install fd
 install fish
 install fswatch
 install git
@@ -21,6 +23,7 @@ install midnight-commander
 install node
 install python
 install rename
+# fast replacement for grep
 install ripgrep
 install rust
 install coreutils
