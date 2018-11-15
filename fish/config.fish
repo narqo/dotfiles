@@ -43,6 +43,11 @@ set -x PERL_LOCAL_LIB_ROOT $HOME/.local
 set -x PERL_MB_OPT --install_base\ \"$HOME/.local\"
 set -x PERL_MM_OPT "INSTALL_BASE=$HOME/.local"\ cpan\ local::lib
 
+set -l gemdir (gem env --quiet gemdir 2> /dev/null)
+if test -n "$gemdir"
+    set PATH $PATH "$gemdir/bin"
+end
+
 set -g fish_user_abbreviations \
     'brw=brew' \
     'gi=git'
