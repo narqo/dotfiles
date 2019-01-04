@@ -34,8 +34,6 @@ function __fish_prompt_symbols -d "Display symbols"
     echo -n " 𝕷 "
     set_color -b normal
   end
-  #echo -n " "
-  #set_color -b normal
 end
 
 function fish_prompt

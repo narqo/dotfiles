@@ -10,13 +10,13 @@ set -l confdir $XDG_CONFIG_HOME
 set -l datadir $XDG_DATA_HOME
 
 # Set up function paths
-set fish_function_path $confdir/fish/functions $datadir/fish/functions $__fish_sysconfdir/functions $__fish_datadir/functions
+set fish_function_path $confdir/fish/functions $datadir/fish/functions $__fish_sysconf_dir/functions $__fish_data_dir/functions
 
 # Clean up default fish greeting
 set -gx fish_greeting ''
 
 # Set up fisherman datadir
-set -U fish_path $datadir/fish
+set -g fish_path $datadir/fish
 
 # Set up colors (reset default colours)
 set -g fish_color_command
@@ -48,11 +48,11 @@ if test -n "$gemdir"
     set PATH $PATH "$gemdir/bin"
 end
 
-set -g fish_user_abbreviations \
-    'brw=brew' \
-    'gi=git'
-
-alias grep "grep --color"
-alias tmux "tmux -2"
-
+alias grep="grep --color"
+alias tmux="tmux -2"
 alias flushdns="dscacheutil -flushcache; and killall -HUP mDNSResponder"
+
+if status --is-interactive
+    abbr --add --global brw brew
+    abbr --add --global gi git
+end
