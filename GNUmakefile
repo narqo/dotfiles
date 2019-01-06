@@ -1,11 +1,9 @@
+MAKEFLAGS += --no-builtin-rules
+
 PRJDIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
-root_prefix = $(HOME)/
-prefix = $(addprefix $(root_prefix),.local)
-
-NPM ?= npm -g --prefix=$(prefix)
-NPM_ROOT := $(shell $(NPM) root)
-NPM_BIN := $(shell $(NPM) bin)
+root_prefix = $(HOME)
+prefix = $(addprefix $(root_prefix)/,.local)
 
 # === fish related files
 fish_files = $(addprefix .local/share/,$(wildcard fish))
@@ -33,8 +31,8 @@ files += $(nvim_files)
 files += $(fish_files)
 
 BIN_FILES = $(addprefix $(prefix)/,$(wildcard bin/*))
-CONF_DIRS = $(addprefix $(root_prefix),.config/ $(addprefix .local/,bin/ share/ opt/))
-CONF_FILES = $(addprefix $(root_prefix),$(files))
+CONF_DIRS = $(addprefix $(root_prefix)/,.config/ $(addprefix .local/,bin/ share/ opt/))
+CONF_FILES = $(addprefix $(root_prefix)/,$(files))
 
 # == Functions
 git_up = @git pull
@@ -49,17 +47,17 @@ $(ignore):
 install: | $(CONF_DIRS) $(CONF_FILES)
 	@echo All done
 
-$(root_prefix)%: %
+$(root_prefix)/.%: %
 	$(setup)
 
-$(root_prefix).vim/vimrc: vim/vimrc | $(root_prefix).vim
+$(root_prefix)/.vim/vimrc: vim/vimrc | $(root_prefix)/.vim
 	@git submodule update --init
 	vim +PluginInstall +qall
 
-$(root_prefix).config/nvim: nvim | $(CONF_DIRS)
+$(root_prefix)/.config/nvim: nvim | $(CONF_DIRS)
 	$(setup)
 
-$(root_prefix).config/fish/config.fish: $(prefix)/share/fish
+$(root_prefix)/.config/fish/config.fish: $(prefix)/share/fish
 	@mkdir -p $(shell dirname $@)/functions
 	if [ ! -s "$@" ]; then \
 		/usr/bin/env bash -c \
@@ -70,16 +68,16 @@ $(root_prefix).config/fish/config.fish: $(prefix)/share/fish
 			} > $@"; \
 	fi
 
-$(root_prefix).gitconfig: gitconfig | $(root_prefix).config/git $(root_prefix).config/git/ignore
+$(root_prefix)/.gitconfig: gitconfig | $(root_prefix)/.config/git $(root_prefix)/.config/git/ignore
 	$(setup)
 
-$(root_prefix).config/git/ignore: gitignore
+$(root_prefix)/.config/git/ignore: gitignore
 	$(setup)
 
 $(prefix)/share/fish: fish | $(prefix)/share
 	$(setup)
 
-$(CONF_DIRS) $(root_prefix).config/git:
+$(CONF_DIRS) $(root_prefix)/.config/git:
 	@mkdir -p $@
 
 clean:
