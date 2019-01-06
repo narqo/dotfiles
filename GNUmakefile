@@ -1,9 +1,7 @@
 MAKEFLAGS += --no-builtin-rules
 
 PRJDIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-
-root_prefix = $(HOME)
-prefix = $(addprefix $(root_prefix)/,.local)
+DESTDIR := $(HOME)
 
 # === fish related files
 fish_files = $(addprefix .local/share/,$(wildcard fish))
@@ -30,16 +28,15 @@ files := $(addprefix .,$(filter-out $(ignore),$(shell ls -1)))
 files += $(nvim_files)
 files += $(fish_files)
 
-BIN_FILES = $(addprefix $(prefix)/,$(wildcard bin/*))
-CONF_DIRS = $(addprefix $(root_prefix)/,.config/ $(addprefix .local/,bin/ share/ opt/))
-CONF_FILES = $(addprefix $(root_prefix)/,$(files))
+CONF_DIRS = $(addprefix $(DESTDIR)/,.config/ $(addprefix .local/,bin/ lib/ share/ opt/))
+CONF_FILES = $(addprefix $(DESTDIR)/,$(files))
 
 # == Functions
-git_up = @git pull
+gitup = @git pull
 setup = @ln -svfF $(realpath $<) $@
 
 # == Targets
-all: ; $(git_up)
+all: ; $(gitup)
 
 $(ignore):
 	@echo Skipping $(@)
@@ -47,17 +44,17 @@ $(ignore):
 install: | $(CONF_DIRS) $(CONF_FILES)
 	@echo All done
 
-$(root_prefix)/.%: %
+$(DESTDIR)/.%: %
 	$(setup)
 
-$(root_prefix)/.vim/vimrc: vim/vimrc | $(root_prefix)/.vim
+$(DESTDIR)/.vim/vimrc: vim/vimrc | $(DESTDIR)/.vim
 	@git submodule update --init
 	vim +PluginInstall +qall
 
-$(root_prefix)/.config/nvim: nvim | $(CONF_DIRS)
+$(DESTDIR)/.config/nvim: nvim | $(CONF_DIRS)
 	$(setup)
 
-$(root_prefix)/.config/fish/config.fish: $(prefix)/share/fish
+$(DESTDIR)/.config/fish/config.fish: $(DESTDIR)/.local/share/fish
 	@mkdir -p $(shell dirname $@)/functions
 	if [ ! -s "$@" ]; then \
 		/usr/bin/env bash -c \
@@ -68,16 +65,16 @@ $(root_prefix)/.config/fish/config.fish: $(prefix)/share/fish
 			} > $@"; \
 	fi
 
-$(root_prefix)/.gitconfig: gitconfig | $(root_prefix)/.config/git $(root_prefix)/.config/git/ignore
+$(DESTDIR)/.gitconfig: gitconfig | $(DESTDIR)/.config/git $(DESTDIR)/.config/git/ignore
 	$(setup)
 
-$(root_prefix)/.config/git/ignore: gitignore
+$(DESTDIR)/.config/git/ignore: gitignore
 	$(setup)
 
-$(prefix)/share/fish: fish | $(prefix)/share
+$(DESTDIR)/.local/share/fish: fish | $(DESTDIR)/.local/share
 	$(setup)
 
-$(CONF_DIRS) $(root_prefix)/.config/git:
+$(CONF_DIRS) $(DESTDIR)/.config/git:
 	@mkdir -p $@
 
 clean:
@@ -85,5 +82,4 @@ clean:
 		test -L "$$file" && rm -rf "$$file"; \
 	done
 
-.PHONY: all clean install npm
-
+.PHONY: all clean install
