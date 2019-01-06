@@ -2,10 +2,7 @@
 
 # common dev tools
 cask install visual-studio-code
-# TODO: use bocker for mac, https://beta.docker.com
-#cask install dockertoolbox
 cask install iterm2
-cask install sauce-connect
 cask install virtualbox
 
 # a tool for managing secrets
@@ -19,3 +16,4 @@ cask install chromium
 # other stuff
 cask install appcleaner
 cask install mplayerx
+cask install spotify
