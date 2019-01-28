@@ -38,7 +38,8 @@ end
 
 function fish_prompt
   set -l exit_code $status
-  set -l prompt ""
+
+  set -l prompt "`•.•) "
 
   # display username and hostname if logged in as root, in sudo or ssh session
   if [ \( (id -u) -eq 0 -o $SUDO_USER \) -o $SSH_CONNECTION ]
@@ -55,10 +56,7 @@ function fish_prompt
   # Line 2
   set_color normal
   echo
-  if [ $exit_code != 0 ]; echo -n -s (set_color $__fish_colors[8])" 𝒟ℴ "
-  else;                   echo -n -s " 𝒟ℴ "
-  end
-  set_color normal
+  echo -n -s " ⊂ﾉ "
 end
 
 function fish_right_prompt
