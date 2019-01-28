@@ -28,8 +28,6 @@ Plugin 'vim-perl/vim-perl'
 Plugin 'pangloss/vim-javascript'
 Plugin 'moll/vim-node'
 
-Plugin 'wakatime/vim-wakatime'
-
 call vundle#end()
 filetype plugin indent on
 
