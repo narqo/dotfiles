@@ -35,7 +35,7 @@ install wrk
 install xsv
 install xz
 # simplified community-driven man pages
-install tldr-pages/tldr/tldr
+install tldr
 
 # cask
 tap caskroom/cask
