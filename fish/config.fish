@@ -37,6 +37,8 @@ set -x MANPAGER "less -X"
 
 set -x PYTHONUSERBASE $HOME/.local
 set -x GOPATH $HOME/.local/lib/go
+
+set -x RUSTUP_HOME $HOME/.local/lib/rustup
 set -x CARGO_HOME $HOME/.local/lib/cargo
 
 set -x PATH $PATH $CARGO_HOME/bin
