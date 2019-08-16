@@ -45,3 +45,4 @@ cask install iterm2
 tap caskroom/fonts
 cask install font-hack
 cask install font-fira-code
+cask install font-input
