@@ -41,9 +41,9 @@ function fish_prompt
 
   set -l prompt ""
   if [ $exit_code = 0 ];
-    set prompt "•.•)੭*⁾⁾ "
+    set prompt "•.•)੭* ❯❯ "
   else;
-    set prompt "•̀Д•́)੭*⁾⁾ "
+    set prompt "•̀Д•́)੭* ❯❯ "
   end;
 
   # display username and hostname if logged in as root, in sudo or ssh session
