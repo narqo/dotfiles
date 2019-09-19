@@ -55,7 +55,7 @@ function fish_prompt
   set prompt $prompt (set_color $fish_color_cwd)(pwd | sed "s:^$HOME\/:~/:")
   echo -n -s $prompt (set_color normal)
 
-  set -l git_prompt_format (set_color normal)" 𝒪𝓃 %s"
+  set -l git_prompt_format (set_color normal)" 𝒪𝓃 %s "
   echo -n -s (__fish_git_prompt $git_prompt_format)
 
   # Line 2
