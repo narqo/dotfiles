@@ -7,6 +7,7 @@ set __fish_git_prompt_color normal
 set __fish_git_prompt_color_branch normal
 
 # Status Chars
+set __fish_git_prompt_char_upstream_prefix " "
 set __fish_git_prompt_char_cleanstate ""
 set __fish_git_prompt_char_dirtystate "±"
 set __fish_git_prompt_char_stagedstate "⇈"
@@ -55,7 +56,7 @@ function fish_prompt
   set prompt $prompt (set_color $fish_color_cwd)(pwd | sed "s:^$HOME\/:~/:")
   echo -n -s $prompt (set_color normal)
 
-  set -l git_prompt_format (set_color normal)" 𝒪𝓃 %s "
+  set -l git_prompt_format (set_color normal)" 𝒪𝓃 %s"
   echo -n -s (__fish_git_prompt $git_prompt_format)
 
   # Line 2
