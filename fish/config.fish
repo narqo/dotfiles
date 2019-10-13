@@ -43,6 +43,8 @@ set -x CARGO_HOME $HOME/.local/lib/cargo
 
 set -x PATH $PATH $CARGO_HOME/bin
 
+set -x PATH $PATH $HOME/.local/lib/flutter/bin
+
 set -x PERL5LIB $HOME/.local/lib/perl5
 set -x PERL_LOCAL_LIB_ROOT $HOME/.local
 set -x PERL_MB_OPT --install_base\ \"$HOME/.local\"
