@@ -18,6 +18,9 @@ install go-delve/delve/delve
 install htop
 install hub
 install jq
+# count lines of source code
+install loc
+install scc
 install mercurial
 install midnight-commander
 install node
