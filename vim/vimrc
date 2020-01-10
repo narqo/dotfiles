@@ -27,6 +27,7 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'vim-perl/vim-perl'
 Plugin 'pangloss/vim-javascript'
 Plugin 'moll/vim-node'
+Plugin 'uarun/vim-protobuf'
 
 call vundle#end()
 filetype plugin indent on
