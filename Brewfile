@@ -47,6 +47,7 @@ cask install iterm2
 # fonts
 tap caskroom/fonts
 cask install font-cascadia
-cask install font-hack
 cask install font-fira-code
+cask install font-hack
 cask install font-input
+cask install font-jetbrains-mono
