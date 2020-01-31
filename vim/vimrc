@@ -13,6 +13,7 @@ Plugin 'gmarik/vundle'
 Plugin 'tpope/vim-fugitive'
 
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'rakr/vim-one'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
@@ -151,6 +152,7 @@ set nowb
 " dont fold by default
 set nofoldenable
 set foldmethod=manual
+set foldcolumn=2
 
 " Completion ==================================================================
 
@@ -168,7 +170,8 @@ set wildignore+=*.png,*.jpg,*.gif
 set t_Co=256
 
 set background=dark
-colorscheme xoria256
+"colorscheme xoria256
+colorscheme one
 
 " set up the gui cursor to look nice
 set guicursor=n-v-c:block-Cursor-blinkon0
@@ -325,24 +328,26 @@ nnoremap <leader>b :CtrlPBuffer<cr>
 " === Ale ========================================
 " only lint on save
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_save = 0
-let g:ale_lint_on_enter = 0
+"let g:ale_lint_on_save = 0
+"let g:ale_lint_on_enter = 0
+let g:ale_lint_on_insert_leave = 0
 let g:ale_rust_cargo_use_check = 1
 let g:ale_rust_cargo_check_all_targets = 1
 
+" disabling highlighting
+let g:ale_set_highlights = 0
+
+let g:ale_sign_error = '↗︎'
+let g:ale_sign_warning = '?'
+
 " enable airline integration
 let g:airline#extensions#ale#enabled = 1
-
-" === Tagbar =====================================
-let g:tagbar_iconchars = ['▾', '▸']
-
-nnoremap <F5> :TagbarToggle<cr>
 
 " === Airline ====================================
 let g:airline_left_sep = ''
 let g:airline_right_sep=''
 
-let g:airline_theme='onedark'
+let g:airline_theme='one'
 
 " === Git Gutter =================================
 if exists('&signcolumn')
@@ -360,16 +365,6 @@ let g:gitgutter_eager = 0
 let g:vim_json_syntax_conceal = 0
 
 " === Go =========================================
-" Code highlighting
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_types = 1
-
 " Highlighting of variables that are the same
 "let g:go_auto_sameids = 1
 " Show type information in status line
