@@ -372,6 +372,7 @@ let g:vim_json_syntax_conceal = 0
 
 " Autoimports and code formation
 let g:go_fmt_command = "goimports"
+let g:go_rename_command = "gopls"
 
 au FileType go nmap <leader><F1> :GoDoc<cr>
 au FileType go nmap <leader><F6> :GoRename<cr>
