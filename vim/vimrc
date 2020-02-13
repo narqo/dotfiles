@@ -13,7 +13,8 @@ Plugin 'gmarik/vundle'
 Plugin 'tpope/vim-fugitive'
 
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'rakr/vim-one'
+"Plugin 'rakr/vim-one'
+Plugin 'laggardkernel/vim-one'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
@@ -152,7 +153,7 @@ set nowb
 " dont fold by default
 set nofoldenable
 set foldmethod=manual
-set foldcolumn=2
+"set foldcolumn=2
 
 " Completion ==================================================================
 
@@ -168,10 +169,18 @@ set wildignore+=*.png,*.jpg,*.gif
 
 " tell the term has 256 colors
 set t_Co=256
+" same but for vim 8
+if (has("termguicolors"))
+    set termguicolors
+endif
 
-set background=dark
+let g:one_dark_syntax_bg="#101010"
+let g:one_dark_syntax_gutter="#101010"
+let g:one_dark_syntax_fold_bg="#101010"
+
 "colorscheme xoria256
 colorscheme one
+set background=dark
 
 " set up the gui cursor to look nice
 set guicursor=n-v-c:block-Cursor-blinkon0
