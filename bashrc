@@ -6,20 +6,22 @@
 [ -z "$PS1" ] && return
 
 # don't put duplicate lines in the history. See bash(1) for more options
-# don't overwrite GNU Midnight Commander's setting of `ignorespace'.
+# don't overwrite GNU Midnight Commander's setting of `ignorespace'
 export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 # ... or force ignoredups and ignorespace
 export HISTCONTROL=ignoreboth
 # Make some commands not show up in history
-export HISTIGNORE="ls:cd:cd -:pwd;exit:date:* --help"
+export HISTIGNORE="ls:cd:cd -:pwd;exit:date"
 
 # append to the history file, don't overwrite it
 shopt -s histappend
+# command name that is the name of a directory is executed as if it were the argument to the cd command
+shopt -s autocd
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+# ~/.bash_aliases, instead of adding them here directly
+# See /usr/share/doc/bash-doc/examples in the bash-doc package
 
 [ -r ~/.bash_aliases ] && \
     source ~/.bash_aliases
@@ -45,10 +47,6 @@ export EDITOR=vim
 
 # Pip download cache directory path
 export PIP_DOWNLOAD_CACHE=~/.cache/pip
-
-# Node.js root directory for npm modules
-[ -z "`which npm 2>/dev/null`" ] || \
-    export NODE_PATH=`npm root -g`
 
 # bash prompt
 if [ -r ~/.bash_prompt ]; then
