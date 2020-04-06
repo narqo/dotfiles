@@ -5,6 +5,8 @@
     user = narqo
 [url "https://github.com/"]
     insteadOf = "gh://"
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
 [core]
     editor = vim
     excludesfile = ~/.config/git/ignore
