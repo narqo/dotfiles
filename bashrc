@@ -52,7 +52,7 @@ export PIP_DOWNLOAD_CACHE=~/.cache/pip
 if [ -r ~/.bash_prompt ]; then
     source ~/.bash_prompt
 else
-    PS1="\h 𝒪𝓃 \w\n  𝒟ℴ  "
+    PS1="\h: ℐ𝓃 \w\n› "
 fi
 
 # set PATH so it includes user's private bin if it exists

@@ -19,10 +19,10 @@ if [ "$color_prompt" = yes ]; then
     PS1="\
 \[\033[0;31m\]\h\[\033[0m\]: \[\033[0;32m\]\w\[\033[0m\]\
 \$([[ -n \$(git branch 2> /dev/null) ]] && echo -n \" 𝒪𝓃 \")\$(parse_git_branch)\[\033[0m\]\n\
-\$([ "$UID" -eq 0 ] && echo -n \"  𝒮𝓊𝒹ℴ\" || echo -n \"  𝒟ℴ\") "
+\$([ "$UID" -eq 0 ] && echo -n \"𝒮𝓊𝒹ℴ\" || echo -n \"›\") "
 else
     # Default is: PS1='\h:\W \u\$ '
-    PS1="\h: \w\n  𝒟ℴ "
+    PS1="\h: \w\n› "
 fi
 
 unset color_prompt
