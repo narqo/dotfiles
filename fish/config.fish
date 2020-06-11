@@ -2,8 +2,12 @@
 
 # See https://specifications.freedesktop.org/basedir-spec/latest/ar01s03.html
 set -x XDG_CONFIG_HOME $HOME/.config
-set -x XDG_CACHE_HOME $HOME/.cache
 set -x XDG_DATA_HOME $HOME/.local/share
+if [ (uname -s) = "Darwin" ];
+    set -x XDG_CACHE_HOME $HOME/Library/Caches
+else;
+    set -x XDG_CACHE_HOME $HOME/.cache
+end
 
 # Some local XDG-like dirs
 set -l confdir $XDG_CONFIG_HOME
@@ -39,6 +43,7 @@ set -x PYTHONUSERBASE $HOME/.local
 
 set -x GOPATH $HOME/.local/lib/go
 set -x GOBIN $HOME/.local/bin
+set -x GOMODCACHE $XDG_CACHE_HOME/gomod
 
 set -x RUSTUP_HOME $HOME/.local/lib/rustup
 set -x CARGO_HOME $HOME/.local/lib/cargo
