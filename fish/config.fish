@@ -62,6 +62,8 @@ if test -n "$gemdir"
     set PATH $PATH "$gemdir/bin"
 end
 
+set -x PSQLRC $HOME/.config/psqlrc
+
 alias grep="grep --color"
 alias tmux="tmux -2"
 alias flushdns="dscacheutil -flushcache; and killall -HUP mDNSResponder"

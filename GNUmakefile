@@ -12,6 +12,9 @@ fish_files += .config/fish/config.fish
 # === neovim related files
 nvim_files = .config/nvim
 
+# === psql related files
+psql_files = .config/psqlrc
+
 ignore = $(wildcard \
 	GNUmakefile \
 	Brewfile \
@@ -21,12 +24,14 @@ ignore = $(wildcard \
 	fish \
 	nvim \
 	gitignore \
+	psqlrc \
 	package.json \
 )
 
 files := $(addprefix .,$(filter-out $(ignore),$(shell ls -1)))
 files += $(nvim_files)
 files += $(fish_files)
+files += $(psql_files)
 
 CONF_DIRS = $(addprefix $(DESTDIR)/,.config/ $(addprefix .local/,bin/ lib/ share/ opt/))
 CONF_FILES = $(addprefix $(DESTDIR)/,$(files))
@@ -72,6 +77,9 @@ $(DESTDIR)/.config/git/ignore: gitignore
 	$(setup)
 
 $(DESTDIR)/.local/share/fish: fish | $(DESTDIR)/.local/share
+	$(setup)
+
+$(DESTDIR)/.config/psqlrc: psqlrc
 	$(setup)
 
 $(CONF_DIRS) $(DESTDIR)/.config/git:

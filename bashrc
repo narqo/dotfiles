@@ -48,6 +48,9 @@ export EDITOR=vim
 # Pip download cache directory path
 export PIP_DOWNLOAD_CACHE=~/.cache/pip
 
+# User's .psqlrc file
+export PSQLRC=~/.config/psqlrc
+
 # bash prompt
 if [ -r ~/.bash_prompt ]; then
     source ~/.bash_prompt

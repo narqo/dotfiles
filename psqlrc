@@ -1,0 +1,10 @@
+\set QUIET 1
+
+\pset null '(null)'
+
+\x auto
+
+# upper case for tab-completions
+\set COMP_KEYWORD_CASE upper
+
+\unset QUIET
