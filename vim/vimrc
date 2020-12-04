@@ -386,3 +386,7 @@ let g:go_rename_command = "gopls"
 au FileType go nmap <leader><F1> :GoDoc<cr>
 au FileType go nmap <leader><F6> :GoRename<cr>
 au FileType go nmap <leader><F12> :GoDeclsDir<cr>
+
+" === Rust =======================================
+" Runs rustfmt when save buffer
+let g:rustfmt_autosave = 1
