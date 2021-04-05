@@ -19,7 +19,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'w0rp/ale'
+Plugin 'dense-analysis/ale'
 
 Plugin 'tpope/vim-markdown'
 Plugin 'elzr/vim-json'
@@ -96,14 +96,14 @@ set noshowmode
 
 " Show invisible characters
 set list
-set listchars=tab:·\ ,trail:·,extends:»,precedes:«
-
-let mapleader = ","
+set listchars=trail:·,extends:»,precedes:«
 
 " Show ↪ at the beginning of wrapped lines
 if has("linebreak")
     let &sbr = nr2char(8618).' '
 endif
+
+let mapleader = ","
 
 set textwidth=0
 if version >= 703
@@ -180,7 +180,7 @@ let g:one_dark_syntax_fold_bg="#101010"
 
 "colorscheme xoria256
 colorscheme one
-set background=dark
+set background=light
 
 " set up the gui cursor to look nice
 set guicursor=n-v-c:block-Cursor-blinkon0
@@ -289,16 +289,16 @@ autocmd BufEnter * silent! lcd %:p:h
 " Customisations based on filetype
 autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
 
-autocmd BufRead,BufNewFile *.md,*.markdown setl tw=120 ts=2 sw=2 expandtab
-autocmd BufRead,BufNewFile *.wiki setl ft=wiki tw=120 ts=2 sw=2 expandtab
+autocmd BufRead,BufNewFile *.md,*.markdown setl tw=150 ts=2 sw=2 expandtab
+autocmd BufRead,BufNewFile *.wiki setl ft=wiki tw=150 ts=2 sw=2 expandtab
 
 autocmd FileType gitcommit setl tw=68 spell
 autocmd FileType go setl ts=4 sts=4 sw=4 noexpandtab
 autocmd FileType groovy,perl,ruby setl ts=2 ts=2 sw=2 expandtab
 " Show also matching html parenthesis
 autocmd FileType html,xml,xslt setl matchpairs+=<:>
-" For all text files set 'textwidth' to 120 characters
-autocmd FileType text,txt setl tw=120
+" For all text files set 'textwidth' to 150 characters
+autocmd FileType text,txt setl tw=150 spell
 
 " Custom functions ============================================================
 
@@ -326,7 +326,7 @@ let g:vundle_default_git_proto = 'git'
 
 " === CtrlP ======================================
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_root_markers = ['Makefile', 'Gopkg.toml', 'Cargo.toml', 'package.json']
+let g:ctrlp_root_markers = ['Makefile', 'go.mod', 'Cargo.toml', 'package.json']
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$|debian$'
 
 " Additional mapping to open CtrlP prompt in find file mode
@@ -340,17 +340,26 @@ let g:ale_lint_on_text_changed = 'never'
 "let g:ale_lint_on_save = 0
 "let g:ale_lint_on_enter = 0
 let g:ale_lint_on_insert_leave = 0
-let g:ale_rust_cargo_use_check = 1
-let g:ale_rust_cargo_check_all_targets = 1
 
 " disabling highlighting
 let g:ale_set_highlights = 0
 
-let g:ale_sign_error = '↗︎'
+let g:ale_sign_error = '⚑'
 let g:ale_sign_warning = '?'
+
+" setup additional linters
+let g:ale_linters = {'rust': ['cargo', 'analyzer']}
+
+let g:ale_rust_cargo_use_check = 0
+let g:ale_rust_cargo_check_all_targets = 0
+let g:ale_rust_cargo_use_clippy = 1
 
 " enable airline integration
 let g:airline#extensions#ale#enabled = 1
+
+nmap <silent> <leader><F1> <Plug>(ale_documentation)<cr>
+nmap <silent> <leader><F2> <Plug>(ale_hover)<cr>
+nmap <silent> <leader><F6> <Plug>(ale_rename)<cr>
 
 " === Airline ====================================
 let g:airline_left_sep = ''
