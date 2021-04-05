@@ -26,15 +26,11 @@ set -g fish_path $datadir/fish
 set -g fish_color_command
 set -g fish_color_param
 
-if status --is-login
-    set -x LC_ALL en_US.UTF-8
-    set -x LANG en_US.UTF-8
-end
+set -x LC_ALL en_US.UTF-8
+set -x LANG en_US.UTF-8
 
-if status --is-interactive
-    set -x EDITOR vim
-    set PATH $HOME/.local/bin /usr/local/bin $PATH
-end
+set -x EDITOR vim
+set PATH $HOME/.local/bin /usr/local/bin /usr/local/sbin $PATH
 
 # Don’t clear the screen after quitting a manual page
 set -x MANPAGER "less -X"
