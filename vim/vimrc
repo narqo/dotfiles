@@ -182,9 +182,14 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
-let g:one_dark_syntax_bg="#101010"
-let g:one_dark_syntax_gutter="#101010"
-let g:one_dark_syntax_fold_bg="#101010"
+let g:one_light_mono_1="#101010"
+let g:one_light_mono_2="#101010"
+let g:one_light_mono_3="#101010"
+let g:one_light_mono_4="#101010"
+let g:one_light_syntax_bg="#f6f8fa"
+"let g:one_dark_syntax_bg="#101010"
+"let g:one_dark_syntax_gutter="#101010"
+"let g:one_dark_syntax_fold_bg="#101010"
 
 "colorscheme xoria256
 colorscheme one
