@@ -142,6 +142,14 @@ set nowrapscan
 set ignorecase
 set smartcase
 
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor
+endif
+if executable('rg')
+    set grepprg=rg\ --no-heading\ --vimgrep
+    set grepformat=%f:%l:%c:%m
+endif
+
 " Backups =====================================================================
 
 set nobackup
@@ -362,10 +370,10 @@ nmap <silent> <leader><F2> <Plug>(ale_hover)<cr>
 nmap <silent> <leader><F6> <Plug>(ale_rename)<cr>
 
 " === Airline ====================================
-let g:airline_left_sep = ''
-let g:airline_right_sep=''
+let g:airline_left_sep  = ''
+let g:airline_right_sep = ''
 
-let g:airline_theme='one'
+let g:airline_theme = 'one'
 
 " === Git Gutter =================================
 if exists('&signcolumn')
