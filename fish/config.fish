@@ -22,9 +22,8 @@ set -gx fish_greeting ''
 # Set up fisherman datadir
 set -g fish_path $datadir/fish
 
-# Set up colors (reset default colours)
-set -g fish_color_command
-set -g fish_color_param
+# Set up colors
+source $fish_path/conf.d/*.fish
 
 set -x LC_ALL en_US.UTF-8
 set -x LANG en_US.UTF-8
