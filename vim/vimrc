@@ -13,10 +13,10 @@ Plugin 'gmarik/vundle'
 Plugin 'tpope/vim-fugitive'
 
 Plugin 'ctrlpvim/ctrlp.vim'
-"Plugin 'rakr/vim-one'
-Plugin 'laggardkernel/vim-one'
+"Plugin 'laggardkernel/vim-one'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'axvr/photon.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'dense-analysis/ale'
@@ -182,17 +182,12 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
-let g:one_light_mono_1="#101010"
-let g:one_light_mono_2="#101010"
-let g:one_light_mono_3="#101010"
-let g:one_light_mono_4="#101010"
-let g:one_light_syntax_bg="#f6f8fa"
+"let g:one_light_syntax_bg="#f6f8fa"
 "let g:one_dark_syntax_bg="#101010"
 "let g:one_dark_syntax_gutter="#101010"
 "let g:one_dark_syntax_fold_bg="#101010"
-
-"colorscheme xoria256
-colorscheme one
+"colorscheme one
+colorscheme antiphoton
 set background=light
 
 " set up the gui cursor to look nice
@@ -378,7 +373,7 @@ nmap <silent> <leader><F6> <Plug>(ale_rename)<cr>
 let g:airline_left_sep  = ''
 let g:airline_right_sep = ''
 
-let g:airline_theme = 'one'
+let g:airline_theme = 'silver'
 
 " === Git Gutter =================================
 if exists('&signcolumn')
