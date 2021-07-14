@@ -191,9 +191,8 @@ colorscheme antiphoton
 set background=light
 
 " set up the gui cursor to look nice
-set guicursor=a:ver20-Cursor-blinkon0
+set guicursor=a:ver15-Cursor-blinkon0
 set guicursor+=o:hor50-Cursor
-set guicursor+=i-ci:ver15-Cursor
 set guicursor+=r-cr:hor20-Cursor
 
 " turn off any bells
