@@ -1,4 +1,5 @@
-"
+set shell=/bin/bash
+
 set nocompatible
 filetype off
 
@@ -9,11 +10,8 @@ call vundle#begin()
 " let Vundle manage Vundle, required!
 Plugin 'gmarik/vundle'
 
-" Custom bundles
 Plugin 'tpope/vim-fugitive'
-
 Plugin 'ctrlpvim/ctrlp.vim'
-"Plugin 'laggardkernel/vim-one'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'axvr/photon.vim'
@@ -21,22 +19,22 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'dense-analysis/ale'
 
-Plugin 'tpope/vim-markdown'
+"Plugin 'tpope/vim-markdown'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 Plugin 'elzr/vim-json'
 Plugin 'stephpy/vim-yaml'
 Plugin 'fatih/vim-go'
 Plugin 'rust-lang/rust.vim'
 Plugin 'vim-perl/vim-perl'
 Plugin 'pangloss/vim-javascript'
-Plugin 'moll/vim-node'
+"Plugin 'moll/vim-node'
 Plugin 'uarun/vim-protobuf'
 
 call vundle#end()
 filetype plugin indent on
 
 " General options =============================================================
-
-set shell=/bin/bash
 
 syntax on
 
@@ -165,6 +163,8 @@ set foldmethod=manual
 
 " Completion ==================================================================
 
+set completeopt=menuone,noinsert,noselect
+
 " Make cmdline tab completion similar to bash
 " enable <ctrl-n> and <ctrl-p> to scroll thru matches
 set wildmenu
@@ -182,11 +182,6 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
-"let g:one_light_syntax_bg="#f6f8fa"
-"let g:one_dark_syntax_bg="#101010"
-"let g:one_dark_syntax_gutter="#101010"
-"let g:one_dark_syntax_fold_bg="#101010"
-"colorscheme one
 colorscheme antiphoton
 set background=light
 
@@ -204,18 +199,6 @@ set guioptions-=r
 set guioptions-=L
 " disable the macvim toolbar
 set guioptions-=T
-
-" Macvim settings
-if has("gui_macvim")
-    set transp=0
-    set formatoptions-=tc
-    let macvim_hig_shift_movement=1
-    set gcr=n:blinkon0
-endif
-
-if has("gui_win32") || has("gui_win32s")
-    set guifont=Consolas:h12
-endif
 
 " support for yankring
 set viminfo+=!
@@ -237,13 +220,6 @@ hi DiffText ctermbg=1
 " Stop search highlighting
 nmap <silent> <F3> :nohlsearch<CR>
 imap <F3> <Esc>:nohlsearch<CR>
-
-" Add a GUID to the current line
-imap <c-J>d <C-r>=substitute(system("uuidgen"), '.$', '', 'g')<CR>
-
-" Copy current filename into system clipboard - mnemonic: (c)urrent(f)ilename
-nnoremap <silent> <leader>cf :let @* = expand("%:~")<CR>
-nnoremap <silent> <leader>cn :let @* = expand("%:t")<CR>
 
 imap <c-h> <c-o>h
 imap <c-j> <c-o>j
@@ -304,24 +280,6 @@ autocmd FileType html,xml,xslt setl matchpairs+=<:>
 " For all text files set 'textwidth' to 150 characters
 autocmd FileType text,txt setl tw=150 spell
 
-" Custom functions ============================================================
-
-" via: http://rails-bestpractices.com/posts/60-remove-trailing-whitespace
-" Strip trailing whitespace
-function! <SID>StripTrailingWhitespaces()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-endfunction
-command! StripTrailingWhitespaces call <SID>StripTrailingWhitespaces()
-nmap ,w :StripTrailingWhitespaces<CR>
-
 " Plugins settings ============================================================
 
 " === Vundle ====================================
@@ -348,7 +306,7 @@ let g:ale_lint_on_insert_leave = 0
 " disabling highlighting
 let g:ale_set_highlights = 0
 
-let g:ale_sign_error = '⚑'
+let g:ale_sign_error = 'E'
 let g:ale_sign_warning = '?'
 
 " setup additional linters
