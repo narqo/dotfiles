@@ -1,5 +1,7 @@
 set shell=/bin/bash
 
+let mapleader = ","
+
 set nocompatible
 filetype off
 
@@ -19,7 +21,6 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'dense-analysis/ale'
 
-"Plugin 'tpope/vim-markdown'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'elzr/vim-json'
@@ -28,7 +29,6 @@ Plugin 'fatih/vim-go'
 Plugin 'rust-lang/rust.vim'
 Plugin 'vim-perl/vim-perl'
 Plugin 'pangloss/vim-javascript'
-"Plugin 'moll/vim-node'
 Plugin 'uarun/vim-protobuf'
 
 call vundle#end()
@@ -101,13 +101,7 @@ if has("linebreak")
     let &sbr = nr2char(8618).' '
 endif
 
-let mapleader = ","
-
 set textwidth=0
-if version >= 703
-    " show the ideal maximum text width
-    set colorcolumn=+1
-end
 
 " Paste mode toggle on <,p>
 set pastetoggle=<leader>p
@@ -116,11 +110,6 @@ set mouse=
 "if has('unnamedplus')
 "    set clipboard=unnamedplus
 "endif
-
-if executable('rg')
-    set grepprg=rg\ --no-heading\ --vimgrep
-    set grepformat=%f:%l:%c:%m
-endif
 
 " Status line =================================================================
 
@@ -178,7 +167,7 @@ set wildignore+=*.png,*.jpg,*.gif
 " tell the term has 256 colors
 set t_Co=256
 " same but for vim 8
-if (has("termguicolors"))
+if has("termguicolors")
     set termguicolors
 endif
 
