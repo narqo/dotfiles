@@ -37,8 +37,6 @@
     sweep = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs git branch -d; }; f"
     root = rev-parse --show-toplevel
     pr = pull-request
-    au = update-index --assume-unchanged
-    nau = update-index --no-assume-unchanged
     mu = !git ls-files -v | grep '^[[:lower:]]'
     serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
 [color]
