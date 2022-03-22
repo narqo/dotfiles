@@ -27,7 +27,7 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'stephpy/vim-yaml'
 Plugin 'uarun/vim-protobuf'
 
-Plugin 'axvr/photon.vim'
+Plugin 'narqo/photon.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
