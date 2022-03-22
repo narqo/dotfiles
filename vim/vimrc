@@ -12,24 +12,24 @@ call vundle#begin()
 " let Vundle manage Vundle, required!
 Plugin 'gmarik/vundle'
 
-Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'dense-analysis/ale'
+Plugin 'godlygeek/tabular'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'tpope/vim-fugitive'
+
+Plugin 'elzr/vim-json'
+Plugin 'fatih/vim-go'
+Plugin 'pangloss/vim-javascript'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'rust-lang/rust.vim'
+Plugin 'stephpy/vim-yaml'
+Plugin 'uarun/vim-protobuf'
+
+Plugin 'axvr/photon.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'axvr/photon.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'dense-analysis/ale'
-
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'elzr/vim-json'
-Plugin 'stephpy/vim-yaml'
-Plugin 'fatih/vim-go'
-Plugin 'rust-lang/rust.vim'
-Plugin 'vim-perl/vim-perl'
-Plugin 'pangloss/vim-javascript'
-Plugin 'uarun/vim-protobuf'
 
 call vundle#end()
 filetype plugin indent on
@@ -155,7 +155,7 @@ set foldmethod=manual
 set completeopt=menuone,noinsert,noselect
 
 " Make cmdline tab completion similar to bash
-" enable <ctrl-n> and <ctrl-p> to scroll thru matches
+" enable <ctrl-n> and <ctrl-p> to scroll through matches
 set wildmenu
 set wildmode=list:longest
 set wildignore=*.o,*.obj,*~,*.pyc,*.pyo,*.bak
@@ -255,18 +255,12 @@ nnoremap <leader><leader> <c-^>
 " Auto change the directory to the current file I'm working on
 autocmd BufEnter * silent! lcd %:p:h
 
-" Customisations based on filetype
-autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
-
 autocmd BufRead,BufNewFile *.md,*.markdown setl tw=150 ts=2 sw=2 expandtab
 autocmd BufRead,BufNewFile *.wiki setl ft=wiki tw=150 ts=2 sw=2 expandtab
 
 autocmd FileType gitcommit setl tw=68 spell
 autocmd FileType go setl ts=4 sts=4 sw=4 noexpandtab
 autocmd FileType groovy,perl,ruby setl ts=2 ts=2 sw=2 expandtab
-" Show also matching html parenthesis
-autocmd FileType html,xml,xslt setl matchpairs+=<:>
-" For all text files set 'textwidth' to 150 characters
 autocmd FileType text,txt setl tw=150 spell
 
 " Plugins settings ============================================================
