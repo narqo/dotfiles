@@ -1,6 +1,6 @@
 set shell=/bin/bash
 
-let mapleader = ","
+let mapleader = ','
 
 set nocompatible
 filetype off
@@ -27,7 +27,7 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'stephpy/vim-yaml'
 Plugin 'uarun/vim-protobuf'
 
-Plugin 'narqo/photon.vim'
+Plugin 'narqo/classylight.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
@@ -171,7 +171,7 @@ if has("termguicolors")
     set termguicolors
 endif
 
-colorscheme antiphoton
+colorscheme classylight
 set background=light
 
 " set up the gui cursor to look nice
@@ -302,9 +302,10 @@ let g:ale_rust_cargo_use_clippy = 1
 " enable airline integration
 let g:airline#extensions#ale#enabled = 1
 
-nmap <silent> <leader><F1> <Plug>(ale_documentation)<cr>
-nmap <silent> <leader><F2> <Plug>(ale_hover)<cr>
-nmap <silent> <leader><F6> <Plug>(ale_rename)<cr>
+nmap <silent> <leader><F1> :ALEDocumentation<cr>
+nmap <silent> <leader><F2> :ALEHover<cr>
+nmap <silent> <leader><F6> :ALERename<cr>
+nmap <silent> <leader><F7> :ALEFindReferences<cr>
 
 " === Airline ====================================
 let g:airline_left_sep  = ''
@@ -334,8 +335,8 @@ let g:vim_json_syntax_conceal = 0
 "let g:go_auto_type_info = 1
 
 " Autoimports and code formation
-let g:go_fmt_command = "goimports"
-let g:go_rename_command = "gopls"
+let g:go_fmt_command = 'goimports'
+let g:go_rename_command = 'gopls'
 
 au FileType go nmap <leader><F1> :GoDoc<cr>
 au FileType go nmap <leader><F6> :GoRename<cr>
