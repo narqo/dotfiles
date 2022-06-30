@@ -294,6 +294,7 @@ let g:ale_sign_warning = '?'
 
 " setup additional linters
 let g:ale_linters = {'rust': ['cargo', 'analyzer']}
+let g:ale_linters_ignore = {'go': ['golint']}
 
 let g:ale_rust_cargo_use_check = 0
 let g:ale_rust_cargo_check_all_targets = 0
@@ -339,7 +340,7 @@ let g:go_fmt_command = 'goimports'
 let g:go_rename_command = 'gopls'
 
 au FileType go nmap <leader><F1> :GoDoc<cr>
-au FileType go nmap <leader><F6> :GoRename<cr>
+"au FileType go nmap <leader><F6> :GoRename<cr>
 au FileType go nmap <leader><F12> :GoDeclsDir<cr>
 
 " === Rust =======================================
