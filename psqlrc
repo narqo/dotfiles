@@ -1,6 +1,18 @@
-\x auto
 \set QUIET 1
-#\pset null '(null)'
-\pset null ␀
+
+-- show timing info for queries
+\timing
+
+-- extended display
+\x auto
+
+-- get rid of duplicates in history
+\set HISTCONTROL ignoredups
+
+-- display NULLs as '<str>'
+\pset null '[null]'
+
+-- autocomplete in uppercase
 \set COMP_KEYWORD_CASE upper
+
 \unset QUIET
