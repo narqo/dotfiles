@@ -38,6 +38,7 @@ set -x PYTHONUSERBASE $HOME/.local
 
 set -x GOPATH $HOME/.local/lib/go
 set -x GOBIN $HOME/.local/bin
+set -x GOENV $XDG_CONFIG_HOME/go/env
 set -x GOMODCACHE $XDG_CACHE_HOME/gomod
 
 set -x RUSTUP_HOME $HOME/.local/lib/rustup
