@@ -21,6 +21,7 @@ Plugin 'tpope/vim-fugitive'
 
 Plugin 'elzr/vim-json'
 Plugin 'fatih/vim-go'
+Plugin 'hashivim/vim-terraform'
 Plugin 'pangloss/vim-javascript'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'rust-lang/rust.vim'
@@ -346,3 +347,7 @@ au FileType go nmap <leader><F12> :GoDeclsDir<cr>
 " === Rust =======================================
 " Runs rustfmt when save buffer
 let g:rustfmt_autosave = 1
+
+" === Terraform ==================================
+" Automatically format tf and tfvars files with "terraform fmt"
+let g:terraform_fmt_on_save = 1
