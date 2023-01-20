@@ -164,16 +164,12 @@ set wildignore+=*DS_Store*
 set wildignore+=*.png,*.jpg,*.gif
 
 " UI ==========================================================================
+set background=light
 
 " tell the term has 256 colors
 set t_Co=256
-" same but for vim 8
-if has("termguicolors")
-    set termguicolors
-endif
 
 colorscheme classylight
-set background=light
 
 " set up the gui cursor to look nice
 set guicursor=a:ver15-Cursor-blinkon0
