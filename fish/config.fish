@@ -34,25 +34,36 @@ set PATH $HOME/.local/bin /usr/local/bin /usr/local/sbin $PATH
 # Don’t clear the screen after quitting a manual page
 set -x MANPAGER "less -X"
 
+# Python
 set -x PYTHONUSERBASE $HOME/.local
 
+# Go
 set -x GOPATH $HOME/.local/lib/go
 set -x GOBIN $HOME/.local/bin
 set -x GOENV $XDG_CONFIG_HOME/go/env
 set -x GOMODCACHE $XDG_CACHE_HOME/gomod
 
+# Rust
 set -x RUSTUP_HOME $HOME/.local/lib/rustup
 set -x CARGO_HOME $HOME/.local/lib/cargo
 
 set -x PATH $PATH $CARGO_HOME/bin
 
+# Dart + Flutter
 set -x PATH $PATH $HOME/.local/lib/flutter/bin
 
+# Deno
+set -x DENO_INSTALL_ROOT $HOME/.local/lib/deno/bin
+
+set -x PATH $PATH $DENO_INSTALL_ROOT
+
+# Perl
 set -x PERL5LIB $HOME/.local/lib/perl5
 set -x PERL_LOCAL_LIB_ROOT $HOME/.local
 set -x PERL_MB_OPT --install_base\ \"$HOME/.local\"
 set -x PERL_MM_OPT "INSTALL_BASE=$HOME/.local"\ cpan\ local::lib
 
+# Ruby
 set -l gemdir (gem env --quiet gemdir 2> /dev/null)
 if test -n "$gemdir"
     set PATH $PATH "$gemdir/bin"
