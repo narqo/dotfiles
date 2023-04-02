@@ -22,7 +22,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'elzr/vim-json'
 Plugin 'fatih/vim-go'
 Plugin 'hashivim/vim-terraform'
-Plugin 'pangloss/vim-javascript'
+"Plugin 'pangloss/vim-javascript'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'rust-lang/rust.vim'
 Plugin 'stephpy/vim-yaml'
@@ -290,7 +290,7 @@ let g:ale_sign_error = 'E'
 let g:ale_sign_warning = '?'
 
 " setup additional linters
-let g:ale_linters = {'rust': ['cargo', 'analyzer']}
+let g:ale_linters = {'rust': ['analyzer']}
 let g:ale_linters_ignore = {'go': ['golint']}
 
 let g:ale_rust_cargo_use_check = 0
