@@ -5,6 +5,7 @@ config.font = wz.font('Iosevka')
 config.font_size = 16.0
 
 config.audible_bell = 'Disabled'
+config.default_cursor_style = 'SteadyBar'
 config.cursor_thickness = 1
 config.native_macos_fullscreen_mode = true
 config.tab_bar_at_bottom = true
