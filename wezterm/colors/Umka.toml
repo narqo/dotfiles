@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    '#000000',
+    '#e71313',
+    '#008000',
+    '#757500',
+    '#0225c7',
+    '#c930c7',
+    '#008080',
+    '#808080',
+]
+background = '#ffffff'
+brights = [
+    '#6a737d',
+    '#e71313',
+    '#008000',
+    '#393a34',
+    '#503c64',
+    '#191919',
+    '#a37acc',
+    '#feffff',
+]
+cursor_bg = '#4c4c4c'
+cursor_border = '#4c4c4c'
+cursor_fg = '#feffff'
+foreground = '#000000'
+selection_bg = '#c1ddff'
+selection_fg = '#000000'
+
+[colors.indexed]
+
+[metadata]
+name = 'Umka'
+origin_url = ''

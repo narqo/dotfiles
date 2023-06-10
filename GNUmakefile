@@ -15,6 +15,9 @@ nvim_files = .config/nvim
 # === psql related files
 psql_files = .config/psqlrc
 
+# === wezterm
+wezterm_files = .config/wezterm
+
 ignore = $(wildcard \
 	GNUmakefile \
 	Brewfile \
@@ -32,6 +35,7 @@ files := $(addprefix .,$(filter-out $(ignore),$(shell ls -1)))
 files += $(nvim_files)
 files += $(fish_files)
 files += $(psql_files)
+files += $(wezterm_files)
 
 CONF_DIRS = $(addprefix $(DESTDIR)/,.config/ $(addprefix .local/,bin/ lib/ share/ opt/))
 CONF_FILES = $(addprefix $(DESTDIR)/,$(files))
@@ -80,6 +84,9 @@ $(DESTDIR)/.local/share/fish: fish | $(DESTDIR)/.local/share
 	$(setup)
 
 $(DESTDIR)/.config/psqlrc: psqlrc
+	$(setup)
+
+$(DESTDIR)/.config/wezterm: wezterm | $(CONF_DIRS)
 	$(setup)
 
 $(CONF_DIRS) $(DESTDIR)/.config/git:
