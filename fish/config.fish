@@ -1,5 +1,8 @@
 # vim: ft=conf
 
+# See https://no-color.org/
+set -x NO_COLOR 1
+
 # See https://specifications.freedesktop.org/basedir-spec/latest/ar01s03.html
 set -x XDG_CONFIG_HOME $HOME/.config
 set -x XDG_DATA_HOME $HOME/.local/share
