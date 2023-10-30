@@ -155,10 +155,14 @@ set completeopt=menuone,noinsert,noselect
 " Make cmdline tab completion similar to bash
 " enable <ctrl-n> and <ctrl-p> to scroll through matches
 set wildmenu
-set wildmode=list:longest
+set wildmode=list:longest:lastused
 set wildignore=*.o,*.obj,*~,*.pyc,*.pyo,*.bak
 set wildignore+=*DS_Store*
 set wildignore+=*.png,*.jpg,*.gif
+
+" ctrl+space for omnifunc's completion
+imap <C-Space> <C-x><C-o>
+imap <C-@> <C-Space>
 
 " UI ==========================================================================
 set background=light
@@ -276,28 +280,37 @@ nnoremap <leader>b :CtrlPBuffer<cr>
 " === Ale ========================================
 " only lint on save
 let g:ale_lint_on_text_changed = 'never'
-"let g:ale_lint_on_save = 0
-"let g:ale_lint_on_enter = 0
 let g:ale_lint_on_insert_leave = 0
 
 " disabling highlighting
 let g:ale_set_highlights = 0
 
-let g:ale_sign_error = 'E'
-let g:ale_sign_warning = '?'
+" configure loclist
+let g:ale_set_loclist = 1
+let g:ale_open_list = 0
+let g:ale_keep_list_window_open = 0
 
 " setup additional linters
 let g:ale_linters = {
-\    'go': ['gofmt', 'go vet', 'staticcheck'],
+\    'go': ['gofmt', 'gopls', 'govet'],
 \    'rust': ['analyzer'],
+\}
+let g:ale_fixers = {
+\   'go': ['goimports', 'gopls'],
 \}
 
 let g:ale_rust_cargo_use_check = 0
 let g:ale_rust_cargo_check_all_targets = 0
 let g:ale_rust_cargo_use_clippy = 1
 
+let g:ale_sign_error = '■'
+let g:ale_sign_warning = '?'
+
 " enable airline integration
 let g:airline#extensions#ale#enabled = 1
+
+" enable ALE-provided omnicompletion
+set omnifunc=ale#completion#OmniFunc
 
 nmap <silent> <leader><F1> :ALEDocumentation<cr>
 nmap <silent> <leader><F2> :ALEHover<cr>
@@ -332,8 +345,12 @@ let g:vim_json_syntax_conceal = 0
 "let g:go_auto_type_info = 1
 
 " Autoimports and code formation
-let g:go_fmt_command = 'goimports'
+"let g:go_fmt_command = 'goimports'
+let g:go_fmt_command = 'gopls'
 let g:go_rename_command = 'gopls'
+
+" Don't open loclist automatically
+let g:go_fmt_fail_silently = 1
 
 au FileType go nmap <leader><F1> :GoDoc<cr>
 "au FileType go nmap <leader><F6> :GoRename<cr>
