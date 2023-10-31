@@ -32,7 +32,7 @@ Plugin 'vim-airline/vim-airline-themes'
 call vundle#end()
 filetype plugin indent on
 
-" General options =============================================================
+" General settings ============================================================
 
 syntax on
 
@@ -105,19 +105,6 @@ set textwidth=0
 set pastetoggle=<leader>p
 
 set mouse=
-"if has('unnamedplus')
-"    set clipboard=unnamedplus
-"endif
-
-" Status line =================================================================
-
-" Show additional inforfation in statusline
-set laststatus=2
-set statusline=%f%h\ %y\ %m\ %r\ %{&encoding}\
-
-set statusline+=%*
-set statusline+=%=Line:%l/%L[%p%%]\ Col:%c\ [%b][0x%B]
-set statusline+=\ Buf:%n\
 
 " Search settings =============================================================
 
@@ -139,14 +126,13 @@ endif
 
 set nobackup
 set noswapfile
-set nowb
+set nowritebackup
 
 " Folds =======================================================================
 
 " dont fold by default
 set nofoldenable
 set foldmethod=manual
-"set foldcolumn=2
 
 " Completion ==================================================================
 
@@ -171,6 +157,9 @@ set background=light
 set t_Co=256
 
 colorscheme classylight
+
+" split window separators, etc
+set fillchars+=vert:│,fold:⠐,eob:⠿
 
 " set up the gui cursor to look nice
 set guicursor=a:ver15-Cursor-blinkon0
@@ -253,18 +242,14 @@ nnoremap <leader><leader> <c-^>
 " Auto change the directory to the current file I'm working on
 autocmd BufEnter * silent! lcd %:p:h
 
-autocmd BufRead,BufNewFile *.md,*.markdown setl tw=150 ts=2 sw=2 expandtab
-autocmd BufRead,BufNewFile *.wiki setl ft=wiki tw=150 ts=2 sw=2 expandtab
-
 autocmd FileType gitcommit setl tw=68 spell
 autocmd FileType go setl ts=4 sts=4 sw=4 noexpandtab
 autocmd FileType groovy,perl,ruby setl ts=2 ts=2 sw=2 expandtab
-autocmd FileType text,txt setl tw=150 spell
+autocmd FileType markdown,text,txt setl tw=150 spell
 
 " Plugins settings ============================================================
 
-" === Vundle ====================================
-
+" === Vundle =====================================
 let g:vundle_default_git_proto = 'git'
 
 " === CtrlP ======================================
@@ -318,6 +303,8 @@ nmap <silent> <leader><F6> :ALERename<cr>
 nmap <silent> <leader><F7> :ALEFindReferences<cr>
 
 " === Airline ====================================
+set laststatus=2
+
 let g:airline_left_sep  = ''
 let g:airline_right_sep = ''
 
