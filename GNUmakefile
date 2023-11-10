@@ -69,6 +69,11 @@ $(DESTDIR)/.config/fish/config.fish: $(DESTDIR)/.local/share/fish
 		/usr/bin/env bash -c \
 			"{ \
 				echo '# vim: ft=conf\n'; \
+				echo ''; \
+				echo 'set -q PATH; or set PATH ""; set -gx PATH /opt/homebrew/bin /opt/homebrew/sbin \$$PATH'; \
+				echo 'set -q MANPATH; or set MANPATH ""; set -gx MANPATH /opt/homebrew/share/man \$$MANPATH'; \
+				echo 'set -q INFOPATH; or set INFOPATH ""; set -gx INFOPATH /opt/homebrew/share/info \$$INFOPATH'; \
+				echo ''; \
 				echo '# Source the common user config.fish'; \
 				echo 'source $$HOME/.local/share/fish/config.fish'; \
 			} > $@"; \
