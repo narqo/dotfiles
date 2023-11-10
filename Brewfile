@@ -2,8 +2,6 @@
 
 # Usage: brew $(cat <dotfiles>/Brewfile | grep -v)
 
-tap homebrew/binary
-
 install bat
 # fast replacement for ls
 install exa
@@ -12,7 +10,6 @@ install fswatch
 install git
 install gnu-sed --with-default-names
 install go
-install go-delve/delve/delve
 install htop
 install jq
 # count lines of source code
@@ -23,9 +20,8 @@ install node
 install python
 install rename
 install ripgrep
-install rust
+install rustup-init
 install coreutils
-install telnet
 install tree
 install vim --override-system-vi
 # csv command line toolkit
@@ -34,8 +30,7 @@ install xz
 # simplified community-driven man pages
 install tealdeer
 
-# cask
-tap caskroom/cask
+# casks
 install iterm2
 
 # fonts
@@ -43,4 +38,4 @@ tap caskroom/fonts
 install font-fira-code
 install font-hack
 install font-input
-install font-jetbrains-mono
+install font-iosevka
