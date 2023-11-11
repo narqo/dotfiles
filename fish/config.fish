@@ -37,9 +37,6 @@ set PATH $HOME/.local/bin /usr/local/bin /usr/local/sbin $PATH
 # Don’t clear the screen after quitting a manual page
 set -x MANPAGER "less -X"
 
-# Python
-set -x PYTHONUSERBASE $HOME/.local
-
 # Go
 set -x GOPATH $HOME/.local/lib/go
 set -x GOBIN $HOME/.local/bin
@@ -60,6 +57,9 @@ set -x DENO_INSTALL_ROOT $HOME/.local/lib/deno/bin
 
 set -x PATH $PATH $DENO_INSTALL_ROOT
 
+# Python
+set -x PYTHONUSERBASE $HOME/.local
+
 # Perl
 set -x PERL5LIB $HOME/.local/lib/perl5
 set -x PERL_LOCAL_LIB_ROOT $HOME/.local
@@ -71,6 +71,8 @@ set -l gemdir (gem env --quiet gemdir 2> /dev/null)
 if test -n "$gemdir"
     set PATH $PATH "$gemdir/bin"
 end
+
+set -x KUBECACHEDIR $XDG_CACHE_HOME
 
 set -x PSQLRC $HOME/.config/psqlrc
 
