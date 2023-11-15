@@ -34,7 +34,7 @@
     ff = merge --ff-only
     ls = ls-files
     up = pull --rebase --autostash --prune
-    sweep = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs git branch -d; }; f"
+    sweep = "!f() { git branch --merged ${1-main} | grep -v " ${1-main}$" | xargs git branch -d; }; f"
     root = rev-parse --show-toplevel
     pr = pull-request
     mu = !git ls-files -v | grep '^[[:lower:]]'
