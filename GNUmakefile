@@ -13,7 +13,9 @@ fish_files += .config/fish/config.fish
 nvim_files = .config/nvim
 
 # === psql related files
-psql_files = .config/psqlrc
+psql_files = \
+	.config/psqlrc \
+	.config/pspgconf
 
 # === wezterm
 wezterm_files = .config/wezterm
@@ -28,7 +30,9 @@ ignore = $(wildcard \
 	nvim \
 	gitignore \
 	psqlrc \
+	pspgconf \
 	package.json \
+	wezterm \
 )
 
 files := $(addprefix .,$(filter-out $(ignore),$(shell ls -1)))
@@ -85,17 +89,14 @@ $(DESTDIR)/.gitconfig: gitconfig | $(DESTDIR)/.config/git $(DESTDIR)/.config/git
 $(DESTDIR)/.config/git/ignore: gitignore
 	$(setup)
 
+$(CONF_DIRS) $(DESTDIR)/.config/git:
+	@mkdir -p $@
+
 $(DESTDIR)/.local/share/fish: fish | $(DESTDIR)/.local/share
 	$(setup)
 
-$(DESTDIR)/.config/psqlrc: psqlrc
+$(DESTDIR)/.config/%: %
 	$(setup)
-
-$(DESTDIR)/.config/wezterm: wezterm | $(CONF_DIRS)
-	$(setup)
-
-$(CONF_DIRS) $(DESTDIR)/.config/git:
-	@mkdir -p $@
 
 clean:
 	@-for file in $(CONF_FILES); do \
