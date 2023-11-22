@@ -74,7 +74,8 @@ end
 
 set -x KUBECACHEDIR $XDG_CACHE_HOME
 
-set -x PSQLRC $HOME/.config/psqlrc
+set -x PSQLRC $XDG_CONFIG_HOME/psqlrc
+set -x PSPG_CONF $XDG_CONFIG_HOME/pspgconf
 
 alias grep="grep --color"
 alias tmux="tmux -2"
