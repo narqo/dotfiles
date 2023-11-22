@@ -46,7 +46,7 @@ CONF_FILES = $(addprefix $(DESTDIR)/,$(files))
 
 setup = @ln -svfF $(realpath $<) $@
 
-all:
+all: 
 	@git pull
 
 $(ignore):
