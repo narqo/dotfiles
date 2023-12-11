@@ -101,9 +101,6 @@ endif
 
 set textwidth=0
 
-" Paste mode toggle on <,p>
-set pastetoggle=<leader>p
-
 set mouse=
 
 " Search settings =============================================================
@@ -193,6 +190,9 @@ hi DiffText ctermbg=1
 
 " Keymaps ======================================================================
 
+" Paste mode toggle on <,p>
+set pastetoggle=<leader>p
+
 " Stop search highlighting
 nmap <silent> <F3> :nohlsearch<CR>
 imap <F3> <Esc>:nohlsearch<CR>
@@ -231,9 +231,6 @@ nnoremap <C-l> <C-w>l
 " privileges, when we're not currently using vim as root
 cmap w!! w !sudo tee % >/dev/null
 
-" Diff this
-nnoremap <leader>dd :windo diffthis<CR>
-
 " <leader><leader> toggles between buffers
 nnoremap <leader><leader> <c-^>
 
@@ -263,7 +260,6 @@ nnoremap <leader>o :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 
 " === Ale ========================================
-" only lint on save
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
 
@@ -278,14 +274,16 @@ let g:ale_keep_list_window_open = 0
 " setup additional linters
 let g:ale_linters = {
 \    'go': ['gofmt', 'gopls', 'govet'],
-\    'rust': ['analyzer'],
+\    'rust': ['analyzer', 'cargo'],
 \}
 let g:ale_fixers = {
 \   'go': ['goimports', 'gopls'],
+\   'rust': ['rustfmt'],
 \}
 
-let g:ale_rust_cargo_use_check = 0
 let g:ale_rust_cargo_check_all_targets = 0
+let g:ale_rust_cargo_check_examples = 1
+let g:ale_rust_cargo_use_check = 0
 let g:ale_rust_cargo_use_clippy = 1
 
 let g:ale_sign_error = '■'
