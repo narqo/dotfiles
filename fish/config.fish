@@ -55,6 +55,9 @@ set -x PATH $PATH $HOME/.local/lib/flutter/bin
 # Deno
 set -x DENO_INSTALL_ROOT $HOME/.local/lib/deno/bin
 
+# Bun
+set -x BUN_CREATE_DIR $HOME/.local/share/bun/create
+
 set -x PATH $PATH $DENO_INSTALL_ROOT
 
 # Python
