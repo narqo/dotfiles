@@ -13,7 +13,6 @@ dot_files = \
 	.gitconfig \
 	.hgignore \
 	.hgrc \
-	.jshintrc \
 	.pip \
 	.profile \
 	.vim \
