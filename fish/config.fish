@@ -75,6 +75,7 @@ if test -n "$gemdir"
     set PATH $PATH "$gemdir/bin"
 end
 
+set -x DOCKER_CONFIG $XDG_CONFIG_HOME/docker
 set -x KUBECACHEDIR $XDG_CACHE_HOME
 
 set -x PSQLRC $XDG_CONFIG_HOME/psqlrc
