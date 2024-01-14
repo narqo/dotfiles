@@ -1,18 +1,17 @@
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [user]
     name = Vladimir Varankin
     email = vladimir@varank.in
-[github]
-    user = narqo
-[url "https://github.com/"]
-    insteadOf = "gh://"
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
+    signingKey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPDM0OMrIAi5BKlYJr7JmOB2nacMueJeCeNDvoAyGWEp vladimir@varank.in
 [core]
     editor = vim
     excludesfile = ~/.config/git/ignore
     whitespace = fix,-indent-with-non-tab,trailing-space,-cr-at-eol
+[github]
+    user = narqo
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
 [diff]
     algorithm = patience
     compactionHeuristic = true
@@ -36,8 +35,6 @@
     up = pull --rebase --autostash --prune
     sweep = "!f() { git branch --merged ${1-main} | grep -v " ${1-main}$" | xargs git branch -d; }; f"
     root = rev-parse --show-toplevel
-    pr = pull-request
-    mu = !git ls-files -v | grep '^[[:lower:]]'
     serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
 [color]
     ui = auto
@@ -49,9 +46,11 @@
     clean = git-lfs clean %f
     smudge = git-lfs smudge %f
     required = true
+[commit]
+    gpgsign = true
 [gpg]
     format = ssh
 [include]
     path = ~/.config/git/local
 [http]
-	cookiefile = ~/.config/git/cookies
+    cookiefile = ~/.config/git/cookies
