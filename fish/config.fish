@@ -54,11 +54,10 @@ set -x PATH $PATH $HOME/.local/lib/flutter/bin
 
 # Deno
 set -x DENO_INSTALL_ROOT $HOME/.local/lib/deno/bin
+set -x PATH $PATH $DENO_INSTALL_ROOT
 
 # Bun
 set -x BUN_CREATE_DIR $HOME/.local/share/bun/create
-
-set -x PATH $PATH $DENO_INSTALL_ROOT
 
 # Python
 set -x PYTHONUSERBASE $HOME/.local
@@ -75,6 +74,7 @@ if test -n "$gemdir"
     set PATH $PATH "$gemdir/bin"
 end
 
+set -x AZURE_CONFIG_DIR $XDG_CONFIG_HOME/azure
 set -x DOCKER_CONFIG $XDG_CONFIG_HOME/docker
 set -x KUBECACHEDIR $XDG_CACHE_HOME
 
