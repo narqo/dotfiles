@@ -88,7 +88,7 @@ alias flushdns="dscacheutil -flushcache; and killall -HUP mDNSResponder"
 
 if test (which eza 2> /dev/null)
     alias els=eza
-    alias ell="eza -l"
+    alias ell="eza -l --group-directories-first"
     alias ls=els
     alias ll=ell
 end
@@ -97,4 +97,5 @@ if status --is-interactive
     abbr --add --global brw brew
     abbr --add --global gi git
     abbr --add --global ku kubectl
+    abbr --add --global doco docker compose
 end
