@@ -184,6 +184,7 @@ let g:html_diff_one_file = 1
 
 if &diff
     syntax off
+    setl nospell
 endif
 
 hi DiffText ctermbg=1
@@ -242,7 +243,9 @@ autocmd BufEnter * silent! lcd %:p:h
 autocmd FileType gitcommit setl tw=68 spell
 autocmd FileType go setl ts=4 sts=4 sw=4 noexpandtab
 autocmd FileType groovy,perl,ruby setl ts=2 ts=2 sw=2 expandtab
-autocmd FileType markdown,text,txt setl tw=150 syntax=off spell wrap
+autocmd FileType markdown,txt setl tw=150 syntax=off spell wrap
+
+autocmd FileType help setl nospell
 
 " Plugins settings ============================================================
 
