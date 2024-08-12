@@ -33,7 +33,7 @@
     ff = merge --ff-only
     ls = ls-files
     up = pull --rebase --autostash --prune
-    sweep = "!f() { git branch --merged ${1-main} | grep -v " ${1-main}$" | xargs git branch -d; }; f"
+    sweep = "!f() { git branch --merged ${1-main} | grep -v "^[+*] " | xargs git branch -d; }; f"
     root = rev-parse --show-toplevel
     serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
 [color]
