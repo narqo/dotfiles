@@ -29,6 +29,9 @@ jsconfig.json
 *~
 .netrwhist
 
+# Zed
+.zed/
+
 # Node.js
 npm-debug.log
 
