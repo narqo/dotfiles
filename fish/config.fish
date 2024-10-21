@@ -46,7 +46,7 @@ set -x GOMODCACHE $XDG_CACHE_HOME/gomod
 # Rust
 set -x RUSTUP_HOME $HOME/.local/lib/rustup
 set -x CARGO_HOME $HOME/.local/lib/cargo
-set -x CARGO_INSTALL_ROOT $HOME/.local/bin
+set -x CARGO_INSTALL_ROOT $HOME/.local
 
 set -x PATH $PATH $CARGO_HOME/bin
 
