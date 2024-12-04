@@ -27,7 +27,7 @@
     st = status -sb
     lg = log --oneline
     lp = log -p
-    sw = switch
+    sw = "!f() { if [ $# -eq 1 ] && [ "$1" = "-C" ]; then git switch -C "wip-$(date +%Y%m%d-%H%M%S)"; else git switch "$@"; fi }; f"
     hist = log --graph --pretty=format:'%C(red)%h%Creset %s - %ad%C(green)%d%Creset %C(blue)<%an>%Creset' --date=short
     staged = diff --cached
     ff = merge --ff-only
