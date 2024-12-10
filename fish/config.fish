@@ -101,7 +101,7 @@ if status --is-interactive
 
     # should work natively (w/o on-event) in fish v4
     function fish_should_add_to_history --on-event fish_postexec
-        string match -qr "^(git br -D)|(docker( image)? rm)" -- $argv;
+        string match -qr "^(git br -(D|d|m))|(docker( image)? rm)" -- $argv;
         and history delete --exact --case-sensitive -- (string trim -r $argv);
     end
 end
