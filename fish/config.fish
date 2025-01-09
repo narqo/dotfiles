@@ -104,4 +104,6 @@ if status --is-interactive
         string match -qr "^(git br -(D|d|m))|(docker( image)? rm)" -- $argv;
         and history delete --exact --case-sensitive -- (string trim -r $argv);
     end
+
+    complete -f -c git-sw -a '(set -l t (commandline -ct); complete -C"git switch $t")'
 end

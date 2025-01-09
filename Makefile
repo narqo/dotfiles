@@ -34,11 +34,15 @@ psql_files = \
 # === wezterm
 wezterm_files = .config/wezterm
 
+# === scripts
+bin_files = .local/bin/git-sw
+
 files := $(dot_files)
 files += $(nvim_files)
 files += $(fish_files)
 files += $(psql_files)
 files += $(wezterm_files)
+files += $(bin_files)
 
 CONF_DIRS = $(addprefix $(DESTDIR)/,.config/ $(addprefix .local/,bin/ lib/ share/ opt/))
 CONF_FILES = $(addprefix $(DESTDIR)/,$(files))
@@ -87,6 +91,9 @@ $(DESTDIR)/.gitconfig: gitconfig | $(DESTDIR)/.config/git $(DESTDIR)/.config/git
 	$(setup)
 
 $(DESTDIR)/.config/git/ignore: gitignore
+	$(setup)
+
+$(DESTDIR)/.local/bin/%: scripts/%
 	$(setup)
 
 $(CONF_DIRS) $(DESTDIR)/.config/git:
