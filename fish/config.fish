@@ -75,6 +75,9 @@ if test -n "$gemdir"
     set PATH $PATH "$gemdir/bin"
 end
 
+# Docker Desktop (https://docs.docker.com/reference/cli/docker/compose/#set-up-environment-variables)
+set -x COMPOSE_MENU false
+
 set -x AZURE_CONFIG_DIR $XDG_CONFIG_HOME/azure
 set -x DOCKER_CONFIG $XDG_CONFIG_HOME/docker
 set -x KUBECACHEDIR $XDG_CACHE_HOME
