@@ -7,7 +7,7 @@ set -g fish_color_error red --bold
 set -g fish_color_param normal
 set -g fish_color_autosuggestion brblack
 set -g fish_color_selection white --bold --background=cyan
-set -g fish_color_search_match bryellow --background=cyan
+set -g fish_color_search_match brwhite --background=cyan
 set -g fish_color_history_current --bold
 set -g fish_color_operator 00a6b2
 set -g fish_color_escape 00a6b2
