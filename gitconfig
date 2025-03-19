@@ -33,6 +33,7 @@
     ls = ls-files
     up = pull --rebase --autostash --prune
     sweep = "!f() { git branch --merged ${1-main} | grep -v "^[+*] " | xargs git branch -d; }; f"
+    gone = "!f() { git fetch --all --prune; git branch --format '%(refname:short) %(upstream:track)' | awk '/\\[gone\\]/{print $1}' | xargs git branch -D; }; f"
     root = rev-parse --show-toplevel
     serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
 [color]
