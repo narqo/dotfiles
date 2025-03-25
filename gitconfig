@@ -13,12 +13,15 @@
 [url "ssh://git@github.com/"]
     insteadOf = https://github.com/
 [diff]
-    algorithm = patience
+    algorithm = histogram
+    colorMoved = plain
     compactionHeuristic = true
 [pull]
     rebase = true
 [push]
     default = current
+[rebase]
+    updateRefs = true
 [alias]
     br = branch -v
     ci = commit
@@ -46,6 +49,8 @@
     clean = git-lfs clean %f
     smudge = git-lfs smudge %f
     required = true
+[branch]
+	sort = -committerdate
 [commit]
     gpgsign = true
 [gpg]
