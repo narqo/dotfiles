@@ -1,6 +1,6 @@
 #                 1      2         3          4      5      6      7      8       9      10     11     12
 # colors:         black  dark_gray light_gray white  yellow orange red    magenta violet blue   cyan   green
-set __fish_colors 000000 083743    445659     fdf6e3 b58900 cb4b16 dc121f af005f  6c71c4 268bd2 2aa198 859900
+set __fish_colors 000000 083743    445659     fdf6e3 e49535 cb4b16 d33226 af005f  6c71c4 268bd2 2aa198 008000
 
 # fish git prompt
 set __fish_git_prompt_showdirtystate "yes"
