@@ -1,14 +1,13 @@
-#                 1      2         3          4      5      6      7      8       9      10     11     12
-# colors:         black  dark_gray light_gray white  yellow orange red    magenta violet blue   cyan   green
-set __fish_colors 000000 083743    445659     fdf6e3 e49535 cb4b16 d33226 af005f  6c71c4 268bd2 2aa198 008000
+#                 1      2         3          4      5      6      7       8       9      10      11      12
+# colors:         black  dark_gray light_gray white  yellow orange red     magenta violet blue    cyan    green
+set __fish_colors 000000 083743    445659     fff    e49535 cb4b16 cc2100  af005f  6c71c4 0c24bf  6db1d0  008000
 
 # fish git prompt
 set __fish_git_prompt_showdirtystate "yes"
 set __fish_git_prompt_showstashstate "yes"
 set __fish_git_prompt_showupstream "yes"
-#set __fish_git_prompt_color_branch purple
 set __fish_git_prompt_color normal
-set __fish_git_prompt_color_branch --bold $__fish_colors[1]
+set __fish_git_prompt_color_branch $__fish_colors[1]
 
 # Status Chars
 set __fish_git_prompt_char_upstream_prefix " "
@@ -16,7 +15,7 @@ set __fish_git_prompt_char_cleanstate ""
 set __fish_git_prompt_char_dirtystate "±"
 set __fish_git_prompt_char_stagedstate "⇈"
 set __fish_git_prompt_char_invalidstate "✖"
-set __fish_git_prompt_char_stashstate "↩"
+set __fish_git_prompt_char_stashstate "⚑"
 set __fish_git_prompt_char_upstream_ahead "↑"
 set __fish_git_prompt_char_upstream_behind "↓"
 set __fish_git_prompt_char_upstream_equal ""
@@ -25,12 +24,14 @@ set __fish_git_prompt_char_untrackedfiles "…"
 function __fish_prompt_symbols -d "Display symbols"
   # background job indicator
   if [ (jobs | wc -l)  -gt 0 ]
+    set_color $__fish_colors[4]
     set_color --background $__fish_colors[11]
-    echo -n " ⋯ "
+    echo -n " ·· "
     set_color normal
   end
   # write protection indicator
   if [ ! -w . ]
+    set_color $__fish_colors[4]
     set_color --background $__fish_colors[6]
     echo -n " 𝕷 "
     set_color normal
@@ -50,16 +51,16 @@ function fish_prompt
   end
 
   set -l current_path (pwd | sed "s:^$HOME\/:~/:")
-  set prompt $prompt (set_color --bold $__fish_colors[1])$current_path
+  set prompt $prompt (set_color $__fish_colors[10])$current_path
   echo -n -s $prompt (set_color normal)
 
   set -l git_prompt_format (set_color normal)" 𝒪𝓃 %s"
   echo -n -s (fish_git_prompt $git_prompt_format)
+  echo -s
 
   # Line 2
   set_color normal
-  echo
-  echo -s (set_color --bold $__fish_colors[9])"●"(set_color normal)" "
+  echo -s "◦ "
   #echo -s "› "
 end
 
