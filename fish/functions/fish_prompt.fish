@@ -39,32 +39,41 @@ function __fish_prompt_symbols -d "Display symbols"
 end
 
 function fish_prompt
-  set -l exit_code $status
+  set -l last_status $status
 
   # Line 1
-  set -l prompt ""
+  set -l prefix
 
   # display username and hostname if logged in as root, in sudo or ssh session
   if [ \( (id -u) -eq 0 -o $SUDO_USER \) -o $SSH_CONNECTION ]
     set -l host (hostname | cut -f 1 -d ".")
-    set prompt $prompt (set_color $__fish_colors[6])$host(set_color normal)": "
+    set prefix $prefix (set_color $__fish_colors[6])$host(set_color normal)": "
   end
 
-  set -l current_path (pwd | sed "s:^$HOME\/:~/:")
-  set prompt $prompt (set_color $__fish_colors[10])$current_path
-  echo -n -s $prompt (set_color normal)
+  set -l pwd_color $__fish_colors[10]
+  if test $last_status -ne 0
+      set pwd_color --bold $__fish_colors[7]
+  end
+
+  set -l pwd (string replace -r '^'"$HOME"'/' '~/' $PWD)
+  echo -n -s $prefix (set_color $pwd_color) $pwd (set_color normal)
 
   set -l git_prompt_format (set_color normal)" 𝒪𝓃 %s"
   echo -n -s (fish_git_prompt $git_prompt_format)
+
+  set -l ps_symbols (__fish_prompt_symbols)
+  if string length -q -- $ps_symbols
+    printf ' %s ' $ps_symbols
+  end
+
   echo -s
 
   # Line 2
   set_color normal
-  echo -s "◦ "
   #echo -s "› "
 end
 
 function fish_right_prompt
-  set -l ps_symbols (__fish_prompt_symbols)
-  echo -n -s "$ps_symbols"
+#  set -l ps_symbols (__fish_prompt_symbols)
+#  echo -n -s "$ps_symbols"
 end
