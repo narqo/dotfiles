@@ -47,3 +47,5 @@ __pycache__/
 
 # srclib build cache
 .srclib-cache/
+
+.claude/settings.local.json
