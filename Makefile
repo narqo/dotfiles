@@ -21,6 +21,9 @@ dot_files = \
 fish_files = $(addprefix .local/share/,$(wildcard fish))
 fish_files += .config/fish/config.fish
 
+# === claude related files
+claude_files = .claude/settings.json
+
 # === vim related files
 
 # === neovim related files
@@ -38,6 +41,7 @@ wezterm_files = .config/wezterm
 bin_files = .local/bin/git-sw
 
 files := $(dot_files)
+files += $(claude_files)
 files += $(nvim_files)
 files += $(fish_files)
 files += $(psql_files)
