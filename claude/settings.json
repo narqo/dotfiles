@@ -1,12 +1,20 @@
 {
+  "includeCoAuthoredBy": false,
+  "outputStyle": "Direct",
   "permissions": {
     "allow": [
-      "Bash(tk eval:*)",
+      "Bash(cat:*)",
+      "Bash(find:*)",
+      "Bash(gh issue view:*)",
+      "Bash(gh pr view:*)",
+      "Bash(git fetch:*)",
+      "Bash(go test:*)",
       "Bash(grep:*)",
       "Bash(rg:*)",
-      "Bash(find:*)",
-      "Bash(go test:*)"
+      "Bash(tk eval:*)"
     ]
   },
-  "includeCoAuthoredBy": false
+  "feedbackSurveyState": {
+    "lastShownTime": 1754038810465
+  }
 }

@@ -22,7 +22,9 @@ fish_files = $(addprefix .local/share/,$(wildcard fish))
 fish_files += .config/fish/config.fish
 
 # === claude related files
-claude_files = .claude/settings.json
+claude_files = \
+	.claude/settings.json \
+	.claude/output-styles/
 
 # === vim related files
 
