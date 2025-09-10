@@ -23,6 +23,8 @@ install ripgrep
 install rustup-init
 install coreutils
 install tree
+# fast Python package and project manager
+install uv
 install vim --override-system-vi
 # csv command line toolkit
 install xsv
