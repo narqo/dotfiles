@@ -9,6 +9,7 @@
       "Bash(gh pr view:*)",
       "Bash(gh pr diff:*)",
       "Bash(git fetch:*)",
+      "Bash(go list:*)",
       "Bash(go test:*)",
       "Bash(grep:*)",
       "Bash(rg:*)",
