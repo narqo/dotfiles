@@ -5,9 +5,11 @@
     "allow": [
       "Bash(cat:*)",
       "Bash(find:*)",
+      "Bash(gh issue list:*)",
       "Bash(gh issue view:*)",
-      "Bash(gh pr view:*)",
       "Bash(gh pr diff:*)",
+      "Bash(gh pr list:*)",
+      "Bash(gh pr view:*)",
       "Bash(git fetch:*)",
       "Bash(go list:*)",
       "Bash(go test:*)",
