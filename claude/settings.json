@@ -13,7 +13,8 @@
       "Bash(go test:*)",
       "Bash(grep:*)",
       "Bash(rg:*)",
-      "Bash(tk eval:*)"
+      "Bash(tk eval:*)",
+      "WebFetch(domain:raw.githubusercontent.com)"
     ]
   },
   "feedbackSurveyState": {
