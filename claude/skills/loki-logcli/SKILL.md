@@ -27,7 +27,7 @@ to run the analysis on the fetched data offline.
 Run a LogQL query against the **ops Loki instance**:
 
 ```
-logcli --addr=https://logs-ops-002.grafana-ops.net 
+logcli --addr=https://logs-ops-002.grafana-ops.net \
   --username=29 --password=`cat $HOME/.config/gcom/gcom-ops.token` \
   query `<query>`
 ```
