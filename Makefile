@@ -25,7 +25,8 @@ fish_files += .config/fish/config.fish
 # === claude related files
 claude_files = \
 	.claude/settings.json \
-	.claude/output-styles/
+	.claude/output-styles/ \
+	.claude/skills/
 
 # === vim related files
 
