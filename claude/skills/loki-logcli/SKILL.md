@@ -29,7 +29,7 @@ Run a LogQL query against the **ops Loki instance**:
 ```
 logcli --addr=https://logs-ops-002.grafana-ops.net \
   --username=29 --password=`cat $HOME/.config/gcom/gcom-ops.token` \
-  query `<query>`
+  query '<query>'
 ```
 
 The username "29" is the well-known "ops tenant". The API password for the tenant seats in the mentioned file.
@@ -41,11 +41,11 @@ Run a LogQL query against the **dev Loki instance**:
 ```
 logcli --addr=https://logs-dev-005.grafana-dev.net \
   --username=29 --password=`cat $HOME/.config/gcom/gcom-dev.token` \
-  query `<query>`
+  query '<query>'
 ```
 
 Query all "info" level logs from the "compactor" container in the namespace "mimir-dev-14" between 8/10 00:00 and 9/10 00:00 (not inclusive).
-Request the output in the jsonl format.
+Request the output in the jsonl format:
 
 ```
 logcli --addr=https://logs-dev-005.grafana-dev.net \
@@ -56,6 +56,6 @@ logcli --addr=https://logs-dev-005.grafana-dev.net \
 
 ## Reference
 
-Run `logcli help` to read the reference. Running `logcli help <command>` shows the reference for a sub-specific command.
+Run `logcli help` to read the reference. Running `logcli help <command>` shows the reference for a specific sub-command.
 
 The complete online reference is available at https://grafana.com/docs/loki/latest/query/logcli/getting-started/
