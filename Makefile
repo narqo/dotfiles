@@ -24,6 +24,7 @@ fish_files += .config/fish/config.fish
 
 # === claude related files
 claude_files = \
+	.claude/CLAUDE.md \
 	.claude/settings.json \
 	.claude/output-styles/ \
 	.claude/skills/
