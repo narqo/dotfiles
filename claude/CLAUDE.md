@@ -6,7 +6,8 @@
 
 ## Coding style
 
-- *Never* add obvious code comments. When you think a comment is needed, prefer comments that answer to *why* the code here, and NOT to *what* the code is doing.
+- *Never* add obvious code comments.
+- When you think a comment is needed, prefer comments that explain *why* the code is here, and NOT what the code is doing.
 
 ## Writing style
 
