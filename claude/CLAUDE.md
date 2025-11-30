@@ -9,6 +9,11 @@
 - *Never* add obvious code comments.
 - When you think a comment is needed, prefer comments that explain *why* the code is here, and NOT what the code is doing.
 
+### Go coding style
+
+Avoid legacy packages:
+- use `fmt` instead of `github.com/pkg/errors`.
+
 ## Writing style
 
 - Keep headlines concise; eliminate unnecessary words.
