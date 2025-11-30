@@ -12,7 +12,8 @@
 ### Go coding style
 
 Avoid legacy packages:
-- use `fmt` instead of `github.com/pkg/errors`.
+- use `fmt` instead of `github.com/pkg/errors`
+- use `log/slog` instead of `log`
 
 ## Writing style
 

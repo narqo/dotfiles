@@ -22,7 +22,10 @@ dot_files = \
 fish_files = $(addprefix .local/share/,$(wildcard fish))
 fish_files += .config/fish/config.fish
 
-# === claude related files
+# === coding agents related files
+ai_rules_files = \
+	.config/AGENT.md
+
 claude_files = \
 	.claude/CLAUDE.md \
 	.claude/settings.json \
@@ -46,6 +49,7 @@ wezterm_files = .config/wezterm
 bin_files = .local/bin/git-sw
 
 files := $(dot_files)
+files += $(ai_rules_files)
 files += $(claude_files)
 files += $(nvim_files)
 files += $(fish_files)
@@ -71,6 +75,9 @@ $(DESTDIR)/.%: %
 	$(setup)
 
 $(DESTDIR)/.config/%: %
+	$(setup)
+
+$(DESTDIR)/.claude/CLAUDE.md: $(DESTDIR)/.config/AGENT.md
 	$(setup)
 
 $(DESTDIR)/.vim/vimrc: vim/vimrc | $(DESTDIR)/.vim
