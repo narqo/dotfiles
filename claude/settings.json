@@ -4,6 +4,7 @@
   "permissions": {
     "allow": [
       "Bash(cat:*)",
+      "Bash(comm:*)",
       "Bash(find:*)",
       "Bash(gh issue list:*)",
       "Bash(gh issue view:*)",
