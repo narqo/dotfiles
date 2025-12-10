@@ -1,7 +1,17 @@
-Instalation
-===========
+# Dotfiles
 
-    $ make
+> [!Note]
+>
+> On macOS install the XCode CLI tools before continuing.
 
-    $ make install
+```
+xcode-select --install
+```
 
+## Setup
+
+```
+$ make
+
+$ make install
+```
