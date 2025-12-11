@@ -44,8 +44,13 @@ Respect existing code style and conventions.
 Avoid using legacy packages:
 - Use `fmt` instead of `github.com/pkg/errors`
 - Use `log/slog` instead of `log`
+- Use `io` instead of `io/ioutil`
 
 Don't introduce new dependencies without discussion.
+
+Prefer modern Go (versions 1.24 and newer):
+- Use `testing.T.Context`, `testing.B.Context`, etc
+- Use `testing.B.Loop`
 
 ## Writing style
 
