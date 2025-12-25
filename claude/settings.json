@@ -19,6 +19,7 @@
       "Bash(grep:*)",
       "Bash(rg:*)",
       "Bash(tk eval:*)",
+      "Bash(wc:*)",
       "Bash(xsv:*)",
       "WebFetch(domain:raw.githubusercontent.com)"
     ]
