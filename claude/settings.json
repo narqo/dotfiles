@@ -19,6 +19,8 @@
       "Bash(grep:*)",
       "Bash(ls:*)",
       "Bash(rg:*)",
+      "Bash(tee:*)",
+      "Bash(test:*)",
       "Bash(tk eval:*)",
       "Bash(wc:*)",
       "Bash(xsv:*)",
