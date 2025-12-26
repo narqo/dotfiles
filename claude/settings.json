@@ -17,6 +17,7 @@
       "Bash(go list:*)",
       "Bash(go test:*)",
       "Bash(grep:*)",
+      "Bash(ls:*)",
       "Bash(rg:*)",
       "Bash(tk eval:*)",
       "Bash(wc:*)",
