@@ -32,13 +32,6 @@ jsconfig.json
 # Zed
 .zed/
 
-# Node.js
-npm-debug.log
-
-# Python
-__pycache__/
-*.py[cod]
-
 # Sublime
 *.sublime-workspace
 
@@ -50,3 +43,15 @@ __pycache__/
 
 # AI agents
 **/.claude/settings.local.json
+
+# Node.js
+npm-debug.log
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Zig
+.zig-cache/
+.zig-out/
+
