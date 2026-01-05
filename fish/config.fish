@@ -102,14 +102,16 @@ if status --is-interactive
     abbr --add --global ku kubectl
     abbr --add --global doco docker compose
 
-    # should work natively (w/o on-event) in fish v4
-    #function fish_should_add_to_history --on-event fish_postexec
-    #    string match -qr "^(git br -(D|d|m))|(docker( image)? rm)" -- $argv;
-    #    and history delete --exact --case-sensitive -- (string trim -r $argv);
-    #end
+    function fish_should_add_to_history
+        string match -qr "^(git br -(D|d|M|m))|(docker( image)? rm)" -- $argv;
+            #and history delete --exact --case-sensitive -- (string trim -r $argv);
+            and return 1
+        string match -qr "^git worktree remove" -- $argv; and return 1
+        return 0
+    end
 
     complete -f -c git-sw -a '(set -l t (commandline -ct); complete -C"git switch $t")'
 end
 
 # https://github.com/fish-shell/fish-shell/issues/11192 (should be fixed in 4.0.1)
-set -Ua fish_features no-keyboard-protocols
+#set -Ua fish_features no-keyboard-protocols
