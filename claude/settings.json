@@ -12,6 +12,7 @@
       "Bash(gh pr list:*)",
       "Bash(gh pr view:*)",
       "Bash(git fetch:*)",
+      "Bash(git rev-parse:*)",
       "Bash(git show:*)",
       "Bash(go build:*)",
       "Bash(go list:*)",
