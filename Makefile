@@ -23,14 +23,16 @@ fish_files = $(addprefix .local/share/,$(wildcard fish))
 fish_files += .config/fish/config.fish
 
 # === coding agents related files
-ai_rules_files = \
-	.config/AGENT.md
+ai_agents_files = \
+	AGENTS.md \
+	.local/share/AGENTS.md \
+	.local/share/agents/ \
 
 claude_files = \
 	.claude/CLAUDE.md \
 	.claude/settings.json \
 	.claude/output-styles/ \
-	.claude/skills/
+	.claude/skills/ \
 
 # === vim related files
 
@@ -49,7 +51,7 @@ wezterm_files = .config/wezterm
 bin_files = .local/bin/git-sw
 
 files := $(dot_files)
-files += $(ai_rules_files)
+files += $(ai_agents_files)
 files += $(claude_files)
 files += $(nvim_files)
 files += $(fish_files)
@@ -77,7 +79,10 @@ $(DESTDIR)/.%: %
 $(DESTDIR)/.config/%: %
 	$(setup)
 
-$(DESTDIR)/.claude/CLAUDE.md: $(DESTDIR)/.config/AGENT.md
+$(DESTDIR)/.claude/CLAUDE.md: $(DESTDIR)/.local/share/AGENTS.md
+	$(setup)
+
+$(DESTDIR)/.claude/skills: $(DESTDIR)/.local/share/agents/skills
 	$(setup)
 
 $(DESTDIR)/.vim/vimrc: vim/vimrc | $(DESTDIR)/.vim
@@ -116,6 +121,15 @@ $(CONF_DIRS) $(DESTDIR)/.config/git:
 	@mkdir -p $@
 
 $(DESTDIR)/.local/share/fish: fish | $(DESTDIR)/.local/share
+	$(setup)
+
+$(DESTDIR)/.local/share/AGENTS.md: AGENTS.md | $(DESTDIR)/.local/share
+	$(setup)
+
+$(DESTDIR)/AGENTS.md: $(DESTDIR)/.local/share/AGENTS.md
+	$(setup)
+
+$(DESTDIR)/.local/share/agents: agents | $(DESTDIR)/.local/share
 	$(setup)
 
 clean:

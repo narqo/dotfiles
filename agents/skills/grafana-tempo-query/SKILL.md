@@ -1,5 +1,5 @@
 ---
-name: Query Grafana Tempo
+name: grafana-tempo-query
 description: Query and explore distributed traces in Grafana Tempo. Use when a user asks to pull tracing data for analysis.
 allowed-tools: Bash(curl --get:*)
 ---
