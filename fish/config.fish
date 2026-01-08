@@ -60,6 +60,9 @@ set -x PATH $PATH $DENO_INSTALL_ROOT
 # Bun
 set -x BUN_CREATE_DIR $HOME/.local/share/bun/create
 
+# Node
+set -x NPM_CONFIG_PREFIX $HOME/.local
+
 # Python
 set -x PYTHONUSERBASE $HOME/.local
 
