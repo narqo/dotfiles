@@ -132,6 +132,8 @@ $(DESTDIR)/AGENTS.md: $(DESTDIR)/.local/share/AGENTS.md
 $(DESTDIR)/.local/share/agents: agents | $(DESTDIR)/.local/share
 	$(setup)
 
+$(DESTDIR)/.local/share/agents/skills: | $(DESTDIR)/.local/share $(DESTDIR)/.local/share/agents
+
 clean:
 	@-for file in $(CONF_FILES); do \
 		test -L "$$file" && rm -rf "$$file"; \
