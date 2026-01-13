@@ -1,6 +1,5 @@
 {
   "includeCoAuthoredBy": false,
-  "outputStyle": "Direct",
   "permissions": {
     "allow": [
       "Bash(cat:*)",
@@ -30,6 +29,7 @@
       "WebFetch(domain:raw.githubusercontent.com)"
     ]
   },
+  "outputStyle": "Direct",
   "feedbackSurveyState": {
     "lastShownTime": 1754038810465
   }
