@@ -58,3 +58,15 @@ Prefer modern Go (versions 1.24 and newer):
 - Use title case for first-level headlines; use sentence case for second and lower levels
 - Skip introductory phrases like "in conclusion" or "in summary"
 
+## Git style
+
+Everything mentioned for "Writing style" and code commenting applies here.
+
+Don't explain obvious changes. Assume the reader of the PR is a domain expect, who understands the details from the diff.
+
+- No emojis in commits, issues, PR comments, or code
+- No fluff or cheerful filler text
+
+Prefer Go style for commit messages and PR titles:
+- first line is a short one-line summary of the change, prefixed by the primary affected scope (package, sub-system, environment)
+- first-line of commit or PR title does NOT start with capital letter
