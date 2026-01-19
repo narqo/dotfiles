@@ -26,6 +26,7 @@
       "Bash(tk eval:*)",
       "Bash(wc:*)",
       "Bash(xsv:*)",
+      "WebFetch(domain:github.com)",
       "WebFetch(domain:raw.githubusercontent.com)"
     ]
   },
