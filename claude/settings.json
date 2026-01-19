@@ -13,6 +13,8 @@
       "Bash(gh run list:*)",
       "Bash(gh run view:*)",
       "Bash(git fetch:*)",
+      "Bash(git log:*)",
+      "Bash(git ls-tree:*)",
       "Bash(git rev-parse:*)",
       "Bash(git show:*)",
       "Bash(go build:*)",
