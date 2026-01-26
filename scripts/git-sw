@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 if [ $# -eq 1 ] && [ "$1" = "-C" ]; then
-    git switch -C "wip-$(date +%Y%m%d-%H%M%S)"
+    git switch -C "wip-$(date +%Y%m%d)-$(head -c 3 /dev/urandom | xxd -p)"
 else
     git switch "$@"
 fi
