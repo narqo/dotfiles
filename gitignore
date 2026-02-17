@@ -43,6 +43,7 @@ jsconfig.json
 
 # AI agents
 **/.claude/settings.local.json
+.pi/
 
 # Node.js
 npm-debug.log
