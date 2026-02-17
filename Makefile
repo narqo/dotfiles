@@ -34,6 +34,9 @@ claude_files = \
 	.claude/output-styles/ \
 	.claude/skills/ \
 
+pi_files = \
+	.pi/agent/skills/ \
+
 # === vim related files
 
 # === neovim related files
@@ -83,6 +86,10 @@ $(DESTDIR)/.claude/CLAUDE.md: $(DESTDIR)/.local/share/AGENTS.md
 	$(setup)
 
 $(DESTDIR)/.claude/skills: $(DESTDIR)/.local/share/agents/skills
+	$(setup)
+
+$(DESTDIR)/.pi/agent/skills: $(DESTDIR)/.local/share/agents/skills
+	@mkdir -p $(shell dirname $@)
 	$(setup)
 
 $(DESTDIR)/.vim/vimrc: vim/vimrc | $(DESTDIR)/.vim
