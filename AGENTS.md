@@ -57,6 +57,12 @@ Prefer modern Go (versions 1.24 and newer):
 - Keep writing simple and concise; eliminate unnecessary words
 - Use title case for first-level headlines; use sentence case for second and lower levels
 - Skip introductory phrases like "in conclusion" or "in summary"
+- When referring to a UNIX epoch timestamp, prefer to explain the date-time in a human readable form. E.g.
+
+**Good**
+```
+### 6. Observed metrics; mimir-dev-14, T=1771590579 (20 Feb 2026 12:29:39 UTC)
+```
 
 ## Git style
 
