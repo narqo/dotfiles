@@ -32,9 +32,11 @@ claude_files = \
 	.claude/CLAUDE.md \
 	.claude/settings.json \
 	.claude/output-styles/ \
+	.claude/prompts/ \
 	.claude/skills/ \
 
 pi_files = \
+	.pi/agent/prompts/ \
 	.pi/agent/skills/ \
 
 # === vim related files
@@ -85,10 +87,10 @@ $(DESTDIR)/.config/%: %
 $(DESTDIR)/.claude/CLAUDE.md: $(DESTDIR)/.local/share/AGENTS.md
 	$(setup)
 
-$(DESTDIR)/.claude/skills: $(DESTDIR)/.local/share/agents/skills
+$(DESTDIR)/.claude/%: $(DESTDIR)/.local/share/agents/%
 	$(setup)
 
-$(DESTDIR)/.pi/agent/skills: $(DESTDIR)/.local/share/agents/skills
+$(DESTDIR)/.pi/agent/%: $(DESTDIR)/.local/share/agents/%
 	@mkdir -p $(shell dirname $@)
 	$(setup)
 
@@ -139,7 +141,7 @@ $(DESTDIR)/AGENTS.md: $(DESTDIR)/.local/share/AGENTS.md
 $(DESTDIR)/.local/share/agents: agents | $(DESTDIR)/.local/share
 	$(setup)
 
-$(DESTDIR)/.local/share/agents/skills: | $(DESTDIR)/.local/share $(DESTDIR)/.local/share/agents
+$(DESTDIR)/.local/share/agents/prompts $(DESTDIR)/.local/share/agents/skills: | $(DESTDIR)/.local/share $(DESTDIR)/.local/share/agents
 
 clean:
 	@-for file in $(CONF_FILES); do \
