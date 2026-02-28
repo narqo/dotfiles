@@ -35,6 +35,20 @@ return newPageReader(pages, startOffset, length)
 return newPageReader(pages, off, length)
 ```
 
+For magic numbers: comment why the value was chosen, not what the variable holds.
+
+**Bad**:
+```c
+char buf[512]; /* buffer for iovar request */
+```
+
+**Good**:
+```c
+char buf[512]; /* must fit name + data; largest is ~170 (wsec_key) */
+```
+
+The good comment helps a future reader decide whether the size is still correct.
+
 Don't add comments that a human wouldn't add or that are inconsistent with the rest of the code in a file.
 
 Respect existing code style and conventions.
