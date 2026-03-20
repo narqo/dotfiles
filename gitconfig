@@ -7,6 +7,7 @@
 [core]
     editor = vim
     excludesfile = ~/.config/git/ignore
+    pager = delta
     whitespace = fix,-indent-with-non-tab,trailing-space,-cr-at-eol
 [github]
     user = narqo
@@ -58,3 +59,12 @@
     path = ~/.config/git/local
 [http]
     cookiefile = ~/.config/git/cookies
+[delta]
+    color-only = true
+    line-numbers = false
+    syntax-theme = none
+    file-style = "bold"
+    file-decoration-style = ""
+    hunk-header-decoration-style = ""
+    merge-conflict-ours-diff-header-decoration-style = ""
+    merge-conflict-theirs-diff-header-decoration-style = ""

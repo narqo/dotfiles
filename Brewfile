@@ -8,6 +8,7 @@ install exa
 install fish
 install fswatch
 install git
+install git-delta
 install gnu-sed --with-default-names
 install go
 install htop
