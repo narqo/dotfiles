@@ -187,8 +187,6 @@ if &diff
     setl nospell
 endif
 
-hi DiffText ctermbg=1
-
 " Keymaps ======================================================================
 
 " Paste mode toggle on <,p>
