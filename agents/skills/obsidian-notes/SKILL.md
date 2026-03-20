@@ -1,7 +1,6 @@
 ---
 name: obsidian-notes
 description: Manage notes in an Obsidian vault. Use when a user asks to create, update, move, search, or organize notes or knowledge base entries.
-allowed-tools: Bash(echo),Bash(mkdir),Read,Write
 ---
 
 # Obsidian Notes
@@ -58,6 +57,7 @@ Infer `repository` from `git remote get-url origin` in the current working direc
 ### File naming
 
 - Use lowercase kebab-case: `notes-block-builder.md`, `query-gap-analysis.md`.
+- Prefix with a namespace when useful: `rpi4-`, `mimir-`.
 - Prefix with a category when useful: `notes-`, `runbook-`, `debug-`.
 
 ## Workflow
