@@ -52,6 +52,9 @@ psql_files = \
 # === wezterm
 wezterm_files = .config/wezterm
 
+# === jj related files
+jj_files = .config/jj
+
 # === scripts
 bin_files = .local/bin/git-sw
 
@@ -62,6 +65,7 @@ files += $(nvim_files)
 files += $(fish_files)
 files += $(psql_files)
 files += $(wezterm_files)
+files += $(jj_files)
 files += $(bin_files)
 
 CONF_DIRS = $(addprefix $(DESTDIR)/,.config/ $(addprefix .local/,bin/ lib/ share/ opt/))

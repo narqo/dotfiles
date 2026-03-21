@@ -1,0 +1,36 @@
+#:schema https://jj-vcs.github.io/jj/latest/config-schema.json
+[user]
+name = "Vladimir Varankin"
+email = "vladimir@varank.in"
+
+[ui]
+color = "always"
+diff-formatter = ":git"
+pager = "delta"
+
+[ui.streampager]
+show-ruler = false
+
+# https://github.com/jj-vcs/jj/blob/main/cli/src/config/colors.toml
+[colors]
+change_id = "red"
+commit_id = "default"
+
+author = "blue"
+committer = "blue"
+timestamp = "default"
+
+"working_copy change_id" = "red"
+"working_copy commit_id" = "default"
+"working_copy author" = "blue"
+"working_copy committer" = "blue"
+
+"diff token" = { underline = false }
+
+[[--scope]]
+--when.commands = ["status"]
+[--scope.colors]
+"diff modified" = "default"
+
+[aliases]
+di = ['diff']
