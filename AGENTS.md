@@ -75,8 +75,10 @@ Prefer modern Go (versions 1.24 and newer):
 
 **Good**
 ```
-### 6. Observed metrics; mimir-dev-14, T=1771590579 (20 Feb 2026 12:29:39 UTC)
+Observed metrics; mimir-dev-14, T=1771590579 (20 Feb 2026 12:29:39 UTC)
 ```
+
+- Use only basic ASCII symbols for quotes and other symbols. Em dashes are exception — they are good.
 
 ## Git style
 
