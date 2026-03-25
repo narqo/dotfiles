@@ -55,6 +55,9 @@ wezterm_files = .config/wezterm
 # === jj related files
 jj_files = .config/jj
 
+# === k9s related files
+k9s_files = .config/k9s/skins
+
 # === scripts
 bin_files = .local/bin/git-sw
 
@@ -66,6 +69,7 @@ files += $(fish_files)
 files += $(psql_files)
 files += $(wezterm_files)
 files += $(jj_files)
+files += $(k9s_files)
 files += $(bin_files)
 
 CONF_DIRS = $(addprefix $(DESTDIR)/,.config/ $(addprefix .local/,bin/ lib/ share/ opt/))

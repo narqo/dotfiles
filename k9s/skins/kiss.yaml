@@ -1,13 +1,12 @@
 # -----------------------------------------------------------------------------
 # K9s Kiss Skin
-# Author: [@beejeebus](justin.p.randell@gmail.com)
 # -----------------------------------------------------------------------------
 
 # Skin...
 k9s:
   body:
-    fgColor: default
-    bgColor: default
+    fgColor: black
+    bgColor: white
     logoColor: default
   prompt:
     fgColor: default
@@ -21,13 +20,13 @@ k9s:
     bgColor: default
     buttonFgColor: default
     buttonBgColor: default
-    buttonFocusFgColor: black
-    buttonFocusBgColor: "#b294bb"
+    buttonFocusFgColor: default
+    buttonFocusBgColor: orangered
     labelFgColor: default
     fieldFgColor: default
   frame:
     border:
-      fgColor: default
+      fgColor: darkgray
       focusColor: default
     menu:
       fgColor: default
@@ -66,8 +65,8 @@ k9s:
       colonColor: default
       valueColor: default
     logs:
-      fgColor: default
-      bgColor: default
+      fgColor: black
+      bgColor: white
       indicator:
         fgColor: default
         bgColor: default
