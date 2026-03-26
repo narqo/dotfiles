@@ -76,6 +76,8 @@ Use title case for first-level headlines; use sentence case for second and lower
 
 Use only basic ASCII symbols for quotes and other symbols. Em dashes are exception — they are good.
 
+Avoid orphaned prepositions: a line of text should not end with a short word like a preposition.
+
 When referring to a UNIX epoch timestamp, prefer to explain the date-time in a human readable form. E.g.
 
 **Good**
