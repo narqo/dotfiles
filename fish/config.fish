@@ -93,7 +93,7 @@ alias tmux="tmux -2"
 alias flushdns="dscacheutil -flushcache; and killall -HUP mDNSResponder"
 
 if test (which eza 2> /dev/null)
-    alias els=eza
+    alias els="eza --group-directories-first"
     alias ell="eza -l --group-directories-first"
     alias ls=els
     alias ll=ell
