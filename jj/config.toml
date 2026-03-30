@@ -5,6 +5,7 @@ email = "vladimir@varank.in"
 
 [ui]
 color = "always"
+default-command = "log"
 diff-formatter = ":git"
 pager = "delta"
 
