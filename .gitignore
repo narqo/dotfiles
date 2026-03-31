@@ -6,4 +6,5 @@ nvim/spell/
 node_modules
 fish/fish_history
 fish/generated_completions/
+jj/conf.d
 jj/repos
