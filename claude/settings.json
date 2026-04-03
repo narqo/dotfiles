@@ -32,6 +32,9 @@
       "WebFetch(domain:raw.githubusercontent.com)"
     ]
   },
+  "enabledPlugins": {
+    "clangd-lsp@claude-plugins-official": true
+  },
   "outputStyle": "Direct",
   "feedbackSurveyState": {
     "lastShownTime": 1754038810465

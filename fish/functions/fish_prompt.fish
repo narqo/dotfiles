@@ -38,6 +38,33 @@ function __fish_prompt_symbols -d "Display symbols"
   end
 end
 
+function __vcs_prompt
+    __jj_prompt $argv
+    or fish_git_prompt $argv
+end
+
+function __jj_prompt
+    if not command -sq jj
+        return 1
+    end
+
+    set -l state (command jj log 2>/dev/null -r @ -n 1 --no-graph --color never --ignore-working-copy \
+        --template 'separate("\n", change_id.shortest(8), if(!empty, "1", "0"), if(immutable, "1", "0"))')
+    test -n "$state"
+    or return
+
+    set -l change_id $state[1]
+    set -l infostatus
+
+    # dirty
+    if test "$state[2]" = 1
+        set infostatus " $__fish_git_prompt_char_dirtystate"
+    end
+
+    set -l format $argv[1]
+    printf "$format%s" "$change_id$infostatus"
+end
+
 function fish_prompt
   set -l last_status $status
 
@@ -58,8 +85,8 @@ function fish_prompt
   set -l pwd (string replace -r '^'"$HOME"'/' '~/' $PWD)
   echo -n -s $prefix (set_color $pwd_color) $pwd (set_color normal)
 
-  set -l git_prompt_format (set_color normal)" 𝒪𝓃 %s"
-  echo -n -s (fish_git_prompt $git_prompt_format)
+  set -l vcs_prompt_format (set_color normal)" 𝒪𝓃 %s"
+  echo -n -s (__vcs_prompt $vcs_prompt_format)
 
   set -l ps_symbols (__fish_prompt_symbols)
   if string length -q -- $ps_symbols
