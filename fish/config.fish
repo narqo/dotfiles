@@ -35,7 +35,11 @@ set -x EDITOR vim
 set PATH $HOME/.local/bin /usr/local/bin /usr/local/sbin $PATH
 
 # Don’t clear the screen after quitting a manual page
+set -x PAGER "less -X"
 set -x MANPAGER "less -X"
+
+# git-delta requires "less -R"; add -X to not clear screen.
+set -x DELTA_PAGER "less -XR"
 
 # Go
 set -x GOPATH $HOME/.local/lib/go
