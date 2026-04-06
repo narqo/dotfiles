@@ -38,3 +38,6 @@ di = ['diff']
 
 [templates]
 git_push_bookmark = '"vrnkn/push-" ++ change_id.short()'
+
+[git]
+private-commits = "description('private:*')"
