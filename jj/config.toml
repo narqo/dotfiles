@@ -16,10 +16,17 @@ show-ruler = false
 [colors]
 change_id = "red"
 commit_id = "default"
+"commit_id prefix" = { fg = "default", bold = false }
+"commit_id rest" = { fg = "default", bold = false }
 
 author = "blue"
 committer = "blue"
 timestamp = "default"
+
+"bookmark" = "green"
+"bookmarks" = "green"
+"local_bookmarks" = "green"
+"remote_bookmarks" = "green"
 
 "working_copy change_id" = "red"
 "working_copy commit_id" = "default"
