@@ -151,6 +151,12 @@ $(DESTDIR)/.local/share/agents: agents | $(DESTDIR)/.local/share
 
 $(DESTDIR)/.local/share/agents/prompts $(DESTDIR)/.local/share/agents/skills: | $(DESTDIR)/.local/share $(DESTDIR)/.local/share/agents
 
+$(DESTDIR)/.config/jj/repos: $(DESTDIR)/.local/share/jj/repos
+	$(setup)
+
+$(DESTDIR)/.local/share/jj/repos: $(DESTDIR)/.local/share
+	@mkdir -p $@
+
 clean:
 	@-for file in $(CONF_FILES); do \
 		test -L "$$file" && rm -rf "$$file"; \
