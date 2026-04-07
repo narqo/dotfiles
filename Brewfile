@@ -33,6 +33,9 @@ install xz
 # simplified community-driven man pages
 install tealdeer
 
+# terminal session persistence
+neurosnap/tap/zmx
+
 # casks
 install iterm2
 
