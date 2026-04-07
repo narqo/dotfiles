@@ -77,7 +77,8 @@ set -x PERL_MB_OPT --install_base\ \"$HOME/.local\"
 set -x PERL_MM_OPT "INSTALL_BASE=$HOME/.local"\ cpan\ local::lib
 
 # Ruby
-set -l gemdir (gem env --quiet gemdir 2> /dev/null)
+test (which gem 2> /dev/null);
+and set -l gemdir (gem env --quiet gemdir 2> /dev/null)
 if test -n "$gemdir"
     set PATH $PATH "$gemdir/bin"
 end
