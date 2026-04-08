@@ -115,6 +115,7 @@ if status --is-interactive
             #and history delete --exact --case-sensitive -- (string trim -r $argv);
             and return 1
         string match -qr "^git worktree remove" -- $argv; and return 1
+        string match -qr "^jj abandon" -- $argv; and return 1
         return 0
     end
 
