@@ -38,8 +38,8 @@ set PATH $HOME/.local/bin /usr/local/bin /usr/local/sbin $PATH
 set -x PAGER "less -X"
 set -x MANPAGER "less -X"
 
-# git-delta requires "less -R"; add -X to not clear screen.
-set -x DELTA_PAGER "less -XR"
+# git-delta requires "less -R"; add -X to not clear screen, -F to quit when single-screen
+set -x DELTA_PAGER "less -R -XF"
 
 # Go
 set -x GOPATH $HOME/.local/lib/go
