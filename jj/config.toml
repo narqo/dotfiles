@@ -3,6 +3,11 @@
 name = "Vladimir Varankin"
 email = "vladimir@varank.in"
 
+[signing]
+behavior = "own"
+backend = "ssh"
+key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPDM0OMrIAi5BKlYJr7JmOB2nacMueJeCeNDvoAyGWEp vladimir@varank.in"
+
 [ui]
 color = "always"
 default-command = "log"
