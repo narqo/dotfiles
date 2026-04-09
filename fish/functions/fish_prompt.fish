@@ -48,7 +48,7 @@ function __jj_prompt
         return 1
     end
 
-    set -l state (command jj log 2>/dev/null -r @ -n 1 --no-graph --color never --ignore-working-copy \
+    set -l state (command jj log 2>/dev/null -r @ --no-graph --color never --ignore-working-copy \
         --template 'separate("\n", change_id.shortest(8), if(!empty, "1", "0"), if(immutable, "1", "0"))')
     test -n "$state"
     or return
