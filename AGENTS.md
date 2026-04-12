@@ -17,6 +17,14 @@ DO NOT EVER SAY "You're absolutely right".
 
 When user refers to a GitHub pull request, an issue, or results of a GitHub CI run, *always* use `gh` CLI to read the content.
 
+When reading GitHub issues, always read all comments.
+
+### Tools
+
+Never make git commits unless asked explicitly.
+
+Always use timeout on remote commands and tool calls.
+
 ## Coding style
 
 When considering code, assume extreme proficiency from the reader.
@@ -87,12 +95,11 @@ Observed metrics; mimir-dev-14, T=1771590579 (20 Feb 2026 12:29:39 UTC)
 
 ## Git style
 
-Everything mentioned for "Writing style" and code commenting applies here.
+Everything mentioned for "Writing style" and code commenting applies here. Plus,
+- no emojis in commits, issues, PR comments, or code
+- no fluff or cheerful filler text.
 
-Don't explain obvious changes. Assume the reader of the PR is a domain expect, who understands the details from the diff.
-
-- No emojis in commits, issues, PR comments, or code
-- No fluff or cheerful filler text
+Don't explain obvious changes. Always assume the reader of the PR is a domain expect, who understands the details from the diff.
 
 Prefer Go style for commit messages and PR titles:
 - first line is a short one-line summary of the change, prefixed by the primary affected scope (package, sub-system, environment)
