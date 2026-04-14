@@ -1,4 +1,4 @@
-set shell=/bin/bash
+set shell=/bin/sh
 
 let mapleader = ','
 
@@ -36,16 +36,16 @@ filetype plugin indent on
 
 syntax on
 
-if !has('nvim')
-    set ttyfast
-endif
-
 " Default encodings
 set encoding=utf-8
-set termencoding=utf-8
 " Encodings for autodetection
 set fileencodings=utf-8,cp1251,koi8-r,cp866
 set fileformats=unix,dos,mac
+
+if !has('nvim')
+    set ttyfast
+    set termencoding=utf-8
+endif
 
 " Reload files changed outside vim
 set autoread
@@ -156,12 +156,11 @@ set t_Co=256
 colorscheme classylight
 
 " split window separators, etc
-set fillchars+=diff:░,vert:│,fold:⠐,eob:⠿
+set fillchars+=diff:░,vert:│,fold:⠐,eob:░
 
 " set up the gui cursor to look nice
 set guicursor=a:ver15-Cursor-blinkon0
-set guicursor+=o:hor50-Cursor
-set guicursor+=r-cr:hor20-Cursor
+set guicursor+=r-cr:block-Cursor
 
 " turn off any bells
 set novisualbell
@@ -189,8 +188,10 @@ endif
 
 " Keymaps ======================================================================
 
-" Paste mode toggle on <,p>
-set pastetoggle=<leader>p
+if !has('nvim')
+    " Paste mode toggle on <,p> (neovim handles this automatically)
+    set pastetoggle=<leader>p
+endif
 
 " Stop search highlighting
 nmap <silent> <F3> :nohlsearch<CR>
