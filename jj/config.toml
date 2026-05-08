@@ -53,3 +53,5 @@ git_push_bookmark = '"vrnkn/push-" ++ change_id.short()'
 
 [git]
 private-commits = "description('private:*')"
+# TODO: does this make things faster/better?
+sign-on-push = true
