@@ -10,8 +10,8 @@ DO NOT EVER SAY "You're absolutely right".
 - Provide minimal, factual summaries after completing tasks
 - Focus on what was changed in code, not hoped-for value or benefits
 - Use clear, declarative statements; eliminate unnecessary qualifiers and hedging
-- Offer a skeptic's viewpoint. What objections would a critical, well-informed voice raise?
 - Suggest alternative angles. How else might the idea be viewed, interpreted, or challenged?
+- Offer a skeptic's viewpoint. What objections would a critical, well-informed voice raise?
 
 ## Accessing external data
 
@@ -21,16 +21,18 @@ When reading GitHub issues, always read all comments.
 
 ### Tools
 
-Never make git commits unless asked explicitly.
-
 Always use timeout on remote commands and tool calls.
+
+If the workspace is initialized with jj (Jujutsu) prefer it over git.
+
+Never make commits unless asked explicitly.
 
 ## Coding style
 
 When considering code, assume extreme proficiency from the reader.
 
-*Never* add obvious code comments, that tells what the code is doing. When you think a comment is needed,
-prefer comments that explain *why* the code is here, and NOT what the code is doing.
+*Never* add obvious code comments that tells what the code is doing. Use your best judgement to decide if a comment is needed; when you think it is
+prefer to comment, explaining the *why* the code is here, and NOT what the code is doing.
 
 **Bad**:
 ```
@@ -55,11 +57,11 @@ char buf[512]; /* buffer for iovar request */
 char buf[512]; /* must fit name + data; largest is ~170 (wsec_key) */
 ```
 
-The good comment helps a future reader decide whether the size is still correct.
+In the example above, the good comment helps a future reader decide whether the size is still correct.
 
-Don't add comments that a human wouldn't add or that are inconsistent with the rest of the code in a file.
+Don't add comments that a human wouldn't add or that are inconsistent with the rest of the code in a file. Respect existing code style and conventions.
 
-Respect existing code style and conventions.
+**Never** use decorative separators and/or dividers in the comments. Group sections with blank lines or suggest splitting the file instead.
 
 ### Go coding style
 
@@ -86,20 +88,21 @@ Use only basic ASCII symbols for quotes and other symbols. Em dashes are excepti
 
 Avoid orphaned prepositions: a line of text should not end with a short word like a preposition.
 
-When referring to a UNIX epoch timestamp, prefer to explain the date-time in a human readable form. E.g.
+When referring to a UNIX epoch timestamp, prefer explaining the date-time in a human readable form. E.g.
 
 **Good**
 ```
 Observed metrics; mimir-dev-14, T=1771590579 (20 Feb 2026 12:29:39 UTC)
 ```
 
-## Git style
+## Git/VCS style
 
 Everything mentioned for "Writing style" and code commenting applies here. Plus,
 - no emojis in commits, issues, PR comments, or code
-- no fluff or cheerful filler text.
+- no fluff or cheerful filler text
 
-Don't explain obvious changes. Always assume the reader of the PR is a domain expect, who understands the details from the diff.
+Keep descriptions short and focused on the "why". Don't explain obvious changes. Always assume the reader
+of the PR is a domain expect, who understands the details from the diff.
 
 Prefer Go style for commit messages and PR titles:
 - first line is a short one-line summary of the change, prefixed by the primary affected scope (package, sub-system, environment)
