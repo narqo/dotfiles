@@ -31,6 +31,8 @@ $OBSIDIAN_VAULT_ROOT/
 
 When the user refers to a project by name, match it to an existing directory. If no match exists, confirm before creating a new one.
 
+Project subtrees may contain `_llms.txt.md`, an agent-oriented index of their notes. E.g. read `Grafana/Mimir/_llms.txt.md` before exploring Mimir notes. The index structure may change; keep the context section as the first section after the title.
+
 ## Creating and updating notes
 
 Every note **must** have YAML frontmatter with at these fields:
@@ -73,6 +75,7 @@ When the user asks to write up findings, observations, or analysis:
 1. Draft the note content following the formatting rules.
 2. Ask for the target org/project if not obvious from context.
 3. Write with frontmatter to the vault.
+4. If the target subtree has `_llms.txt.md`, suggest adding the new note to the index.
 
 ### Read existing note
 
@@ -86,3 +89,4 @@ When the user asks to write up findings, observations, or analysis:
 2. Apply the requested changes.
 3. Preserve the original `created` date. Do not change it.
 4. Write the updated note back.
+5. If the note's subtree has `_llms.txt.md`, suggest updating its index entry.
