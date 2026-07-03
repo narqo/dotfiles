@@ -92,6 +92,11 @@ function fish_prompt
   set -l vcs_prompt_format (set_color normal)" 𝒪𝓃 %s"
   echo -n -s (__vcs_prompt $vcs_prompt_format)
 
+  if set -q ZMX_SESSION
+    set -l zmx_session (set_color normal)" 𝒵 $ZMX_SESSION"
+    echo -n -s "$zmx_session"(set_color normal)
+  end
+
   set -l ps_symbols (__fish_prompt_symbols)
   if string length -q -- $ps_symbols
     printf ' %s ' $ps_symbols
