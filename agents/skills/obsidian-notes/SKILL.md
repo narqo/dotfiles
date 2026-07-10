@@ -5,9 +5,9 @@ description: Manage notes in an Obsidian vault. Use when a user asks to create, 
 
 # Obsidian Notes
 
-Manage markdown notes in an Obsidian vault rooted at `$OBSIDIAN_VAULT_ROOT`.
+Manage markdown notes in an Obsidian rooted at `$OBSIDIAN_VAULT_ROOT`.
 
-To get the vault directory:
+To get the root directory:
 
 ```
 echo -n "$OBSIDIAN_VAULT_ROOT"
@@ -21,6 +21,7 @@ The vault is organized by **org** (top-level directory). Notes live inside sub-d
 
 ```
 $OBSIDIAN_VAULT_ROOT/
+<vault>/
 ├── <org>/
 │   ├── <Project>/
 │   │   ├── note-1.md
