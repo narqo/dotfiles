@@ -35,6 +35,11 @@ claude_files = \
 	.claude/prompts/ \
 	.claude/skills/ \
 
+codex_files = \
+	.codex/AGENTS.md \
+	.codex/prompts/ \
+	.codex/skills/ \
+
 pi_files = \
 	.pi/agent/prompts/ \
 	.pi/agent/skills/ \
@@ -64,6 +69,7 @@ bin_files = .local/bin/git-sw
 files := $(dot_files)
 files += $(ai_agents_files)
 files += $(claude_files)
+files += $(codex_files)
 files += $(nvim_files)
 files += $(fish_files)
 files += $(psql_files)
@@ -96,6 +102,12 @@ $(DESTDIR)/.claude/CLAUDE.md: $(DESTDIR)/.local/share/AGENTS.md
 	$(setup)
 
 $(DESTDIR)/.claude/%: $(DESTDIR)/.local/share/agents/%
+	$(setup)
+
+$(DESTDIR)/.codex/AGENTS.md: $(DESTDIR)/.local/share/AGENTS.md
+	$(setup)
+
+$(DESTDIR)/.codex/%: $(DESTDIR)/.local/share/agents/%
 	$(setup)
 
 $(DESTDIR)/.pi/agent/%: $(DESTDIR)/.local/share/agents/%
