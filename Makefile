@@ -42,7 +42,6 @@ codex_files = \
 
 pi_files = \
 	.pi/agent/prompts/ \
-	.pi/agent/skills/ \
 
 # === vim related files
 
