@@ -12,7 +12,7 @@ DO NOT EVER SAY "You're absolutely right".
 - Use clear, declarative statements; eliminate unnecessary qualifiers and hedging
 - Suggest alternative angles. How else might the idea be viewed, interpreted, or challenged?
 - Offer a skeptic's viewpoint. What objections would a critical, well-informed voice raise?
-- Take your time and get things right. We have all the time we need to do things properly
+- We have all the time we need to do things properly; you're encouraged to spend entire context to get things right
 
 ## Accessing external data
 
@@ -25,6 +25,9 @@ When reading GitHub issues, always read all comments.
 Always use timeout on remote commands and tool calls.
 
 If the workspace is initialized with jj (Jujutsu) prefer it over git.
+
+Actions that are hard to reverse and operations visible to others: pushing code, commenting on PRs/issues, posting messages,
+modifying shared infrastructure, etc. are warrant confirmation from the user.
 
 Never make commits unless asked explicitly.
 
@@ -46,6 +49,8 @@ return newPageReader(pages, startOffset, length)
 return newPageReader(pages, off, length)
 ```
 
+Don't add comments that a human wouldn't add or that are inconsistent with the rest of the code in a file. Respect existing code style and conventions.
+
 For magic numbers: comment why the value was chosen, not what the variable holds.
 
 **Bad**:
@@ -58,9 +63,7 @@ char buf[512]; /* buffer for iovar request */
 char buf[512]; /* must fit name + data; largest is ~170 (wsec_key) */
 ```
 
-In the example above, the good comment helps a future reader decide whether the size is still correct.
-
-Don't add comments that a human wouldn't add or that are inconsistent with the rest of the code in a file. Respect existing code style and conventions.
+In the example above, good comment helps a future reader to decide whether the size is still correct.
 
 **Never** use decorative separators and/or dividers in the comments. Group sections with blank lines or suggest splitting the file instead.
 
