@@ -13,6 +13,8 @@ color = "always"
 default-command = "log"
 diff-formatter = ":git"
 pager = "delta"
+# don't create synthetic JJ-INSTRUCTIONS file
+diff-instructions = false
 
 [ui.streampager]
 show-ruler = false
