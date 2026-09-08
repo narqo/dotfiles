@@ -17,6 +17,10 @@ pager = "delta"
 [ui.streampager]
 show-ruler = false
 
+[merge-tools.nvim]
+program = "nvim"
+edit-args = ["--cmd", "packadd nvim.difftool", "-d", "$left", "$right"]
+
 # https://github.com/jj-vcs/jj/blob/main/cli/src/config/colors.toml
 [colors]
 change_id = "red"
