@@ -21,7 +21,15 @@ show-ruler = false
 
 [merge-tools.nvim]
 program = "nvim"
-edit-args = ["--cmd", "packadd nvim.difftool", "-d", "$left", "$right"]
+edit-args = [
+  "--cmd",
+  "let g:review_comments_root = trim(system('jj root'))",
+  "--cmd",
+  "packadd nvim.difftool",
+  "-d",
+  "$left",
+  "$right",
+]
 
 # https://github.com/jj-vcs/jj/blob/main/cli/src/config/colors.toml
 [colors]
