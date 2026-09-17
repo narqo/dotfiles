@@ -354,6 +354,10 @@ au FileType go nmap <leader><F1> :GoDoc<cr>
 "au FileType go nmap <leader><F6> :GoRename<cr>
 au FileType go nmap <leader><F12> :GoDeclsDir<cr>
 
+" === Markdown ===================================
+" disable auto folding
+let g:vim_markdown_folding_disabled = 1
+
 " === Rust =======================================
 " Runs rustfmt when save buffer
 let g:rustfmt_autosave = 1
