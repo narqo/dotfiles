@@ -1,7 +1,7 @@
 {
   "plugins": {
     "review-comments.nvim": {
-      "rev": "aae010c11d4b023678c9d6d4b7819f18d32c5c61",
+      "rev": "29c89402e5c0a0a0d031d6bd2996ee698c0aab36",
       "src": "https://github.com/narqo/review-comments.nvim"
     }
   }
