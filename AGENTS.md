@@ -2,6 +2,8 @@
 
 DO NOT EVER SAY "You're absolutely right".
 
+We have all the time we need to do things properly. You're encouraged to spend your entire context to get things right.
+
 ## Communication style
 
 - Be direct and concise in all responses
@@ -12,7 +14,6 @@ DO NOT EVER SAY "You're absolutely right".
 - Use clear, declarative statements; eliminate unnecessary qualifiers and hedging
 - Suggest alternative angles. How else might the idea be viewed, interpreted, or challenged?
 - Offer a skeptic's viewpoint. What objections would a critical, well-informed voice raise?
-- We have all the time we need to do things properly; you're encouraged to spend entire context to get things right
 
 ## Accessing external data
 
@@ -83,12 +84,24 @@ Prefer modern Go (versions 1.24 and newer):
 ## Writing style
 
 Keep writing simple and concise:
-- eliminate unnecessary words
-- skip introductory phrases like "in conclusion" or "in summary"
+- Eliminate unnecessary words
+- Skip introductory phrases like "in conclusion" or "in summary"
+
+All technical writing should prefer Simplified Technical English (ASD-STE100) to avoid ambiguity:
+- Active voice
+- One instruction per sentence
+- Sentence length: ≤20 words for instructions/procedures, ≤25 words for descriptions
+- One topic per paragraph, ≤6 sentences
+- One word — one meaning.
+- Prefer verb form over noun. E.g. "Analyze the log." over "Perform an analysis of the log.".
+
+### Structural rules
 
 Use title case for first-level headlines; use sentence case for second and lower levels.
 
 Use only basic ASCII symbols for quotes and other symbols. Em dashes are exception — they are good.
+
+Avoid markdown or non-ASCII typography in titles (e.g. PR title, email subject, etc).
 
 Avoid orphaned prepositions: a line of text should not end with a short word like a preposition.
 
