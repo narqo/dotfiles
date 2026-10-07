@@ -31,6 +31,10 @@ edit-args = [
   "$right",
 ]
 
+[merge-tools.zed]
+program = "zed"
+edit-args = ["--diff", "$left", "$right"]
+
 # https://github.com/jj-vcs/jj/blob/main/cli/src/config/colors.toml
 [colors]
 change_id = "red"
